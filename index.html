@@ -217,8 +217,9 @@ html[lang="es"] .es-note{display:block}
 .member:hover{transform:translateY(-3px);background:#FFFCF6;border-color:var(--line);box-shadow:0 8px 20px rgba(36,28,20,.09)}
 .member:focus-visible{outline:2px solid var(--river);outline-offset:3px}
 .member.is-active{background:#FFFCF6;border-color:var(--river);box-shadow:0 8px 22px rgba(36,28,20,.12)}
-.bead{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:1.42rem;color:#fff;background:radial-gradient(circle at 32% 28%, #1FB6B0, var(--turquoise) 62%, var(--turquoise-deep));box-shadow:inset 0 2px 6px rgba(255,255,255,.25), 0 3px 9px rgba(10,107,105,.22);margin-bottom:.85rem;letter-spacing:.02em}
+.bead{position:relative;overflow:hidden;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:1.42rem;color:#fff;background:radial-gradient(circle at 32% 28%, #1FB6B0, var(--turquoise) 62%, var(--turquoise-deep));box-shadow:inset 0 2px 6px rgba(255,255,255,.25), 0 3px 9px rgba(10,107,105,.22);margin-bottom:.85rem;letter-spacing:.02em}
 .member .bead{margin-bottom:.1rem}
+.bead-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
 .member .m-name{font-family:var(--display);font-size:1rem;font-weight:600;color:var(--teal-ink);line-height:1.18}
 .member .role{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--clay-deep);margin:0}
 .member .bio{display:none}
@@ -385,6 +386,9 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
     <p class="eyebrow" data-en="The people behind the work" data-es="Las personas detrás del trabajo">The people behind the work</p>
     <h2 data-en="Congreso Members" data-es="Miembros del Congreso">Congreso Members</h2>
     <p class="section-lede" data-en="River Sisters Congreso is carried by Indigenous and Chicano/Mexicano leaders, elders, and organizers who speak for the River." data-es="River Sisters Congreso es sostenido por líderes, ancianos y organizadores Indígenas y Chicano/Mexicanos que hablan por el Río.">River Sisters Congreso is carried by Indigenous and Chicano/Mexicano leaders, elders, and organizers who speak for the River.</p>
+    <!-- Real portraits: add data-photo to a member's .bead, e.g.
+         <span class="bead" data-photo="images/nita-gonzales.jpg" aria-hidden="true">NG</span>
+         The photo fills the circle; if it's missing or fails to load, the initials show instead. -->
     <div class="member-grid">
       <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
         <span class="bead" aria-hidden="true">NG</span>
@@ -1137,11 +1141,21 @@ nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove
     ['data-en','data-es'].forEach(a=>src.hasAttribute(a)?dst.setAttribute(a,src.getAttribute(a)):dst.removeAttribute(a));
     dst.textContent=src.textContent;
   };
+  const paintBead=(target,source)=>{
+    target.textContent=source?source.textContent.trim():'';
+    const photo=source&&source.getAttribute('data-photo');
+    if(!photo)return;
+    const img=new Image();
+    img.className='bead-photo';img.alt='';img.decoding='async';img.loading='lazy';
+    img.onerror=()=>img.remove();
+    img.src=photo;
+    target.insertBefore(img,target.firstChild);
+  };
   const setActive=(member,on)=>{member.classList.toggle('is-active',on);member.setAttribute('aria-expanded',on?'true':'false')};
   const open=member=>{
     const bead=member.querySelector('.bead'),name=member.querySelector('.m-name'),
           role=member.querySelector('.role'),bio=member.querySelector('.bio');
-    dBead.textContent=bead?bead.textContent:'';
+    paintBead(dBead,bead);
     dName.textContent=name?name.textContent:'';
     copyLang(role,dRole);copyLang(bio,dBio);
     grid.querySelectorAll('.member').forEach(m=>setActive(m,m===member));
@@ -1162,6 +1176,7 @@ nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove
   });
   dClose.addEventListener('click',()=>close(true));
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)close(true)});
+  grid.querySelectorAll('.member .bead').forEach(b=>paintBead(b,b));
 })();
 </script>
 </body>
