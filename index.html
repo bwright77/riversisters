@@ -212,12 +212,28 @@ html[lang="es"] .es-note{display:block}
 .ev-fine{margin-top:1.5rem;font-size:.85rem;color:rgba(36,28,20,.62);max-width:64ch}
 
 /* members */
-#members .member-grid{margin-top:2.4rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.6rem 1.8rem}
-.member{display:flex;flex-direction:column;align-items:flex-start}
+#members .member-grid{margin-top:2.4rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:1.1rem .8rem}
+.member{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.42rem;padding:1rem .55rem .9rem;border:1px solid transparent;border-radius:16px;background:transparent;font:inherit;color:inherit;cursor:pointer;transition:transform .18s ease,background .18s ease,box-shadow .18s ease,border-color .18s ease}
+.member:hover{transform:translateY(-3px);background:#FFFCF6;border-color:var(--line);box-shadow:0 8px 20px rgba(36,28,20,.09)}
+.member:focus-visible{outline:2px solid var(--river);outline-offset:3px}
+.member.is-active{background:#FFFCF6;border-color:var(--river);box-shadow:0 8px 22px rgba(36,28,20,.12)}
 .bead{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:1.42rem;color:#fff;background:radial-gradient(circle at 32% 28%, #1FB6B0, var(--turquoise) 62%, var(--turquoise-deep));box-shadow:inset 0 2px 6px rgba(255,255,255,.25), 0 3px 9px rgba(10,107,105,.22);margin-bottom:.85rem;letter-spacing:.02em}
-.member h3{font-family:var(--display);font-size:1.06rem;font-weight:600;color:var(--teal-ink);margin:0 0 .12rem}
-.member .role{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--clay-deep);margin-bottom:.5rem}
-.member .bio{font-size:.9rem;line-height:1.5;color:rgba(36,28,20,.66)}
+.member .bead{margin-bottom:.1rem}
+.member .m-name{font-family:var(--display);font-size:1rem;font-weight:600;color:var(--teal-ink);line-height:1.18}
+.member .role{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--clay-deep);margin:0}
+.member .bio{display:none}
+/* member detail panel */
+.member-detail{margin-top:1.6rem;position:relative;display:grid;grid-template-columns:auto 1fr;gap:1.1rem 1.4rem;align-items:start;border:1px solid var(--river);border-radius:18px;background:#FFFCF6;padding:1.5rem 1.7rem;box-shadow:0 12px 34px rgba(36,28,20,.10);animation:md-in .22s ease}
+.member-detail[hidden]{display:none}
+@keyframes md-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.member-detail .bead{width:74px;height:74px;font-size:1.7rem;margin:0}
+.md-name{font-family:var(--display);font-size:1.32rem;font-weight:600;color:var(--teal-ink);margin:0 0 .12rem}
+.md-role{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--clay-deep);margin:0 0 .65rem}
+.md-bio{font-size:.96rem;line-height:1.62;color:rgba(36,28,20,.72);margin:0;max-width:64ch}
+.md-close{position:absolute;top:.7rem;right:.8rem;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--teal-ink);font-size:1.1rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s ease,border-color .15s ease}
+.md-close:hover{background:#FFF4E6;border-color:var(--clay)}
+.md-close:focus-visible{outline:2px solid var(--river);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.member,.member-detail{transition:none;animation:none}}
 .member-note{margin-top:2rem;font-size:.86rem;color:rgba(36,28,20,.6);font-style:italic}
 /* partner logos */
 .partner-logos{margin-top:1.8rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.2rem}
@@ -235,7 +251,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 .pp-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.55rem 1.4rem;list-style:none;padding:0;margin:0}
 .pp-list li{font-size:.95rem;padding:.4rem 0;border-bottom:1px solid var(--line);color:var(--ink)}
 .pp-list li span{color:rgba(36,28,20,.55);font-size:.86rem}
-@media (max-width:560px){.member-grid{grid-template-columns:1fr 1fr;gap:1.3rem 1rem}.bead{width:54px;height:54px;font-size:1.2rem}}
+@media (max-width:560px){.member-grid{grid-template-columns:1fr 1fr;gap:1rem .7rem}.bead{width:54px;height:54px;font-size:1.2rem}.member-detail{grid-template-columns:1fr;justify-items:center;text-align:center;padding:1.3rem 1.1rem}.md-bio{text-align:left}}
 @media (max-width:560px){
   .ev{grid-template-columns:64px 1fr;gap:1rem}
   .ev-tag{grid-column:2;justify-self:start}
@@ -370,89 +386,98 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
     <h2 data-en="Congreso Members" data-es="Miembros del Congreso">Congreso Members</h2>
     <p class="section-lede" data-en="River Sisters Congreso is carried by Indigenous and Chicano/Mexicano leaders, elders, and organizers who speak for the River." data-es="River Sisters Congreso es sostenido por líderes, ancianos y organizadores Indígenas y Chicano/Mexicanos que hablan por el Río.">River Sisters Congreso is carried by Indigenous and Chicano/Mexicano leaders, elders, and organizers who speak for the River.</p>
     <div class="member-grid">
-      <div class="member">
-        <div class="bead" aria-hidden="true">NG</div>
-        <h3>Nita Gonzales</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">PA</div>
-        <h3>Pattie Archambault</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">GA</div>
-        <h3>Giselle Arroyo</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">CB</div>
-        <h3>Cecelia Bull Bear</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">JB</div>
-        <h3>Jazmin Bojorquez</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">CC</div>
-        <h3>Carlos Castaneda</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">VC</div>
-        <h3>Vivian Cervantes</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">SF</div>
-        <h3>Shannon Francis</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">CG</div>
-        <h3>Cynthia Gallegos</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">KG</div>
-        <h3>Karen Gonzales</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">RH</div>
-        <h3>Rosean Howard</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">SL</div>
-        <h3>Solicia E. Lopez</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">TL</div>
-        <h3>Thomas Lopez</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
-      </div>
-      <div class="member">
-        <div class="bead" aria-hidden="true">VO</div>
-        <h3>Virginia Ortiz</h3>
-        <p class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
-        <p class="bio">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">NG</span>
+        <span class="m-name">Nita Gonzales</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">PA</span>
+        <span class="m-name">Pattie Archambault</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">GA</span>
+        <span class="m-name">Giselle Arroyo</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">CB</span>
+        <span class="m-name">Cecelia Bull Bear</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">JB</span>
+        <span class="m-name">Jazmin Bojorquez</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">CC</span>
+        <span class="m-name">Carlos Castaneda</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">VC</span>
+        <span class="m-name">Vivian Cervantes</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">SF</span>
+        <span class="m-name">Shannon Francis</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">CG</span>
+        <span class="m-name">Cynthia Gallegos</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">KG</span>
+        <span class="m-name">Karen Gonzales</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">RH</span>
+        <span class="m-name">Rosean Howard</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">SL</span>
+        <span class="m-name">Solicia E. Lopez</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">TL</span>
+        <span class="m-name">Thomas Lopez</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">VO</span>
+        <span class="m-name">Virginia Ortiz</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
+      </button>
+    </div>
+    <div id="member-detail" class="member-detail" role="region" aria-live="polite" data-en-label="Selected member" data-es-label="Miembro seleccionado" aria-label="Selected member" hidden>
+      <button class="md-close" type="button" aria-label="Close" data-en-title="Close" data-es-title="Cerrar" title="Close">&times;</button>
+      <span class="bead" aria-hidden="true"></span>
+      <div class="md-body">
+        <h3 class="md-name"></h3>
+        <p class="md-role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</p>
+        <p class="md-bio"></p>
       </div>
     </div>
     <p class="member-note" data-en="Placeholder bios and portraits shown — real photos and biographies to be provided by each member." data-es="Se muestran biografías y retratos de marcador de posición — las fotos y biografías reales serán proporcionadas por cada miembro.">Placeholder bios and portraits shown — real photos and biographies to be provided by each member.</p>
@@ -1082,6 +1107,8 @@ const swap=l=>{
     if(v==null)return;
     if(el.getAttribute('data-html')==='true'){el.innerHTML=v}else{el.textContent=v}
   });
+  document.querySelectorAll('[data-'+l+'-label]').forEach(el=>el.setAttribute('aria-label',el.getAttribute('data-'+l+'-label')));
+  document.querySelectorAll('[data-'+l+'-title]').forEach(el=>el.setAttribute('title',el.getAttribute('data-'+l+'-title')));
   document.getElementById('btn-en').setAttribute('aria-pressed',l==='en');
   document.getElementById('btn-es').setAttribute('aria-pressed',l==='es');
   if(activeIdx!=null)setLabel(activeIdx);
@@ -1096,6 +1123,46 @@ mb.addEventListener('click',()=>{
   mb.setAttribute('aria-expanded',open);
 });
 nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+
+// ---- Congreso member detail ----
+(function(){
+  const grid=document.querySelector('#members .member-grid');
+  const panel=document.getElementById('member-detail');
+  if(!grid||!panel)return;
+  const dBead=panel.querySelector('.bead'),dName=panel.querySelector('.md-name'),
+        dRole=panel.querySelector('.md-role'),dBio=panel.querySelector('.md-bio'),
+        dClose=panel.querySelector('.md-close');
+  let current=null;
+  const copyLang=(src,dst)=>{
+    ['data-en','data-es'].forEach(a=>src.hasAttribute(a)?dst.setAttribute(a,src.getAttribute(a)):dst.removeAttribute(a));
+    dst.textContent=src.textContent;
+  };
+  const setActive=(member,on)=>{member.classList.toggle('is-active',on);member.setAttribute('aria-expanded',on?'true':'false')};
+  const open=member=>{
+    const bead=member.querySelector('.bead'),name=member.querySelector('.m-name'),
+          role=member.querySelector('.role'),bio=member.querySelector('.bio');
+    dBead.textContent=bead?bead.textContent:'';
+    dName.textContent=name?name.textContent:'';
+    copyLang(role,dRole);copyLang(bio,dBio);
+    grid.querySelectorAll('.member').forEach(m=>setActive(m,m===member));
+    panel.hidden=false;current=member;
+    panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+    dClose.focus();
+  };
+  const close=focusBack=>{
+    panel.hidden=true;
+    grid.querySelectorAll('.member').forEach(m=>setActive(m,false));
+    const prev=current;current=null;
+    if(focusBack&&prev)prev.focus();
+  };
+  grid.addEventListener('click',e=>{
+    const member=e.target.closest('.member');
+    if(!member||!grid.contains(member))return;
+    member===current?close(true):open(member);
+  });
+  dClose.addEventListener('click',()=>close(true));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)close(true)});
+})();
 </script>
 </body>
 </html>
