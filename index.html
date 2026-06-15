@@ -90,12 +90,21 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
 /* Personhood lineage */
 #personhood{background:#FFFCF6;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .lineage{margin-top:2.6rem;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
-.lineage::before{content:"";position:absolute;top:11px;left:4%;right:4%;height:2px;background:var(--line)}
 .lin{position:relative;padding:0 .8rem 0 0}
-.lin .dot{width:24px;height:24px;border-radius:50%;background:var(--river);border:5px solid #fff;position:relative;z-index:1}
-.lin.next .dot{background:var(--clay)}
-.lin .yr{font-weight:700;font-size:.82rem;letter-spacing:.08em;margin-top:.65rem;color:var(--river)}
-.lin.next .yr{color:var(--clay-deep)}
+/* connector line between this milestone and the next */
+.lin::after{content:"";position:absolute;top:9px;left:9px;width:100%;height:2px;background:var(--river);z-index:0}
+.lin:last-child::after{display:none}
+/* the segment leading into the upcoming milestone reads as "not yet" */
+.lin:nth-child(4)::after{background:none;height:0;border-top:2px dashed var(--clay);opacity:.85}
+.lin .dot{display:block;width:18px;height:18px;border-radius:50%;background:var(--river);box-shadow:0 0 0 4px #fff,0 0 0 6px var(--river);position:relative;z-index:1}
+.lin.next .dot{background:#fff;box-shadow:0 0 0 4px #fff,0 0 0 6px var(--clay)}
+.lin.next .dot::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--clay);animation:pulseRing 2.2s ease-out infinite}
+@keyframes pulseRing{0%{transform:scale(1);opacity:.7}70%{transform:scale(1.9);opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.lin.next .dot::after{animation:none;opacity:.5}}
+.lin .yr{font-weight:700;font-size:.82rem;letter-spacing:.08em;margin-top:.7rem;color:var(--river)}
+.lin.next .yr{color:var(--clay-deep);display:inline-flex;align-items:center;gap:.32em}
+.lin.next .yr::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--clay);animation:pulseDot 1.6s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
 .lin h3{font-family:var(--display);font-size:1.05rem;font-weight:600;margin:.15rem 0 .3rem;line-height:1.25}
 .lin p{font-size:.86rem;color:rgba(36,28,20,.78)}
 
@@ -159,7 +168,7 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
 #action p{max-width:60ch;color:rgba(255,255,255,.94)}
 #action .btn.solid{background:var(--ink)}
 #action .btn.solid:hover{background:#000}
-.signup{margin-top:1.9rem;display:flex;gap:.7rem;max-width:520px;flex-wrap:wrap}
+.signup{margin-top:1.9rem;display:flex;gap:.7rem;max-width:600px;flex-wrap:wrap}
 .signup input{flex:1 1 240px;padding:.78rem 1.1rem;border-radius:99px;border:0;font-family:var(--body);font-size:.95rem}
 .signup .micro{flex-basis:100%;font-size:.78rem;color:rgba(255,255,255,.85)}
 
@@ -177,9 +186,9 @@ html[lang="es"] .es-note{display:block}
 @media (max-width:1024px){
   .split{grid-template-columns:1fr}
   .lineage{grid-template-columns:1fr;gap:1.4rem}
-  .lineage::before{display:none}
+  .lin::after{display:none}
   .lin{display:grid;grid-template-columns:24px 1fr;gap:.8rem}
-  .lin .dot{margin-top:.2rem}
+  .lin .dot{margin-top:.3rem;margin-left:3px}
   .lin .yr{margin-top:0}
   .principles-grid{grid-template-columns:1fr 1fr}
   footer .cols{grid-template-columns:1fr}
@@ -214,6 +223,11 @@ html[lang="es"] .es-note{display:block}
 .partner-logos{margin-top:1.8rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.2rem}
 .plogo{border:1px solid var(--line);border-radius:14px;background:#FFFCF6;min-height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.1rem;gap:.55rem}
 .plogo .mark{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:1.05rem;color:#fff;background:linear-gradient(135deg,var(--river),var(--turquoise-deep))}
+.plogo img{max-width:100%;max-height:58px;width:auto;height:auto;object-fit:contain}
+.plogo img.icon{max-height:46px}
+a.plogo{text-decoration:none;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+a.plogo:hover{transform:translateY(-2px);border-color:var(--river);box-shadow:0 6px 18px rgba(36,28,20,.10)}
+a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 .plogo .pname{font-weight:700;font-size:.92rem;color:var(--teal-ink);line-height:1.2}
 .partner-people{margin-top:2.4rem}
 .partner-people h3{font-family:var(--display);font-size:1.16rem;font-weight:600;color:var(--teal-ink);margin:0 0 .3rem}
@@ -452,22 +466,19 @@ html[lang="es"] .es-note{display:block}
     <p class="section-lede" data-en="The Congreso prioritizes equitable engagement with historically marginalized communities along the South Platte corridor — a model of co-creation rooted in traditional ecological knowledge, cultural education, and intergenerational leadership." data-es="El Congreso prioriza la participación equitativa de comunidades históricamente marginadas a lo largo del corredor del South Platte — un modelo de co-creación arraigado en el conocimiento ecológico tradicional, la educación cultural y el liderazgo intergeneracional.">The Congreso prioritizes equitable engagement with historically marginalized communities along the South Platte corridor — a model of co-creation rooted in traditional ecological knowledge, cultural education, and intergenerational leadership.</p>
     <p class="ptitle-sub" data-en="Partner organizations" data-es="Organizaciones aliadas" style="margin-top:1.8rem;font-weight:700;color:var(--teal-ink)">Partner organizations</p>
     <div class="partner-logos">
-      <div class="plogo">
-        <div class="mark" aria-hidden="true">GF</div>
-        <div class="pname">The Greenway Foundation</div>
-      </div>
-      <div class="plogo">
-        <div class="mark" aria-hidden="true">CC</div>
-        <div class="pname">Confluence Colorado</div>
-      </div>
-      <div class="plogo">
-        <div class="mark" aria-hidden="true">SR</div>
-        <div class="pname">Servicios de La Raza</div>
-      </div>
-      <div class="plogo">
-        <div class="mark" aria-hidden="true">SS</div>
+      <a class="plogo" href="https://thegreenwayfoundation.org/" target="_blank" rel="noopener" aria-label="The Greenway Foundation (opens in a new tab)">
+        <img src="assets/logos/greenway-foundation.png" alt="The Greenway Foundation" loading="lazy">
+      </a>
+      <a class="plogo" href="https://www.confluenceco.org/" target="_blank" rel="noopener" aria-label="Confluence Colorado (opens in a new tab)">
+        <img src="assets/logos/confluence-colorado.png" alt="Confluence Colorado" loading="lazy">
+      </a>
+      <a class="plogo" href="https://serviciosdelaraza.org/" target="_blank" rel="noopener" aria-label="Servicios de La Raza (opens in a new tab)">
+        <img src="assets/logos/servicios-de-la-raza.png" alt="Servicios de La Raza" loading="lazy">
+      </a>
+      <a class="plogo" href="https://www.spiritofthesun.org/" target="_blank" rel="noopener" aria-label="Spirit of the Sun (opens in a new tab)">
+        <img class="icon" src="assets/logos/spirit-of-the-sun.png" alt="Spirit of the Sun" loading="lazy">
         <div class="pname">Spirit of the Sun</div>
-      </div>
+      </a>
       <div class="plogo">
         <div class="mark" aria-hidden="true">CA</div>
         <div class="pname">CASR</div>
