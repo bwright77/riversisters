@@ -43,17 +43,25 @@ node scripts/gen-necklace-data.mjs
 
 ## Basemap decision (open question §6 / §13.1)
 
-Default mode is **`canvas`**: a tokenless solid background plus our own
-river/bead layers — no tiles, no API key, works offline, fully bilingual park
-labels, ships today. The mode is a one-line switch at the top of
-`necklace-sidecar.js` (`BASEMAP`):
+Default mode is **`vector`**: a **keyless** vector basemap (OpenFreeMap, built
+on OpenStreetMap data) giving real Denver street/place context. Vector tiles let
+the expanded map render **south-up (bearing 180°)** to match the compact necklace
+map — north at the bottom, the South Platte flowing *down* the page as you scroll
+down (downstream/north) — while keeping street/place labels upright (raster tiles
+can't rotate labels). No API key, no token.
 
-- `maptiler` — quick street-context prototype (needs a free-tier key; place
-  labels are English-only, per §6). Code path implemented.
-- `protomaps` — production path (self-hosted Denver `.pmtiles`). **Left as a
-  documented TODO** — it needs the pmtiles protocol lib vendored and a hosted
-  extract, which is a hosting decision for Benjamin. No runtime fetch happens
-  in `canvas` mode, so there is no missing-file 404.
+The mode is a one-line switch (`BASEMAP.mode`) in `necklace-sidecar.js`:
+
+- `streets` — keyless CARTO Voyager **raster** basemap (north-up only).
+- `canvas` — tokenless solid background + our river/bead layers (offline; no
+  street context). Used as the automatic fallback if the map can't initialize.
+- `maptiler` — vector streets via MapTiler (needs a free key).
+- `protomaps` — production path: a self-hosted Denver `.pmtiles` extract
+  (needs the pmtiles protocol lib vendored + a hosted extract).
+
+Street/place labels are local-language (English); fully bilingual basemap labels
+would need a custom style (§6). The cards, the river, and the bead labels remain
+fully bilingual.
 
 ## Open questions — how this build resolved them
 

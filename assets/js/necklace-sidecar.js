@@ -38,21 +38,41 @@ const C = {
 
 /* ---------------------------------------------------------------------------
    Basemap selection.
-   'canvas'  : tokenless solid background + our own river/bead layers. No tiles,
-               no API key, works offline, fully bilingual labels. Ships today.
-   'maptiler': quick street-context prototype (free tier; needs a key; English-
-               only place labels — flag the tradeoff per the brief §6).
-   'protomaps': production path — a self-hosted Denver .pmtiles extract. Left as
-               a documented TODO: it needs the pmtiles protocol lib vendored and
-               a hosted extract, which is Benjamin's hosting decision (§13).
+   'vector'  : DEFAULT. Real Denver street/place context via a KEYLESS vector
+               basemap (OpenFreeMap, OpenStreetMap data). Vector lets the map
+               rotate south-up to match the compact necklace map with labels
+               staying upright. Place/street labels are local-language (English);
+               fully bilingual labels would need a custom style (brief §6).
+   'streets' : keyless RASTER basemap (CARTO Voyager). North-up only.
+   'canvas'  : tokenless solid background + our river/bead layers only. No
+               tiles, works offline. Fallback when no basemap is wanted.
+   'maptiler': vector streets via MapTiler (free tier; needs a key).
+   'protomaps': production path — a self-hosted Denver .pmtiles extract (needs
+               the pmtiles protocol lib vendored + a hosted extract).
    --------------------------------------------------------------------------- */
 const BASEMAP = {
-  mode: 'canvas',
+  mode: 'vector',
+  // Keyless VECTOR basemap (OpenFreeMap, OpenStreetMap data). Vector means the
+  // map can be rotated south-up (to match the compact necklace map) while
+  // street/place labels stay upright — raster tiles can't do that.
+  vectorStyleUrl: 'https://tiles.openfreemap.org/styles/liberty',
+  // Keyless RASTER fallback (CARTO Voyager). North-up only — rotating raster
+  // tiles turns the labels upside-down.
+  rasterTiles: [
+    'https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
+    'https://b.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
+    'https://c.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
+    'https://d.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
+  ],
+  rasterAttribution:
+    '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
   maptilerKey: '',
   protomapsUrl: '/basemap/denver.pmtiles',
 };
 
-const CAMERA = { zoom: 14.3, bearing: 0, pitch: 0, flyDuration: 1200 };
+// South-up (bearing 180) matches the compact necklace map: north at the bottom,
+// the South Platte flowing DOWN the page as you scroll down (downstream/north).
+const CAMERA = { zoom: 14.3, bearing: 180, pitch: 0, flyDuration: 1200 };
 
 /* ---- tiny loaders (idempotent) ------------------------------------------- */
 const _loaded = {};
@@ -85,73 +105,120 @@ function prefersReducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-/* ---- canvas (tokenless) style -------------------------------------------- */
+/* ---- shared necklace overlay (river + creek + beads) --------------------- */
+function necklaceSource(geojson) {
+  return { type: 'geojson', data: geojson, promoteId: 'id' };
+}
+function necklaceLayers() {
+  const active = ['boolean', ['feature-state', 'active'], false];
+  return [
+    {
+      id: 'creek',
+      type: 'line',
+      source: 'necklace',
+      filter: ['==', ['get', 'kind'], 'creek'],
+      layout: { 'line-cap': 'round', 'line-join': 'round' },
+      paint: { 'line-color': C.river, 'line-width': ['interpolate', ['linear'], ['zoom'], 9, 1.5, 14, 3.5, 16, 5], 'line-opacity': 0.85 },
+    },
+    {
+      id: 'river',
+      type: 'line',
+      source: 'necklace',
+      filter: ['==', ['get', 'kind'], 'river'],
+      layout: { 'line-cap': 'round', 'line-join': 'round' },
+      paint: {
+        'line-color': C.turquoise,
+        'line-width': ['interpolate', ['linear'], ['zoom'], 9, 3, 14, 6, 16, 9],
+      },
+    },
+    {
+      id: 'bead-halo',
+      type: 'circle',
+      source: 'necklace',
+      filter: ['has', 'order'],
+      paint: {
+        'circle-radius': ['case', active, 17, 0],
+        'circle-color': 'rgba(0,0,0,0)',
+        'circle-stroke-color': '#ffffff',
+        'circle-stroke-width': 3,
+        'circle-stroke-opacity': ['case', active, 1, 0],
+      },
+    },
+    {
+      id: 'beads',
+      type: 'circle',
+      source: 'necklace',
+      filter: ['has', 'order'],
+      paint: {
+        'circle-radius': ['case', active, 9, 6],
+        'circle-color': ['case', ['get', 'seven'], C.clay, C.turquoise],
+        'circle-stroke-color': '#ffffff',
+        'circle-stroke-width': 2,
+        'circle-opacity': ['case', active, 1, 0.85],
+      },
+    },
+  ];
+}
+
+/* ---- real street basemap (keyless raster) -------------------------------- */
+function rasterStyle(geojson) {
+  return {
+    version: 8,
+    name: 'necklace-streets',
+    sources: {
+      basemap: {
+        type: 'raster',
+        tiles: BASEMAP.rasterTiles,
+        tileSize: 256,
+        minzoom: 0,
+        maxzoom: 20,
+        attribution: BASEMAP.rasterAttribution,
+      },
+      necklace: necklaceSource(geojson),
+    },
+    layers: [{ id: 'basemap', type: 'raster', source: 'basemap' }, ...necklaceLayers()],
+  };
+}
+
+/* ---- canvas (tokenless) fallback ----------------------------------------- */
 function canvasStyle(geojson) {
   return {
     version: 8,
     name: 'necklace-canvas',
-    sources: { necklace: { type: 'geojson', data: geojson, promoteId: 'id' } },
-    layers: [
-      { id: 'bg', type: 'background', paint: { 'background-color': C.bone } },
-      {
-        id: 'creek',
-        type: 'line',
-        source: 'necklace',
-        filter: ['==', ['get', 'kind'], 'creek'],
-        layout: { 'line-cap': 'round', 'line-join': 'round' },
-        paint: { 'line-color': '#8FD6D4', 'line-width': 2, 'line-opacity': 0.8 },
-      },
-      {
-        id: 'river',
-        type: 'line',
-        source: 'necklace',
-        filter: ['==', ['get', 'kind'], 'river'],
-        layout: { 'line-cap': 'round', 'line-join': 'round' },
-        paint: {
-          'line-color': C.turquoise,
-          'line-width': ['interpolate', ['linear'], ['zoom'], 9, 2.5, 14, 5, 16, 7],
-        },
-      },
-      {
-        id: 'bead-halo',
-        type: 'circle',
-        source: 'necklace',
-        filter: ['has', 'order'],
-        paint: {
-          'circle-radius': ['case', ['boolean', ['feature-state', 'active'], false], 16, 0],
-          'circle-color': 'rgba(0,0,0,0)',
-          'circle-stroke-color': '#ffffff',
-          'circle-stroke-width': 2.5,
-          'circle-stroke-opacity': ['case', ['boolean', ['feature-state', 'active'], false], 0.95, 0],
-        },
-      },
-      {
-        id: 'beads',
-        type: 'circle',
-        source: 'necklace',
-        filter: ['has', 'order'],
-        paint: {
-          'circle-radius': ['case', ['boolean', ['feature-state', 'active'], false], 9, 5.5],
-          'circle-color': ['case', ['get', 'seven'], C.clay, C.turquoise],
-          'circle-stroke-color': C.bone,
-          'circle-stroke-width': 1.8,
-          'circle-opacity': ['case', ['boolean', ['feature-state', 'active'], false], 1, 0.55],
-        },
-      },
-    ],
+    sources: { necklace: necklaceSource(geojson) },
+    layers: [{ id: 'bg', type: 'background', paint: { 'background-color': C.bone } }, ...necklaceLayers()],
   };
 }
 
-/* MapTiler prototype: load their style, then graft our necklace layers on top. */
+function baseStyle(geojson) {
+  if (BASEMAP.mode === 'vector') return BASEMAP.vectorStyleUrl;
+  if (BASEMAP.mode === 'maptiler' && BASEMAP.maptilerKey) return maptilerStyleUrl();
+  if (BASEMAP.mode === 'canvas') return canvasStyle(geojson);
+  return rasterStyle(geojson); // 'streets'
+}
+
+/* MapTiler vector: load their style, then graft our necklace layers on top. */
 function maptilerStyleUrl() {
   return `https://api.maptiler.com/maps/streets-v2/style.json?key=${BASEMAP.maptilerKey}`;
 }
+/* Add our river/bead overlay on top of a URL-based basemap style (vector /
+   maptiler), where the necklace layers aren't part of the loaded style. Robust
+   to the style not being fully parsed yet. */
 function addNecklaceLayers(map, geojson) {
-  if (!map.getSource('necklace')) {
-    map.addSource('necklace', { type: 'geojson', data: geojson, promoteId: 'id' });
-  }
-  const s = canvasStyle(geojson).layers.filter((l) => l.id !== 'bg');
-  for (const l of s) if (!map.getLayer(l.id)) map.addLayer(l);
+  const add = () => {
+    if (!map.getSource('necklace')) map.addSource('necklace', necklaceSource(geojson));
+    for (const l of necklaceLayers()) if (!map.getLayer(l.id)) map.addLayer(l);
+  };
+  try {
+    if (map.isStyleLoaded && map.isStyleLoaded()) { add(); return; }
+  } catch (e) { /* fall through to deferred add */ }
+  const onData = () => {
+    try {
+      if (map.isStyleLoaded && map.isStyleLoaded()) { add(); map.off('styledata', onData); }
+    } catch (e) { /* keep waiting */ }
+  };
+  map.on('styledata', onData);
+  map.once('idle', () => { try { add(); map.off('styledata', onData); } catch (e) {} });
 }
 
 /* ============================================================================
@@ -254,14 +321,18 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   );
 
   // ---- map -----------------------------------------------------------------
-  const useMaptiler = BASEMAP.mode === 'maptiler' && BASEMAP.maptilerKey;
+  const styleValue = baseStyle(geojson);
+  // URL-based styles (vector basemaps) don't include our river/bead layers, so
+  // we graft them on after the style loads.
+  const styleIsUrl = typeof styleValue === 'string';
   let map;
   try {
     map = new maplibregl.Map({
       container: mapEl,
-      style: useMaptiler ? maptilerStyleUrl() : canvasStyle(geojson),
+      style: styleValue,
       bounds: [bounds[0], bounds[1], bounds[2], bounds[3]],
-      fitBoundsOptions: { padding: 60 },
+      fitBoundsOptions: { padding: 70, bearing: CAMERA.bearing },
+      bearing: CAMERA.bearing, // south-up to match the compact map
       cooperativeGestures: true, // hard requirement: never trap page/overlay scroll
       attributionControl: { compact: true },
       dragRotate: true,
@@ -284,26 +355,32 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   // offset lifts the label above the bead dot (Marker controls the transform).
   const labelMarker = new maplibregl.Marker({ element: labelEl, anchor: 'bottom', offset: [0, -12] });
 
-  // Wait for first load; don't hang forever if the style/context never settles.
+  // Proceed once the STYLE is ready (sources/layers registered) — do NOT block
+  // the cards/scroll on remote basemap tiles, which may be slow or unavailable.
+  // flyTo + feature-state only need the style loaded; tiles stream in after.
   try {
     await new Promise((resolve, reject) => {
       let settled = false;
       const ok = () => { if (!settled) { settled = true; resolve(); } };
+      const tryStyle = () => { if (map.isStyleLoaded && map.isStyleLoaded()) ok(); };
+      if (map.isStyleLoaded && map.isStyleLoaded()) return ok();
       map.on('load', ok);
+      map.on('styledata', tryStyle);
       map.once('error', (e) => {
-        // Non-fatal style/tile errors keep waiting; a hard context loss rejects.
+        // A hard WebGL/context loss is fatal; tile/style fetch errors are not.
         if (!settled && e && e.error && /webgl|context/i.test(e.error.message || '')) {
           settled = true;
           reject(e.error);
         }
       });
-      setTimeout(() => { if (!settled) { settled = true; reject(new Error('Map load timed out')); } }, 12000);
+      // Last resort: proceed anyway so the experience never hangs on tiles.
+      setTimeout(ok, 6000);
     });
   } catch (err) {
     try { map.remove(); } catch (e) {}
     return failToList(err);
   }
-  if (useMaptiler) addNecklaceLayers(map, geojson);
+  if (styleIsUrl) addNecklaceLayers(map, geojson);
   status.remove();
 
   // ---- step cards + chrome -------------------------------------------------
@@ -366,7 +443,12 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   const live = bodyEl.querySelector('[data-nk-live]');
   function setFeatureActive(idx, on) {
     if (idx < 0 || idx >= beads.length) return;
-    map.setFeatureState({ source: 'necklace', id: beads[idx].id }, { active: on });
+    // The 'necklace' source may be grafted on slightly after a URL basemap
+    // loads; ignore until it exists.
+    try {
+      if (!map.getSource('necklace')) return;
+      map.setFeatureState({ source: 'necklace', id: beads[idx].id }, { active: on });
+    } catch (e) { /* source not ready yet */ }
   }
   function activate(idx, { fly = true } = {}) {
     if (idx === activeIndex || idx < 0 || idx >= beads.length) return;
@@ -399,6 +481,9 @@ export default async function mountSidecar(bodyEl, opts = {}) {
 
   // Map opens at the corridor overview (fitBounds), then flies to bead 1.
   activate(0);
+  // With a URL basemap the necklace source attaches a beat later; re-assert the
+  // active bead's highlight once the map settles.
+  map.once('idle', () => setFeatureActive(activeIndex, true));
   // Re-sync once layout/tiles settle (catches late overlay sizing).
   requestAnimationFrame(() => { syncLayout(); scroller.resize(); map.resize(); });
 
