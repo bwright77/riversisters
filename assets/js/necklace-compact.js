@@ -46,6 +46,10 @@ function init() {
               data-en="Scroll the corridor — sixteen beads along the South Platte"
               data-es="Recorre el corredor — dieciséis cuentas del South Platte">Scroll the corridor — sixteen beads along the South Platte</h2>
         </div>
+        <div class="nk-lang" role="group" aria-label="Language / Idioma">
+          <button type="button" data-nk-lang="en" lang="en">EN</button>
+          <button type="button" data-nk-lang="es" lang="es">ES</button>
+        </div>
         <button class="nk-close" type="button" data-nk-close
                 data-en-label="Close the full Necklace view" data-es-label="Cerrar la vista del Collar completo"
                 aria-label="Close the full Necklace view">
@@ -56,7 +60,24 @@ function init() {
     document.body.appendChild(overlay);
     body = overlay.querySelector('[data-nk-body]');
     overlay.querySelector('[data-nk-close]').addEventListener('click', () => close('user'));
+    // The page's own EN/ES toggle is hidden behind the overlay; proxy to it so
+    // the site's real swap() runs (the lang MutationObserver relays to cards).
+    overlay.querySelectorAll('[data-nk-lang]').forEach((b) =>
+      b.addEventListener('click', () => {
+        const id = b.getAttribute('data-nk-lang') === 'es' ? 'btn-es' : 'btn-en';
+        const pageBtn = document.getElementById(id);
+        if (pageBtn) pageBtn.click();
+      }),
+    );
     overlay.addEventListener('keydown', onKeydown);
+  }
+
+  function syncLangButtons() {
+    if (!overlay) return;
+    const l = currentLang();
+    overlay.querySelectorAll('[data-nk-lang]').forEach((b) =>
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-nk-lang') === l)),
+    );
   }
 
   function focusables() {
@@ -102,6 +123,7 @@ function init() {
     document.body.style.width = '100%';
 
     translateTree(overlay, currentLang());
+    syncLangButtons();
     overlay.hidden = false;
     // allow layout before transition
     requestAnimationFrame(() => overlay.classList.add('is-open'));
@@ -156,8 +178,9 @@ function init() {
       }
     }
 
-    // return focus to the CTA / last trigger
-    if (lastFocused && lastFocused.focus) lastFocused.focus();
+    // return focus to the trigger; fall back to the CTA (e.g. deep-link opens
+    // where nothing meaningful was focused).
+    if (lastFocused && lastFocused !== document.body && lastFocused.focus) lastFocused.focus();
     else cta.focus();
   }
 
@@ -168,7 +191,7 @@ function init() {
   // but observe lang directly so we stay correct however it changes.
   const langObserver = new MutationObserver(() => {
     if (isOpen && sidecar && sidecar.setLang) sidecar.setLang(currentLang());
-    if (isOpen && overlay) translateTree(overlay, currentLang());
+    if (isOpen && overlay) { translateTree(overlay, currentLang()); syncLangButtons(); }
   });
   langObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 

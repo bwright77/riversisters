@@ -335,17 +335,30 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   steps.appendChild(tailSpacer);
   scroll.appendChild(steps);
 
-  // Pull the steps up to overlap the pinned (sticky) graphic by exactly the
-  // scroll viewport height, so the map stays pinned for the whole scroll.
+  // Give the pinned graphic an explicit pixel height (CSS height:100% resolves
+  // to 0 against a flex parent with an "indefinite" height), and pull the steps
+  // up to overlap it by exactly the scroll viewport height so the map stays
+  // pinned for the whole scroll.
   function syncLayout() {
-    steps.style.marginTop = `-${scroll.clientHeight}px`;
-    leadSpacer.style.minHeight = `${Math.round(scroll.clientHeight * 0.3)}px`;
-    tailSpacer.style.minHeight = `${Math.round(scroll.clientHeight * 0.3)}px`;
+    const h = scroll.clientHeight;
+    graphic.style.height = `${h}px`;
+    steps.style.marginTop = `-${h}px`;
+    leadSpacer.style.minHeight = `${Math.round(h * 0.3)}px`;
+    tailSpacer.style.minHeight = `${Math.round(h * 0.3)}px`;
   }
   syncLayout();
 
   // ---- activation logic ----------------------------------------------------
   let activeIndex = -1;
+
+  // UI string table (declared before buildChrome, which calls applyLang()).
+  const T = {
+    prev: { en: '‹ Previous', es: '‹ Anterior' },
+    next: { en: 'Next ›', es: 'Siguiente ›' },
+    atSummary: { en: 'List all 16 parks', es: 'Ver los 16 parques' },
+    region: { en: 'Bead', es: 'Cuenta' },
+    approx: { en: 'Approximate — to be confirmed', es: 'Aproximada — por confirmar' },
+  };
 
   buildChrome();
 
@@ -436,13 +449,6 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   }
 
   // ---- i18n ----------------------------------------------------------------
-  const T = {
-    prev: { en: '‹ Previous', es: '‹ Anterior' },
-    next: { en: 'Next ›', es: 'Siguiente ›' },
-    atSummary: { en: 'List all 16 parks', es: 'Ver los 16 parques' },
-    region: { en: 'Bead', es: 'Cuenta' },
-    approx: { en: 'Approximate — to be confirmed', es: 'Aproximada — por confirmar' },
-  };
   function applyLang() {
     // cards
     stepEls.forEach((step) => {
