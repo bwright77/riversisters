@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/necklace.css">
 <style>
 :root{
   --turquoise:#0E8F8C;
@@ -357,6 +358,13 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
         <div class="legend">
           <span><i class="t"></i><span data-en="Necklace bead (park / open space)" data-es="Cuenta del Collar (parque / espacio abierto)">Necklace bead (park / open space)</span></span>
           <span><i class="c"></i><span data-en="Proposed: Seven Generations Park" data-es="Propuesto: Parque Siete Generaciones">Proposed: Seven Generations Park</span></span>
+        </div>
+        <div class="necklace-cta">
+          <button class="btn solid" id="nk-cta" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            <span data-en="Explore the full Necklace" data-es="Recorrer el Collar completo">Explore the full Necklace</span>
+          </button>
+          <span class="nk-cta-sub" data-en="Opens a full-screen map that flies through all sixteen beads as you scroll." data-es="Abre un mapa a pantalla completa que recorre las dieciséis cuentas mientras te desplazas.">Opens a full-screen map that flies through all sixteen beads as you scroll.</span>
         </div>
       </div>
     </div>
@@ -1179,5 +1187,6 @@ nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove
   grid.querySelectorAll('.member .bead').forEach(b=>paintBead(b,b));
 })();
 </script>
+<script type="module" src="/assets/js/necklace-compact.js"></script>
 </body>
 </html>

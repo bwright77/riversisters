@@ -1,0 +1,178 @@
+{
+  "south-platte-park-and-carson-nature-center": {
+    "order": 1,
+    "en": {
+      "heading": "South Platte Park & Carson Nature Center",
+      "body": "An 880-acre preserve in Littleton — five fishing lakes, river paddling, and an interactive nature center at the Necklace's southern clasp."
+    },
+    "es": {
+      "heading": "South Platte Park y Carson Nature Center",
+      "body": "Una reserva de 880 acres en Littleton — cinco lagos de pesca, remo en el río y un centro de naturaleza interactivo en el broche sur del Collar."
+    }
+  },
+  "reynolds-landing": {
+    "order": 2,
+    "en": {
+      "heading": "Reynolds Landing",
+      "body": "Riverside park with beloved river access for tubing, a playground, and trail connections."
+    },
+    "es": {
+      "heading": "Reynolds Landing",
+      "body": "Parque ribereño con acceso al río para flotar en cámara, juegos infantiles y conexiones de senderos."
+    }
+  },
+  "grant-frontier-park": {
+    "order": 3,
+    "en": {
+      "heading": "Grant-Frontier Park",
+      "body": "Riverfront greenway marking the site of Montana City — Denver's first settlement — with nature-themed play and interpretive history."
+    },
+    "es": {
+      "heading": "Grant-Frontier Park",
+      "body": "Corredor verde ribereño que marca el sitio de Montana City — el primer asentamiento de Denver — con juegos de naturaleza e historia interpretativa."
+    }
+  },
+  "overland-pond-park": {
+    "order": 4,
+    "en": {
+      "heading": "Overland Pond Park",
+      "body": "A small natural sanctuary around a quiet pond, woven into the regional river trail."
+    },
+    "es": {
+      "heading": "Overland Pond Park",
+      "body": "Un pequeño santuario natural alrededor de un estanque tranquilo, entretejido con el sendero regional del río."
+    }
+  },
+  "seven-generations-park": {
+    "order": 5,
+    "en": {
+      "heading": "Seven Generations Park (proposed)",
+      "body": "The Congreso's proposed renaming of Vanderbilt Park East — featuring Four Directions art: balance, guidance, and the connection between land, water, and community."
+    },
+    "es": {
+      "heading": "Parque Siete Generaciones (propuesto)",
+      "body": "La propuesta del Congreso de renombrar Vanderbilt Park East — con arte de las Cuatro Direcciones: equilibrio, guía y la conexión entre tierra, agua y comunidad."
+    }
+  },
+  "johnson-habitat-park": {
+    "order": 6,
+    "en": {
+      "heading": "Johnson-Habitat Park",
+      "body": "A tree-shaded riverside refuge for climbing, exploring, and quiet time at the water's edge."
+    },
+    "es": {
+      "heading": "Johnson-Habitat Park",
+      "body": "Un refugio ribereño arbolado para trepar, explorar y descansar a la orilla del agua."
+    }
+  },
+  "phil-milstein-park": {
+    "order": 7,
+    "en": {
+      "heading": "Phil Milstein Park",
+      "body": "A narrow urban stretch on the trail — today underloved, tomorrow a bead worth restringing."
+    },
+    "es": {
+      "heading": "Phil Milstein Park",
+      "body": "Un tramo urbano angosto del sendero — hoy desatendido, mañana una cuenta que vale la pena reengarzar."
+    }
+  },
+  "confluence-park": {
+    "order": 8,
+    "en": {
+      "heading": "Confluence Park",
+      "body": "Where Cherry Creek meets the South Platte — the meeting place at the heart of Denver's origin story, with whitewater and riverfront steps."
+    },
+    "es": {
+      "heading": "Confluence Park",
+      "body": "Donde Cherry Creek se encuentra con el South Platte — el lugar de encuentro en el corazón del origen de Denver, con rápidos y gradas al río."
+    }
+  },
+  "commons-park": {
+    "order": 9,
+    "en": {
+      "heading": "Commons Park",
+      "body": "Nineteen acres of native landscaping and sand prairie with sweeping skyline views."
+    },
+    "es": {
+      "heading": "Commons Park",
+      "body": "Diecinueve acres de paisaje nativo y pradera de arena con vistas amplias del horizonte urbano."
+    }
+  },
+  "cuernavaca-park": {
+    "order": 10,
+    "en": {
+      "heading": "Cuernavaca Park",
+      "body": "Open fields, a community garden, and a name carrying the corridor's Mexicano heritage."
+    },
+    "es": {
+      "heading": "Cuernavaca Park",
+      "body": "Campos abiertos, un jardín comunitario y un nombre que lleva la herencia Mexicana del corredor."
+    }
+  },
+  "rotary-park": {
+    "order": 11,
+    "en": {
+      "heading": "Rotary Park",
+      "body": "A quiet pocket park — a scenic resting point for riders along the river trail."
+    },
+    "es": {
+      "heading": "Rotary Park",
+      "body": "Un pequeño parque de bolsillo — un punto de descanso escénico para ciclistas del sendero del río."
+    }
+  },
+  "river-north-promenade": {
+    "order": 12,
+    "en": {
+      "heading": "River North (RiNo) Promenade",
+      "body": "An urban promenade through the arts district — murals, totems, and river access."
+    },
+    "es": {
+      "heading": "Paseo de River North (RiNo)",
+      "body": "Un paseo urbano por el distrito de las artes — murales, tótems y acceso al río."
+    }
+  },
+  "globeville-landing-park": {
+    "order": 13,
+    "en": {
+      "heading": "Globeville Landing Park",
+      "body": "Playground, fields, and open space stitching Globeville to the urban trail system."
+    },
+    "es": {
+      "heading": "Globeville Landing Park",
+      "body": "Juegos, canchas y espacio abierto que cosen Globeville al sistema de senderos urbanos."
+    }
+  },
+  "csu-spur-riverfront-open-space": {
+    "order": 14,
+    "en": {
+      "heading": "CSU Spur Riverfront Open Space",
+      "body": "Six recently opened acres at the National Western Center — amphitheater, water-wise landscape, and river overlooks."
+    },
+    "es": {
+      "heading": "Espacio Abierto Riverfront de CSU Spur",
+      "body": "Seis acres recién abiertos en el National Western Center — anfiteatro, paisaje eficiente en agua y miradores al río."
+    }
+  },
+  "carpio-sanguinette-park": {
+    "order": 15,
+    "en": {
+      "heading": "Carpio-Sanguinette Park",
+      "body": "A modern neighborhood park in Elyria-Swansea with direct paved links to the Greenway."
+    },
+    "es": {
+      "heading": "Carpio-Sanguinette Park",
+      "body": "Un parque vecinal moderno en Elyria-Swansea con conexiones pavimentadas directas al Greenway."
+    }
+  },
+  "bison-ridge-arsenal-reach": {
+    "order": 16,
+    "en": {
+      "heading": "Bison Ridge / Arsenal reach",
+      "body": "The Necklace's northern clasp near Commerce City — rolling plains and open space along the trail, with unmatched wildlife viewing."
+    },
+    "es": {
+      "heading": "Tramo Bison Ridge / Arsenal",
+      "body": "El broche norte del Collar cerca de Commerce City — llanuras onduladas y espacio abierto junto al sendero, con avistamiento de fauna inigualable."
+    }
+  }
+}
