@@ -118,12 +118,11 @@ function init() {
       if (!isOpen) return; // closed before load finished
       sidecar = await mod.default(body, { lang: currentLang() });
     } catch (err) {
-      body.innerHTML =
-        `<div class="nk-status"><p class="nk-err">${
-          currentLang() === 'es'
-            ? 'No se pudo abrir la vista completa.'
-            : 'The full view could not be opened.'
-        }</p></div>`;
+      const msg = currentLang() === 'es'
+        ? 'No se pudo abrir la vista completa.'
+        : 'The full view could not be opened.';
+      const detail = err && err.message ? `<p style="font-size:.74rem;color:rgba(36,28,20,.55);margin:.3rem 0 0">(${err.message})</p>` : '';
+      body.innerHTML = `<div class="nk-status"><p class="nk-err">${msg}</p>${detail}</div>`;
     }
   }
 

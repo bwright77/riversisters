@@ -177,23 +177,23 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   bodyEl.appendChild(scroll);
 
   let geojson, i18n, maplibregl, scrollamaFactory;
-  try {
-    loadCss(VENDOR.mapCss);
-    [geojson, i18n] = await Promise.all([loadJson(DATA.geojson), loadJson(DATA.i18n)]);
-    await Promise.all([loadScript(VENDOR.mapJs), loadScript(VENDOR.scrollama)]);
-    maplibregl = window.maplibregl;
-    scrollamaFactory = window.scrollama;
-    if (!maplibregl || !scrollamaFactory) throw new Error('Map libraries unavailable');
-  } catch (err) {
-    // Degrade to a self-contained bilingual text list of all 16 parks.
+
+  // Graceful degradation: render the bilingual list of all 16 parks (the map's
+  // text equivalent) plus a short reason. Used whenever the interactive map
+  // can't run — libraries blocked, OR no WebGL (e.g. a headless/GPU-less
+  // browser, where new maplibregl.Map() throws "Failed to initialize WebGL").
+  function failToList(err) {
     let dLang = lang;
     status.innerHTML = '';
+    status.style.pointerEvents = 'auto';
     const errP = document.createElement('p');
     errP.className = 'nk-err';
+    const detail = document.createElement('p');
+    detail.style.cssText = 'font-size:.74rem;color:rgba(36,28,20,.55);margin:.3rem 0 0';
+    detail.textContent = err && err.message ? `(${err.message})` : '';
     const list = document.createElement('ol');
-    list.className = 'nk-at-fallback';
     list.style.cssText = 'max-width:60ch;margin:1.2rem auto 0;text-align:left;padding-left:1.4rem';
-    const renderFallback = () => {
+    const render = () => {
       errP.textContent =
         dLang === 'es'
           ? 'No se pudo cargar el mapa interactivo. Aquí están los 16 parques del Collar:'
@@ -210,14 +210,25 @@ export default async function mountSidecar(bodyEl, opts = {}) {
         list.appendChild(li);
       }
     };
-    renderFallback();
+    render();
     status.appendChild(errP);
+    status.appendChild(detail);
     status.appendChild(list);
-    status.style.pointerEvents = 'auto';
     return {
-      setLang: (l) => { dLang = l === 'es' ? 'es' : 'en'; renderFallback(); },
+      setLang: (l) => { dLang = l === 'es' ? 'es' : 'en'; render(); },
       destroy: () => { bodyEl.innerHTML = ''; },
     };
+  }
+
+  try {
+    loadCss(VENDOR.mapCss);
+    [geojson, i18n] = await Promise.all([loadJson(DATA.geojson), loadJson(DATA.i18n)]);
+    await Promise.all([loadScript(VENDOR.mapJs), loadScript(VENDOR.scrollama)]);
+    maplibregl = window.maplibregl;
+    scrollamaFactory = window.scrollama;
+    if (!maplibregl || !scrollamaFactory) throw new Error('Map libraries unavailable');
+  } catch (err) {
+    return failToList(err);
   }
 
   // ---- ordered bead list from the geojson ---------------------------------
@@ -244,18 +255,24 @@ export default async function mountSidecar(bodyEl, opts = {}) {
 
   // ---- map -----------------------------------------------------------------
   const useMaptiler = BASEMAP.mode === 'maptiler' && BASEMAP.maptilerKey;
-  const map = new maplibregl.Map({
-    container: mapEl,
-    style: useMaptiler ? maptilerStyleUrl() : canvasStyle(geojson),
-    bounds: [bounds[0], bounds[1], bounds[2], bounds[3]],
-    fitBoundsOptions: { padding: 60 },
-    cooperativeGestures: true, // hard requirement: never trap page/overlay scroll
-    attributionControl: { compact: true },
-    dragRotate: true,
-    maxZoom: 17,
-    minZoom: 8,
-  });
-  map.addControl(new maplibregl.NavigationControl({ showCompass: true, visualizePitch: true }), 'top-left');
+  let map;
+  try {
+    map = new maplibregl.Map({
+      container: mapEl,
+      style: useMaptiler ? maptilerStyleUrl() : canvasStyle(geojson),
+      bounds: [bounds[0], bounds[1], bounds[2], bounds[3]],
+      fitBoundsOptions: { padding: 60 },
+      cooperativeGestures: true, // hard requirement: never trap page/overlay scroll
+      attributionControl: { compact: true },
+      dragRotate: true,
+      maxZoom: 17,
+      minZoom: 8,
+    });
+    map.addControl(new maplibregl.NavigationControl({ showCompass: true, visualizePitch: true }), 'top-left');
+  } catch (err) {
+    // Most common cause: WebGL2 unavailable (headless / GPU-less browser).
+    return failToList(err);
+  }
 
   // active-bead label as an HTML marker (avoids needing a glyphs/font endpoint)
   const labelEl = document.createElement('div');
@@ -267,7 +284,25 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   // offset lifts the label above the bead dot (Marker controls the transform).
   const labelMarker = new maplibregl.Marker({ element: labelEl, anchor: 'bottom', offset: [0, -12] });
 
-  await new Promise((res) => map.on('load', res));
+  // Wait for first load; don't hang forever if the style/context never settles.
+  try {
+    await new Promise((resolve, reject) => {
+      let settled = false;
+      const ok = () => { if (!settled) { settled = true; resolve(); } };
+      map.on('load', ok);
+      map.once('error', (e) => {
+        // Non-fatal style/tile errors keep waiting; a hard context loss rejects.
+        if (!settled && e && e.error && /webgl|context/i.test(e.error.message || '')) {
+          settled = true;
+          reject(e.error);
+        }
+      });
+      setTimeout(() => { if (!settled) { settled = true; reject(new Error('Map load timed out')); } }, 12000);
+    });
+  } catch (err) {
+    try { map.remove(); } catch (e) {}
+    return failToList(err);
+  }
   if (useMaptiler) addNecklaceLayers(map, geojson);
   status.remove();
 
