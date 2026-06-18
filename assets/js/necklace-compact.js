@@ -109,7 +109,7 @@ function init() {
     }
   }
 
-  async function open(source) {
+  async function open(source, opts = {}) {
     if (isOpen) return;
     isOpen = true;
     if (!overlay) buildOverlay();
@@ -138,7 +138,7 @@ function init() {
     try {
       const mod = await import('./necklace-sidecar.js');
       if (!isOpen) return; // closed before load finished
-      sidecar = await mod.default(body, { lang: currentLang() });
+      sidecar = await mod.default(body, { lang: currentLang(), startIndex: opts.index });
     } catch (err) {
       const msg = currentLang() === 'es'
         ? 'No se pudo abrir la vista completa.'
@@ -186,6 +186,12 @@ function init() {
 
   // ---- wiring --------------------------------------------------------------
   cta.addEventListener('click', () => open('cta'));
+
+  // Let the compact necklace's beads open the full view on the chosen bead.
+  window.nkOpen = (index) => {
+    const i = Number.isFinite(index) ? index : undefined;
+    open('bead', { index: i });
+  };
 
   // language: notify the sidecar; overlay chrome is translated by the site swap,
   // but observe lang directly so we stay correct however it changes.

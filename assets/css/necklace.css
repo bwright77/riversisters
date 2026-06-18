@@ -6,8 +6,11 @@
    ========================================================================== */
 
 /* ---- Compact view: the "Explore the full Necklace" CTA ------------------- */
-.necklace-cta{margin-top:1.4rem;display:flex;flex-direction:column;gap:.55rem;align-items:flex-start}
-.necklace-cta .btn{display:inline-flex;align-items:center;gap:.5rem}
+/* Compact view is a lean teaser; the expanded view is the hero. */
+.necklace-teaser{font-family:var(--display);font-weight:600;font-size:1.7rem;line-height:1.15;color:var(--bone)}
+.necklace-teaser-sub{margin-top:.7rem;font-size:.98rem;line-height:1.5;color:rgba(246,240,229,.82);max-width:34ch}
+.necklace-cta{margin-top:1.5rem;display:flex;flex-direction:column;gap:.55rem;align-items:flex-start}
+.necklace-cta .btn{display:inline-flex;align-items:center;gap:.5rem;font-size:1rem;padding:.9rem 1.7rem}
 .necklace-cta .nk-cta-sub{font-size:.78rem;color:rgba(246,240,229,.72);max-width:38ch}
 .necklace-cta .btn svg{width:1.05em;height:1.05em;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
@@ -50,7 +53,7 @@
 .nk-body{flex:1 1 auto;display:flex;flex-direction:column;min-height:0}
 
 /* Scroll region: pinned map + scrolling steps ------------------------------ */
-.nk-scroll{position:relative;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.nk-scroll{position:relative;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:y mandatory}
 
 .nk-graphic{position:sticky;top:0;height:100%;width:100%;z-index:1}
 /* Size with width/height (not absolute inset): MapLibre's own .maplibregl-map
@@ -69,6 +72,9 @@
 .nk-step{
   min-height:92vh;display:flex;align-items:center;
   padding:1.5rem;
+  /* Snap each bead's card fully into frame instead of letting it rest
+     half-scrolled behind the bottom controls. */
+  scroll-snap-align:center;
 }
 /* Desktop: cards dock to the right over a readable scrim. */
 .nk-step{justify-content:flex-end}
@@ -149,6 +155,21 @@
   /* A bottom scrim improves card-over-map contrast on small screens. */
   .nk-steps::after{content:none}
 }
+
+/* Hide MapLibre's cooperative-gesture hint (it re-appears on every blocked
+   scroll). We show our own one-time hint instead (.nk-coop-hint). */
+.nk-overlay .maplibregl-cooperative-gesture-screen{display:none!important}
+.nk-coop-hint{
+  position:absolute;top:1rem;left:50%;transform:translateX(-50%);
+  z-index:25;pointer-events:none;
+  background:rgba(36,28,20,.9);color:var(--bone);
+  font-size:.8rem;font-weight:600;letter-spacing:.01em;
+  padding:.5rem .9rem;border-radius:99px;
+  box-shadow:0 3px 12px rgba(20,8,0,.3);
+  opacity:0;transition:opacity .4s ease;white-space:nowrap;
+}
+.nk-coop-hint.is-on{opacity:1}
+@media (prefers-reduced-motion:reduce){.nk-coop-hint{transition:none}}
 
 /* MapLibre attribution stays legible on the bone canvas. */
 .nk-overlay .maplibregl-ctrl-attrib{font-size:10px;background:rgba(244,241,234,.7)}
