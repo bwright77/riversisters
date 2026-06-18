@@ -383,6 +383,10 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   if (styleIsUrl) addNecklaceLayers(map, geojson);
   status.remove();
 
+  // One-time cooperative-gesture hint (MapLibre's repeating hint is hidden in
+  // CSS). Shown once per browser session, then auto-dismissed.
+  showCoopHintOnce();
+
   // ---- step cards + chrome -------------------------------------------------
   const steps = document.createElement('div');
   steps.className = 'nk-steps';
@@ -577,6 +581,26 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   function setLang(l) {
     lang = l === 'es' ? 'es' : 'en';
     applyLang();
+  }
+
+  function showCoopHintOnce() {
+    let seen = false;
+    try { seen = sessionStorage.getItem('nkCoopHintSeen') === '1'; } catch (e) {}
+    if (seen) return;
+    const mac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || '');
+    const key = mac ? '⌘' : 'Ctrl';
+    const hint = document.createElement('div');
+    hint.className = 'nk-coop-hint';
+    hint.textContent = lang === 'es'
+      ? `Usa ${key} + desplazar para acercar el mapa`
+      : `Use ${key} + scroll to zoom the map`;
+    graphic.appendChild(hint);
+    requestAnimationFrame(() => hint.classList.add('is-on'));
+    setTimeout(() => {
+      hint.classList.remove('is-on');
+      setTimeout(() => hint.remove(), 450);
+    }, 4500);
+    try { sessionStorage.setItem('nkCoopHintSeen', '1'); } catch (e) {}
   }
 
   function destroy() {
