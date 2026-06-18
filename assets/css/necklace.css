@@ -93,9 +93,9 @@
 }
 .nk-step.is-active .nk-card{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.nk-card{transition:none;opacity:1;transform:none}}
-.nk-card.is-seven{border-left-color:var(--clay)}
+.nk-card.is-pendant{border-left-color:var(--clay);border-left-width:7px}
 .nk-card .nk-num{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--turquoise-deep)}
-.nk-card.is-seven .nk-num{color:var(--clay-deep)}
+.nk-card.is-pendant .nk-num{color:var(--clay-deep)}
 .nk-card .nk-region{font-size:.72rem;color:rgba(36,28,20,.6);font-weight:700;letter-spacing:.06em;text-transform:uppercase;float:right}
 .nk-card h3{font-family:var(--display);font-weight:600;font-size:1.45rem;line-height:1.18;margin:.35rem 0 .5rem;color:var(--ink)}
 .nk-card p{font-size:.96rem;color:#241C14;line-height:1.5}
@@ -126,7 +126,7 @@
 .nk-progress>i{display:block;height:100%;background:var(--turquoise);width:0;transition:width .4s ease}
 @media (prefers-reduced-motion:reduce){.nk-progress>i{transition:none}}
 
-/* Accessible text-equivalent: the full ordered list of all 16 parks.
+/* Accessible text-equivalent: the full ordered list of all parks.
    Visible to AT and to anyone who opens it; not a substitute for the map but
    conveys the same information (WCAG). */
 .nk-at{position:relative;z-index:30;flex:none;background:var(--bone);border-top:1px solid var(--line)}

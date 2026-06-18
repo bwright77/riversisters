@@ -20,11 +20,11 @@ function grab(re, label) {
   return (0, eval)('(' + m[1] + ')');
 }
 
-const parks = grab(/const parks=(\[[\s\S]*?\]);\s*\nconst REGIONS/, 'parks');
+const parks = grab(/const parks=(\[[\s\S]*?\]);\s*\nconst svg=/, 'parks');
 const RIVER = grab(/const RIVER=(\[\[[\s\S]*?\]\]);/, 'RIVER');
 const CK = grab(/const CK=(\[\[[\s\S]*?\]\]);/, 'CK');
 
-if (parks.length !== 16) throw new Error(`Expected 16 beads, got ${parks.length}`);
+if (parks.length !== 23) throw new Error(`Expected 23 beads, got ${parks.length}`);
 
 // ---- slug ids (stable, derived from English name) ----
 const idFor = (en, order) =>
@@ -61,7 +61,7 @@ const geojson = {
         order: b.order,
         name_en: b.en,
         name_es: b.es,
-        seven: !!b.seven,
+        pendant: !!b.pendant,
         approx: !!b.approx,
       },
       // parks store {lat, lon}; GeoJSON wants [lng, lat]
