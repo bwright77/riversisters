@@ -147,6 +147,13 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
   .necklace-stage{grid-template-columns:1fr}
   .necklace-info{position:static}
 }
+/* Desktop: keep the true-scale necklace compact (it is very tall) and center
+   the teaser against it, so the corridor doesn't leave a tall empty wedge. */
+@media (min-width:1025px){
+  .necklace-stage{align-items:center}
+  #necklace-svg{height:min(540px,72vh);width:auto;max-width:100%;margin:0 auto}
+  .necklace-info{position:static}
+}
 
 /* Principles */
 #principles{background:#FFFCF6;border-top:1px solid var(--line)}
