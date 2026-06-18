@@ -485,6 +485,14 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   const onResize = () => { syncLayout(); scroller.resize(); map.resize(); };
   window.addEventListener('resize', onResize);
 
+  // Clicking a dot/pendant on the map scrolls that park's card into view.
+  map.on('click', 'beads', (e) => {
+    const o = e.features && e.features[0] && e.features[0].properties.order;
+    if (o != null) goToStep(Number(o) - 1);
+  });
+  map.on('mouseenter', 'beads', () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', 'beads', () => { map.getCanvas().style.cursor = ''; });
+
   // Map opens at the corridor overview (fitBounds), then flies to the start
   // bead (bead 1 from the CTA, or the bead the reader tapped in the compact map).
   // Default open lands on the pendant (Sun Valley); a tapped bead overrides it.
@@ -528,11 +536,14 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   }
 
   function go(delta) {
-    const next = Math.max(0, Math.min(beads.length - 1, activeIndex + delta));
+    goToStep(activeIndex + delta);
+  }
+  function goToStep(idx) {
+    const next = Math.max(0, Math.min(beads.length - 1, idx));
     if (next === activeIndex) return;
     const reduce = prefersReducedMotion();
     stepEls[next].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
-    activate(next); // immediate (keyboard) — idempotent with the IO callback
+    activate(next); // immediate — idempotent with the IO callback
   }
 
   function updateChrome() {
