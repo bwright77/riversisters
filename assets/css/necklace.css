@@ -6,8 +6,11 @@
    ========================================================================== */
 
 /* ---- Compact view: the "Explore the full Necklace" CTA ------------------- */
-.necklace-cta{margin-top:1.4rem;display:flex;flex-direction:column;gap:.55rem;align-items:flex-start}
-.necklace-cta .btn{display:inline-flex;align-items:center;gap:.5rem}
+/* Compact view is a lean teaser; the expanded view is the hero. */
+.necklace-teaser{font-family:var(--display);font-weight:600;font-size:1.7rem;line-height:1.15;color:var(--bone)}
+.necklace-teaser-sub{margin-top:.7rem;font-size:.98rem;line-height:1.5;color:rgba(246,240,229,.82);max-width:34ch}
+.necklace-cta{margin-top:1.5rem;display:flex;flex-direction:column;gap:.55rem;align-items:flex-start}
+.necklace-cta .btn{display:inline-flex;align-items:center;gap:.5rem;font-size:1rem;padding:.9rem 1.7rem}
 .necklace-cta .nk-cta-sub{font-size:.78rem;color:rgba(246,240,229,.72);max-width:38ch}
 .necklace-cta .btn svg{width:1.05em;height:1.05em;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 

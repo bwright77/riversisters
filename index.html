@@ -346,25 +346,20 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 
     <div class="necklace-stage">
       <div>
-        <svg id="necklace-svg" viewBox="0 0 420 864" role="group" aria-label="South-up map of the 16 beads of the Turquoise Necklace along the South Platte River, reading downstream from Littleton at the top to Commerce City at the bottom, over City and County of Denver neighborhood boundaries"></svg>
-        <p class="map-caption" data-en="True-scale, south-up map — read with the current as the River flows north, down the page. River and creek centerlines from the USGS National Hydrography Dataset (high resolution). Park coordinates and City &amp; County of Denver neighborhood boundaries from open data. Two bead locations approximate, to be confirmed with the Congreso." data-es="Mapa a escala real con el sur arriba — se lee con la corriente mientras el Río fluye al norte, hacia abajo. Líneas centrales del río y del arroyo del Conjunto Nacional de Datos Hidrográficos del USGS (alta resolución). Coordenadas de parques y límites de barrios del Condado y Ciudad de Denver de datos abiertos. Dos ubicaciones de cuentas son aproximadas, por confirmar con el Congreso.">True-scale, south-up map — read with the current as the River flows north, down the page. River and creek centerlines from the USGS National Hydrography Dataset (high resolution). Park coordinates and City &amp; County of Denver neighborhood boundaries from open data. Two bead locations approximate, to be confirmed with the Congreso.</p>
+        <svg id="necklace-svg" viewBox="0 0 420 864" role="group" aria-label="South-up map of the 16 beads of the Turquoise Necklace along the South Platte River, reading downstream from Littleton at the top to Commerce City at the bottom"></svg>
       </div>
-      <div class="necklace-info" aria-live="polite">
-        <p class="kicker" id="park-region" data-en="The corridor" data-es="El corredor">The corridor</p>
-        <p class="park" id="park-name" data-en="Select a bead" data-es="Selecciona una cuenta">Select a bead</p>
-        <p class="note" id="park-note" data-en="Sixteen parks and open spaces, from South Platte Park in Littleton to the open plains near Commerce City — tap a bead on the map or use the numbers below." data-es="Dieciséis parques y espacios abiertos, desde South Platte Park en Littleton hasta las llanuras cerca de Commerce City — toca una cuenta en el mapa o usa los números abajo.">Sixteen parks and open spaces, from South Platte Park in Littleton to the open plains near Commerce City — tap a bead on the map or use the numbers below.</p>
-        <span class="approx" id="park-approx" hidden data-en="Approximate location — to be confirmed" data-es="Ubicación aproximada — por confirmar">Approximate location — to be confirmed</span>
-        <div class="bead-index" id="bead-index" role="group" aria-label="Bead index"></div>
-        <div class="legend">
-          <span><i class="t"></i><span data-en="Necklace bead (park / open space)" data-es="Cuenta del Collar (parque / espacio abierto)">Necklace bead (park / open space)</span></span>
-          <span><i class="c"></i><span data-en="Proposed: Seven Generations Park" data-es="Propuesto: Parque Siete Generaciones">Proposed: Seven Generations Park</span></span>
-        </div>
+      <div class="necklace-info">
+        <p class="necklace-teaser" data-en="Sixteen parks. One living corridor." data-es="Dieciséis parques. Un corredor vivo.">Sixteen parks. One living corridor.</p>
+        <p class="necklace-teaser-sub" data-en="Tap any bead — or the button — to fly the length of the South Platte, park by park." data-es="Toca cualquier cuenta — o el botón — para recorrer el South Platte, parque por parque.">Tap any bead — or the button — to fly the length of the South Platte, park by park.</p>
         <div class="necklace-cta">
           <button class="btn solid" id="nk-cta" type="button">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
             <span data-en="Explore the full Necklace" data-es="Recorrer el Collar completo">Explore the full Necklace</span>
           </button>
-          <span class="nk-cta-sub" data-en="Opens a full-screen map that flies through all sixteen beads as you scroll." data-es="Abre un mapa a pantalla completa que recorre las dieciséis cuentas mientras te desplazas.">Opens a full-screen map that flies through all sixteen beads as you scroll.</span>
+        </div>
+        <div class="legend">
+          <span><i class="t"></i><span data-en="Park / open space" data-es="Parque / espacio abierto">Park / open space</span></span>
+          <span><i class="c"></i><span data-en="Proposed: Seven Generations Park" data-es="Propuesto: Parque Siete Generaciones">Proposed: Seven Generations Park</span></span>
         </div>
       </div>
     </div>
@@ -1070,45 +1065,37 @@ el('line',{x1:16,y1:H-18,x2:16+57.7,y2:H-18,stroke:'rgba(246,240,229,.7)','strok
 el('line',{x1:16,y1:H-23,x2:16,y2:H-13,stroke:'rgba(246,240,229,.7)','stroke-width':1.6});
 el('line',{x1:16+57.7,y1:H-23,x2:16+57.7,y2:H-13,stroke:'rgba(246,240,229,.7)','stroke-width':1.6});
 txt(16+28.8,H-26,'2 km',{'text-anchor':'middle',fill:'rgba(246,240,229,.7)','font-size':'8.5'});
-// Beads
-const nameEl=document.getElementById('park-name');
-const noteEl=document.getElementById('park-note');
-const regEl=document.getElementById('park-region');
-const approxEl=document.getElementById('park-approx');
-const idxWrap=document.getElementById('bead-index');
+// Beads — compact teaser: each bead is a button that opens the full Necklace
+// (the expanded scrollytelling view) starting on that park.
 function lang(){return document.documentElement.lang==='es'?'es':'en'}
-let activeIdx=null;
-function setLabel(i){
-  activeIdx=i;const p=parks[i];const isEs=lang()==='es';
-  regEl.textContent=(isEs?'Cuenta ':'Bead ')+(i+1)+' · '+(isEs?REGIONS[p.reg].es:REGIONS[p.reg].en);
-  nameEl.textContent=isEs?p.es:p.en;
-  noteEl.textContent=isEs?p.nEs:p.nEn;
-  approxEl.hidden=!p.approx;
-  document.querySelectorAll('.bead').forEach((b,j)=>b.classList.toggle('active',j===i));
-  document.querySelectorAll('.bead-index button').forEach((b,j)=>b.classList.toggle('active',j===i));
+const beadEls=[];
+function beadAria(i){
+  const p=parks[i],isEs=lang()==='es';
+  return (i+1)+'. '+(isEs?p.es:p.en)+' — '+(isEs?'abrir el Collar completo':'open the full Necklace');
 }
 parks.forEach((p,i)=>{
   const pt=pts[i];
-  const g=el('g',{class:'bead'+(p.seven?' seven':''),tabindex:0,role:'button','aria-label':(i+1)+'. '+p.en});
+  const g=el('g',{class:'bead'+(p.seven?' seven':''),tabindex:0,role:'button','aria-label':beadAria(i)});
+  const ttl=el('title',{},g);ttl.textContent=lang()==='es'?p.es:p.en; // hover/focus tooltip
   el('circle',{class:'halo',cx:pt.x,cy:pt.y,r:p.seven?15:11},g);
   el('circle',{class:'core',cx:pt.x,cy:pt.y,r:p.seven?10:7},g);
   if(p.approx)el('circle',{cx:pt.x,cy:pt.y,r:p.seven?10:7,fill:'none',stroke:'#F6F0E5','stroke-width':1.4,'stroke-dasharray':'2.5 3'},g);
-  const act=()=>setLabel(i);
-  g.addEventListener('click',act);
-  g.addEventListener('focus',act);
+  const openFull=()=>{ if(window.nkOpen)window.nkOpen(i); };
+  g.addEventListener('click',openFull);
   g.addEventListener('keydown',e=>{
-    if(e.key==='Enter'||e.key===' '){e.preventDefault();act()}
-    if(e.key==='ArrowUp'||e.key==='ArrowRight'){e.preventDefault();const n=document.querySelectorAll('.bead')[Math.min(i+1,parks.length-1)];n.focus()}
-    if(e.key==='ArrowDown'||e.key==='ArrowLeft'){e.preventDefault();const n=document.querySelectorAll('.bead')[Math.max(i-1,0)];n.focus()}
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();openFull()}
+    if(e.key==='ArrowUp'||e.key==='ArrowRight'){e.preventDefault();beadEls[Math.min(i+1,parks.length-1)].focus()}
+    if(e.key==='ArrowDown'||e.key==='ArrowLeft'){e.preventDefault();beadEls[Math.max(i-1,0)].focus()}
   });
-  // numbered index button
-  const btn=document.createElement('button');
-  btn.type='button';btn.textContent=i+1;btn.setAttribute('aria-label',(i+1)+'. '+p.en);
-  if(p.seven)btn.classList.add('seven');
-  btn.addEventListener('click',()=>setLabel(i));
-  idxWrap.appendChild(btn);
+  beadEls.push(g);
 });
-setLabel(4); // open on Seven Generations Park
+// keep bead tooltips + labels in sync with the language toggle
+function refreshBeadLabels(){
+  beadEls.forEach((g,i)=>{
+    g.setAttribute('aria-label',beadAria(i));
+    const t=g.querySelector('title');if(t)t.textContent=lang()==='es'?parks[i].es:parks[i].en;
+  });
+}
 
 
 // ---- Language toggle ----
@@ -1123,7 +1110,7 @@ const swap=l=>{
   document.querySelectorAll('[data-'+l+'-title]').forEach(el=>el.setAttribute('title',el.getAttribute('data-'+l+'-title')));
   document.getElementById('btn-en').setAttribute('aria-pressed',l==='en');
   document.getElementById('btn-es').setAttribute('aria-pressed',l==='es');
-  if(activeIdx!=null)setLabel(activeIdx);
+  refreshBeadLabels();
 };
 document.getElementById('btn-en').addEventListener('click',()=>swap('en'));
 document.getElementById('btn-es').addEventListener('click',()=>swap('es'));

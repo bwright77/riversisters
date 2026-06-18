@@ -483,8 +483,11 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   const onResize = () => { syncLayout(); scroller.resize(); map.resize(); };
   window.addEventListener('resize', onResize);
 
-  // Map opens at the corridor overview (fitBounds), then flies to bead 1.
-  activate(0);
+  // Map opens at the corridor overview (fitBounds), then flies to the start
+  // bead (bead 1 from the CTA, or the bead the reader tapped in the compact map).
+  const startIndex = Math.max(0, Math.min(beads.length - 1, Number(opts.startIndex) || 0));
+  if (startIndex > 0) stepEls[startIndex].scrollIntoView({ block: 'center' });
+  activate(startIndex);
   // With a URL basemap the necklace source attaches a beat later; re-assert the
   // active bead's highlight once the map settles.
   map.once('idle', () => setFeatureActive(activeIndex, true));
