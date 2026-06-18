@@ -53,7 +53,9 @@
 .nk-body{flex:1 1 auto;display:flex;flex-direction:column;min-height:0}
 
 /* Scroll region: pinned map + scrolling steps ------------------------------ */
-.nk-scroll{position:relative;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:y mandatory}
+/* proximity (not mandatory): snaps the card into frame when scrolling settles,
+   without trapping/hanging continuous scrolling between parks. */
+.nk-scroll{position:relative;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:y proximity}
 
 .nk-graphic{position:sticky;top:0;height:100%;width:100%;z-index:1}
 /* Size with width/height (not absolute inset): MapLibre's own .maplibregl-map
