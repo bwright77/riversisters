@@ -43,8 +43,8 @@ function init() {
         <div class="nk-title-wrap">
           <p class="nk-eyebrow" data-en="Turquoise Necklace" data-es="Collar Turquesa">Turquoise Necklace</p>
           <h2 class="nk-title" id="nk-overlay-title"
-              data-en="Scroll the corridor — sixteen beads along the South Platte"
-              data-es="Recorre el corredor — dieciséis cuentas del South Platte">Scroll the corridor — sixteen beads along the South Platte</h2>
+              data-en="Scroll the corridor — twenty-three parks along the South Platte"
+              data-es="Recorre el corredor — veintitrés parques del South Platte">Scroll the corridor — twenty-three parks along the South Platte</h2>
         </div>
         <div class="nk-lang" role="group" aria-label="Language / Idioma">
           <button type="button" data-nk-lang="en" lang="en">EN</button>

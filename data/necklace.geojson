@@ -1320,54 +1320,54 @@
   {
    "type": "Feature",
    "properties": {
-    "id": "south-platte-park-and-carson-nature-center",
-    "order": 1,
-    "name_en": "South Platte Park & Carson Nature Center",
-    "name_es": "South Platte Park y Carson Nature Center",
-    "seven": false,
-    "approx": false
-   },
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -105.029,
-     39.5831
-    ]
-   }
-  },
-  {
-   "type": "Feature",
-   "properties": {
-    "id": "reynolds-landing",
-    "order": 2,
-    "name_en": "Reynolds Landing",
-    "name_es": "Reynolds Landing",
-    "seven": false,
-    "approx": false
-   },
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -105.0269,
-     39.5955
-    ]
-   }
-  },
-  {
-   "type": "Feature",
-   "properties": {
     "id": "grant-frontier-park",
-    "order": 3,
-    "name_en": "Grant-Frontier Park",
-    "name_es": "Grant-Frontier Park",
-    "seven": false,
+    "order": 1,
+    "name_en": "Grant Frontier Park",
+    "name_es": "Grant Frontier Park",
+    "pendant": false,
     "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -104.9977,
-     39.6741
+     -104.99697,
+     39.67399
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "pasquinel-s-landing",
+    "order": 2,
+    "name_en": "Pasquinel's Landing",
+    "name_es": "Pasquinel's Landing",
+    "pendant": false,
+    "approx": false
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -104.99775,
+     39.67959
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "ruby-hill-park",
+    "order": 3,
+    "name_en": "Ruby Hill Park",
+    "name_es": "Ruby Hill Park",
+    "pendant": false,
+    "approx": false
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -105.0039,
+     39.68601
     ]
    }
   },
@@ -1378,32 +1378,32 @@
     "order": 4,
     "name_en": "Overland Pond Park",
     "name_es": "Overland Pond Park",
-    "seven": false,
+    "pendant": false,
     "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
      -104.9977,
-     39.6898
+     39.68985
     ]
    }
   },
   {
    "type": "Feature",
    "properties": {
-    "id": "seven-generations-park",
+    "id": "vanderbilt-park",
     "order": 5,
-    "name_en": "Seven Generations Park (proposed)",
-    "name_es": "Parque Siete Generaciones (propuesto)",
-    "seven": true,
+    "name_en": "Vanderbilt Park",
+    "name_es": "Vanderbilt Park",
+    "pendant": false,
     "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -104.9966,
-     39.7007
+     -104.99553,
+     39.70049
     ]
    }
   },
@@ -1414,14 +1414,32 @@
     "order": 6,
     "name_en": "Johnson-Habitat Park",
     "name_es": "Johnson-Habitat Park",
-    "seven": false,
+    "pendant": false,
     "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -104.9984,
-     39.7052
+     -104.99828,
+     39.70568
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "valverde-park",
+    "order": 7,
+    "name_en": "Valverde Park",
+    "name_es": "Valverde Park",
+    "pendant": false,
+    "approx": false
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -105.00282,
+     39.71376
     ]
    }
   },
@@ -1429,17 +1447,143 @@
    "type": "Feature",
    "properties": {
     "id": "phil-milstein-park",
-    "order": 7,
+    "order": 8,
     "name_en": "Phil Milstein Park",
     "name_es": "Phil Milstein Park",
-    "seven": false,
+    "pendant": false,
     "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -105.0128,
-     39.723
+     -105.01314,
+     39.72329
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "frog-hollow-park",
+    "order": 9,
+    "name_en": "Frog Hollow Park",
+    "name_es": "Frog Hollow Park",
+    "pendant": false,
+    "approx": false
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -105.01543,
+     39.7279
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "weir-gulch-marina-park",
+    "order": 10,
+    "name_en": "Weir Gulch Marina Park",
+    "name_es": "Weir Gulch Marina Park",
+    "pendant": false,
+    "approx": false
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -105.02011,
+     39.73085
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "sun-valley-riverfront-park",
+    "order": 11,
+    "name_en": "Sun Valley Riverfront Park",
+    "name_es": "Sun Valley Riverfront Park",
+    "pendant": true,
+    "approx": true
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -105.0201,
+     39.7368
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "lower-lakewood-gulch",
+    "order": 12,
+    "name_en": "Lower Lakewood Gulch",
+    "name_es": "Lower Lakewood Gulch",
+    "pendant": false,
+    "approx": false
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -105.02022,
+     39.73861
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "gates-crescent-park",
+    "order": 13,
+    "name_en": "Gates Crescent Park",
+    "name_es": "Gates Crescent Park",
+    "pendant": false,
+    "approx": false
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -105.01666,
+     39.74721
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "centennial-gardens",
+    "order": 14,
+    "name_en": "Centennial Gardens",
+    "name_es": "Centennial Gardens",
+    "pendant": false,
+    "approx": false
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -105.00992,
+     39.75258
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "id": "finback",
+    "order": 15,
+    "name_en": "Finback",
+    "name_es": "Finback",
+    "pendant": false,
+    "approx": true
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -105.0092,
+     39.7534
     ]
    }
   },
@@ -1447,17 +1591,17 @@
    "type": "Feature",
    "properties": {
     "id": "confluence-park",
-    "order": 8,
+    "order": 16,
     "name_en": "Confluence Park",
     "name_es": "Confluence Park",
-    "seven": false,
+    "pendant": false,
     "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -105.0073,
-     39.7547
+     -105.00851,
+     39.75422
     ]
    }
   },
@@ -1465,71 +1609,53 @@
    "type": "Feature",
    "properties": {
     "id": "commons-park",
-    "order": 9,
+    "order": 17,
     "name_en": "Commons Park",
     "name_es": "Commons Park",
-    "seven": false,
+    "pendant": false,
     "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -105.005,
-     39.7571
+     -105.00525,
+     39.75672
     ]
    }
   },
   {
    "type": "Feature",
    "properties": {
-    "id": "cuernavaca-park",
-    "order": 10,
-    "name_en": "Cuernavaca Park",
-    "name_es": "Cuernavaca Park",
-    "seven": false,
+    "id": "city-of-cuernavaca-park",
+    "order": 18,
+    "name_en": "City of Cuernavaca Park",
+    "name_es": "City of Cuernavaca Park",
+    "pendant": false,
     "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -105.0011,
-     39.7614
+     -105.00039,
+     39.76263
     ]
    }
   },
   {
    "type": "Feature",
    "properties": {
-    "id": "rotary-park",
-    "order": 11,
-    "name_en": "Rotary Park",
-    "name_es": "Rotary Park",
-    "seven": false,
-    "approx": true
-   },
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -104.993,
-     39.767
-    ]
-   }
-  },
-  {
-   "type": "Feature",
-   "properties": {
-    "id": "river-north-promenade",
-    "order": 12,
-    "name_en": "River North (RiNo) Promenade",
-    "name_es": "Paseo de River North (RiNo)",
-    "seven": false,
+    "id": "arkins-park",
+    "order": 19,
+    "name_en": "Arkins Park",
+    "name_es": "Arkins Park",
+    "pendant": false,
     "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -104.9795,
-     39.7733
+     -104.98086,
+     39.77074
     ]
    }
   },
@@ -1537,35 +1663,35 @@
    "type": "Feature",
    "properties": {
     "id": "globeville-landing-park",
-    "order": 13,
+    "order": 20,
     "name_en": "Globeville Landing Park",
     "name_es": "Globeville Landing Park",
-    "seven": false,
+    "pendant": false,
     "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -104.9772,
-     39.777
+     -104.9766,
+     39.77714
     ]
    }
   },
   {
    "type": "Feature",
    "properties": {
-    "id": "csu-spur-riverfront-open-space",
-    "order": 14,
-    "name_en": "CSU Spur Riverfront Open Space",
-    "name_es": "Espacio Abierto Riverfront de CSU Spur",
-    "seven": false,
-    "approx": false
+    "id": "national-western",
+    "order": 21,
+    "name_en": "National Western",
+    "name_es": "National Western",
+    "pendant": false,
+    "approx": true
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -104.974,
-     39.7836
+     -104.9745,
+     39.7838
     ]
    }
   },
@@ -1573,35 +1699,35 @@
    "type": "Feature",
    "properties": {
     "id": "carpio-sanguinette-park",
-    "order": 15,
+    "order": 22,
     "name_en": "Carpio-Sanguinette Park",
     "name_es": "Carpio-Sanguinette Park",
-    "seven": false,
-    "approx": true
+    "pendant": false,
+    "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -104.977,
-     39.786
+     -104.97237,
+     39.7904
     ]
    }
   },
   {
    "type": "Feature",
    "properties": {
-    "id": "bison-ridge-arsenal-reach",
-    "order": 16,
-    "name_en": "Bison Ridge / Arsenal reach",
-    "name_es": "Tramo Bison Ridge / Arsenal",
-    "seven": false,
-    "approx": true
+    "id": "heron-pond",
+    "order": 23,
+    "name_en": "Heron Pond",
+    "name_es": "Heron Pond",
+    "pendant": false,
+    "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -104.952,
-     39.81
+     -104.97428,
+     39.79409
     ]
    }
   }

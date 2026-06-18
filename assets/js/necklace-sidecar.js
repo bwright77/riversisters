@@ -150,10 +150,11 @@ function necklaceLayers() {
       source: 'necklace',
       filter: ['has', 'order'],
       paint: {
-        'circle-radius': ['case', active, 9, 6],
-        'circle-color': ['case', ['get', 'seven'], C.clay, C.turquoise],
+        // the pendant (Sun Valley) is clay and a touch larger than the beads
+        'circle-radius': ['case', active, 10, ['case', ['get', 'pendant'], 8, 6]],
+        'circle-color': ['case', ['get', 'pendant'], C.clay, C.turquoise],
         'circle-stroke-color': '#ffffff',
-        'circle-stroke-width': 2,
+        'circle-stroke-width': ['case', ['get', 'pendant'], 2.5, 2],
         'circle-opacity': ['case', active, 1, 0.85],
       },
     },
@@ -245,7 +246,7 @@ export default async function mountSidecar(bodyEl, opts = {}) {
 
   let geojson, i18n, maplibregl, scrollamaFactory;
 
-  // Graceful degradation: render the bilingual list of all 16 parks (the map's
+  // Graceful degradation: render the bilingual list of all parks (the map's
   // text equivalent) plus a short reason. Used whenever the interactive map
   // can't run — libraries blocked, OR no WebGL (e.g. a headless/GPU-less
   // browser, where new maplibregl.Map() throws "Failed to initialize WebGL").
@@ -263,8 +264,8 @@ export default async function mountSidecar(bodyEl, opts = {}) {
     const render = () => {
       errP.textContent =
         dLang === 'es'
-          ? 'No se pudo cargar el mapa interactivo. Aquí están los 16 parques del Collar:'
-          : 'The interactive map could not load. Here are the 16 parks of the Necklace:';
+          ? 'No se pudo cargar el mapa interactivo. Aquí están los parques del Collar:'
+          : 'The interactive map could not load. Here are the parks of the Necklace:';
       list.innerHTML = '';
       const pts = (geojson ? geojson.features : []).filter((f) => f.geometry.type === 'Point');
       pts.sort((a, b) => a.properties.order - b.properties.order);
@@ -304,7 +305,7 @@ export default async function mountSidecar(bodyEl, opts = {}) {
     .map((f) => ({
       id: f.properties.id,
       order: f.properties.order,
-      seven: !!f.properties.seven,
+      pendant: !!f.properties.pendant,
       approx: !!f.properties.approx,
       center: f.geometry.coordinates,
       name_en: f.properties.name_en,
@@ -400,7 +401,7 @@ export default async function mountSidecar(bodyEl, opts = {}) {
     step.dataset.beadId = b.id;
     step.dataset.index = String(b.order - 1);
     const card = document.createElement('div');
-    card.className = 'nk-card' + (b.seven ? ' is-seven' : '');
+    card.className = 'nk-card' + (b.pendant ? ' is-pendant' : '');
     card.innerHTML = `
       <span class="nk-region"></span>
       <span class="nk-num"></span>
@@ -436,8 +437,9 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   const T = {
     prev: { en: '‹ Previous', es: '‹ Anterior' },
     next: { en: 'Next ›', es: 'Siguiente ›' },
-    atSummary: { en: 'List all 16 parks', es: 'Ver los 16 parques' },
+    atSummary: { en: `List all ${beads.length} parks`, es: `Ver los ${beads.length} parques` },
     region: { en: 'Bead', es: 'Cuenta' },
+    pendant: { en: 'The Pendant', es: 'El Pendiente' },
     approx: { en: 'Approximate — to be confirmed', es: 'Aproximada — por confirmar' },
   };
 
@@ -485,7 +487,11 @@ export default async function mountSidecar(bodyEl, opts = {}) {
 
   // Map opens at the corridor overview (fitBounds), then flies to the start
   // bead (bead 1 from the CTA, or the bead the reader tapped in the compact map).
-  const startIndex = Math.max(0, Math.min(beads.length - 1, Number(opts.startIndex) || 0));
+  // Default open lands on the pendant (Sun Valley); a tapped bead overrides it.
+  const pendantIndex = beads.findIndex((b) => b.pendant);
+  const startIndex = opts.startIndex != null
+    ? Math.max(0, Math.min(beads.length - 1, Number(opts.startIndex) || 0))
+    : (pendantIndex >= 0 ? pendantIndex : 0);
   if (startIndex > 0) stepEls[startIndex].scrollIntoView({ block: 'center' });
   activate(startIndex);
   // With a URL basemap the necklace source attaches a beat later; re-assert the
@@ -511,7 +517,7 @@ export default async function mountSidecar(bodyEl, opts = {}) {
       controls.querySelector('[data-nk-prev]').addEventListener('click', () => go(-1));
       controls.querySelector('[data-nk-next]').addEventListener('click', () => go(1));
     }
-    // accessible text-equivalent list of all 16 parks
+    // accessible text-equivalent list of all parks
     if (!bodyEl.querySelector('.nk-at')) {
       const at = document.createElement('details');
       at.className = 'nk-at';
@@ -546,7 +552,7 @@ export default async function mountSidecar(bodyEl, opts = {}) {
     stepEls.forEach((step) => {
       const b = beads.find((x) => x.id === step.dataset.beadId);
       const copy = (i18n[b.id] && i18n[b.id][lang]) || {};
-      step.querySelector('.nk-num').textContent = `${T.region[lang]} ${b.order} / ${beads.length}`;
+      step.querySelector('.nk-num').textContent = b.pendant ? T.pendant[lang] : `${T.region[lang]} ${b.order} / ${beads.length}`;
       step.querySelector('.nk-region').textContent = '';
       step.querySelector('h3').textContent = copy.heading || b['name_' + lang];
       step.querySelector('p').textContent = copy.body || '';

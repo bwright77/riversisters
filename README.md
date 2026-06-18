@@ -15,8 +15,8 @@ cultural leadership.
 ## Features
 
 - Full English / Spanish toggle, equal weight, one tap
-- True-scale map of the Turquoise Necklace (16 parks), with South Platte and Cherry
-  Creek centerlines drawn from the USGS National Hydrography Dataset
+- True-scale map of the Turquoise Necklace (23 parks, with Sun Valley as the pendant),
+  with South Platte and Cherry Creek centerlines drawn from the USGS National Hydrography Dataset
 - Events calendar oriented toward City Council advocacy
 - Congreso member and partner sections
 - Mobile-first, accessibility-conscious
