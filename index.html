@@ -1125,8 +1125,9 @@ parks.forEach((p,i)=>{
     const ttl=el('title',{},g);ttl.textContent=isEs?p.es:p.en;
     el('circle',{class:'pglow',cx:pt.x,cy:pt.y,r:20},g);
     const w=9,ht=15,gy=pt.y-4;
-    el('path',{class:'gem',d:`M ${pt.x} ${pt.y-ht} L ${pt.x+w} ${gy} L ${pt.x} ${pt.y+ht} L ${pt.x-w} ${gy} Z`},g);
-    el('path',{class:'facet',d:`M ${pt.x-w} ${gy} L ${pt.x+w} ${gy} M ${pt.x} ${pt.y-ht} L ${pt.x} ${pt.y+ht} M ${pt.x-w} ${gy} L ${pt.x} ${pt.y+ht} M ${pt.x+w} ${gy} L ${pt.x} ${pt.y+ht}`},g);
+    const rot=`rotate(-90 ${pt.x} ${pt.y})`; // 90° CCW: the gem's long point faces west (right, south-up)
+    el('path',{class:'gem',transform:rot,d:`M ${pt.x} ${pt.y-ht} L ${pt.x+w} ${gy} L ${pt.x} ${pt.y+ht} L ${pt.x-w} ${gy} Z`},g);
+    el('path',{class:'facet',transform:rot,d:`M ${pt.x-w} ${gy} L ${pt.x+w} ${gy} M ${pt.x} ${pt.y-ht} L ${pt.x} ${pt.y+ht} M ${pt.x-w} ${gy} L ${pt.x} ${pt.y+ht} M ${pt.x+w} ${gy} L ${pt.x} ${pt.y+ht}`},g);
     wireMarker(g,i);
     return;
   }
