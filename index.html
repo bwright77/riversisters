@@ -261,6 +261,11 @@ a.plogo{text-decoration:none;cursor:pointer;transition:transform .18s ease,box-s
 a.plogo:hover{transform:translateY(-2px);border-color:var(--river);box-shadow:0 6px 18px rgba(36,28,20,.10)}
 a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 .plogo .pname{font-weight:700;font-size:.92rem;color:var(--teal-ink);line-height:1.2}
+/* Hotlinked partner logo with graceful fallback: show the image while it loads;
+   if it fails (blocked hotlink / moved file), onerror drops .has-logo and the
+   text mark + name show instead — no broken image. */
+.plogo.has-logo .mark,.plogo.has-logo .pname{display:none}
+.plogo:not(.has-logo) .plogo-img{display:none}
 .partner-people{margin-top:2.4rem}
 .partner-people h3{font-family:var(--display);font-size:1.16rem;font-weight:600;color:var(--teal-ink);margin:0 0 .3rem}
 .partner-people .pp-lede{font-size:.9rem;color:rgba(36,28,20,.6);margin-bottom:1rem}
@@ -600,8 +605,8 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       <!-- City partner logos: drop a PNG in assets/logos/ and swap the .mark for
            <img class="icon" src="assets/logos/…png" alt="…" loading="lazy">. Gov
            sites (denverhousing/denverwater/denvergov) block automated download. -->
-      <a class="plogo" href="https://www.denverhousing.org/" target="_blank" rel="noopener" aria-label="Denver Housing Authority (opens in a new tab)"><div class="mark" aria-hidden="true">DHA</div><div class="pname">Denver Housing Authority</div></a>
-      <a class="plogo" href="https://www.denverwater.org/" target="_blank" rel="noopener" aria-label="Denver Water (opens in a new tab)"><div class="mark" aria-hidden="true">DW</div><div class="pname">Denver Water</div></a>
+      <a class="plogo has-logo" href="https://www.denverhousing.org/" target="_blank" rel="noopener" aria-label="Denver Housing Authority (opens in a new tab)"><img class="plogo-img" src="https://www.denverhousing.org/wp-content/uploads/2021/10/DHAlogo.png" alt="Denver Housing Authority" loading="lazy" onerror="this.closest('.plogo').classList.remove('has-logo')" onload="if(!this.naturalWidth)this.closest('.plogo').classList.remove('has-logo')"><div class="mark" aria-hidden="true">DHA</div><div class="pname">Denver Housing Authority</div></a>
+      <a class="plogo has-logo" href="https://www.denverwater.org/" target="_blank" rel="noopener" aria-label="Denver Water (opens in a new tab)"><img class="plogo-img" src="https://www.denverwater.org/sites/default/files/DW-Horizontal.png" alt="Denver Water" loading="lazy" onerror="this.closest('.plogo').classList.remove('has-logo')" onload="if(!this.naturalWidth)this.closest('.plogo').classList.remove('has-logo')"><div class="mark" aria-hidden="true">DW</div><div class="pname">Denver Water</div></a>
       <a class="plogo" href="https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Parks-Recreation" target="_blank" rel="noopener" aria-label="Denver Parks &amp; Recreation (opens in a new tab)"><div class="mark" aria-hidden="true">DPR</div><div class="pname">Denver Parks &amp; Recreation</div></a>
       <a class="plogo" href="https://thegreenwayfoundation.org/" target="_blank" rel="noopener" aria-label="The Greenway Foundation (opens in a new tab)">
         <img src="assets/logos/greenway-foundation.png" alt="The Greenway Foundation" loading="lazy">
