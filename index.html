@@ -108,9 +108,14 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
 @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
 .lin h3{font-family:var(--display);font-size:1.05rem;font-weight:600;margin:.15rem 0 .3rem;line-height:1.25}
 .lin p{font-size:.86rem;color:rgba(36,28,20,.78)}
-.roots-note{margin-top:2.4rem;max-width:64ch;padding:1.15rem 1.35rem;border-left:3px solid var(--turquoise);background:#FFFCF6;border-radius:0 12px 12px 0;font-size:.95rem;line-height:1.62;color:rgba(36,28,20,.78)}
-.roots-note .rn-label{display:block;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--clay-deep);margin-bottom:.4rem}
+.roots{margin-top:2.6rem;display:grid;grid-template-columns:.82fr 1.18fr;gap:2.4rem;align-items:center}
+.roots-note{margin:0;font-size:.98rem;line-height:1.66;color:rgba(36,28,20,.8)}
+.roots-note .rn-label{display:block;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--clay-deep);margin-bottom:.5rem}
 .roots-note a{color:var(--river);font-weight:600}
+.roots-figure{margin:0}
+.roots-figure img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 10px 28px rgba(36,28,20,.14)}
+.roots-figure figcaption{margin-top:.5rem;font-size:.72rem;line-height:1.4;color:rgba(36,28,20,.55)}
+.roots-figure figcaption a{color:inherit;font-weight:400;text-decoration:underline}
 
 /* Necklace */
 #necklace{background:var(--bone)}
@@ -200,6 +205,7 @@ html[lang="es"] .es-note{display:block}
 
 @media (max-width:1024px){
   .split{grid-template-columns:1fr}
+  .roots{grid-template-columns:1fr;gap:1.5rem;max-width:64ch}
   .lineage{grid-template-columns:1fr;gap:1.4rem}
   .lin::after{display:none}
   .lin{display:grid;grid-template-columns:24px 1fr;gap:.8rem}
@@ -353,7 +359,13 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       <div class="lin" role="listitem"><span class="dot" aria-hidden="true"></span><div><p class="yr">2025</p><h3>Colorado River</h3><p data-en="Colorado River Indian Tribes — personhood under Tribal law along 100 river miles." data-es="Tribus Indígenas del Río Colorado — personería bajo ley Tribal a lo largo de 100 millas del río.">Colorado River Indian Tribes — personhood under Tribal law along 100 river miles.</p></div></div>
       <div class="lin next" role="listitem"><span class="dot" aria-hidden="true"></span><div><p class="yr" data-en="NEXT" data-es="PRÓXIMO">NEXT</p><h3>South Platte River</h3><p data-en="Denver, Colorado — a community-led guardianship model, in partnership with City Council." data-es="Denver, Colorado — un modelo comunitario de guardianía, en alianza con el Concejo Municipal.">Denver, Colorado — a community-led guardianship model, in partnership with City Council.</p></div></div>
     </div>
+    <div class="roots">
+    <figure class="roots-figure">
+      <img src="assets/colorado-river-dry-delta.jpg" alt="The dry, cracked bed of the Colorado River delta in the Sonoran Desert below San Luis Río Colorado, where the river no longer reaches the sea" loading="lazy" width="1280" height="850">
+      <figcaption data-html="true" data-en='The Colorado River’s dry delta below San Luis Río Colorado — she no longer reaches the sea. Restoring that flow is the shared work. Photo: Pete McBride / U.S. Geological Survey (public domain), via <a href="https://commons.wikimedia.org/wiki/File:Colorado_River_Dry_Delta.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>.' data-es='El delta seco del Río Colorado debajo de San Luis Río Colorado — ya no llega al mar. Restaurar ese caudal es el trabajo compartido. Foto: Pete McBride / U.S. Geological Survey (dominio público), vía <a href="https://commons.wikimedia.org/wiki/File:Colorado_River_Dry_Delta.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>.'>The Colorado River’s dry delta below San Luis Río Colorado — she no longer reaches the sea. Restoring that flow is the shared work. Photo: Pete McBride / U.S. Geological Survey (public domain), via <a href="https://commons.wikimedia.org/wiki/File:Colorado_River_Dry_Delta.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>.</figcaption>
+    </figure>
     <p class="roots-note" data-html="true" data-en='<span class="rn-label">The roots of the name</span>The River Sisters name carries a lineage of its own. From 2015 to 2020, the binational <em>River Sisters</em> partnership — led by Americas for Conservation + the Arts — joined Denver and San Luis Río Colorado, Mexico as sister cities of one Colorado River, through ecological festivals, public art, and greenway and wetland restoration. That kinship — rivers and the communities along them, across borders, as relatives — is the ground this Congreso stands on. <a href="https://americasforconservation.com/case-study/river-sisters/" target="_blank" rel="noopener">Read the River Sisters case study →</a>' data-es='<span class="rn-label">Las raíces del nombre</span>El nombre River Sisters lleva un linaje propio. De 2015 a 2020, la alianza binacional <em>River Sisters</em> — liderada por Americas for Conservation + the Arts — unió a Denver y San Luis Río Colorado, México como ciudades hermanas de un mismo Río Colorado, mediante festivales ecológicos, arte público y restauración de vías verdes y humedales. Ese parentesco — los ríos y las comunidades a su orilla, a ambos lados de la frontera, como parientes — es el suelo sobre el que se levanta este Congreso. <a href="https://americasforconservation.com/case-study/river-sisters/" target="_blank" rel="noopener">Lee el estudio de caso de River Sisters →</a>'><span class="rn-label">The roots of the name</span>The River Sisters name carries a lineage of its own. From 2015 to 2020, the binational <em>River Sisters</em> partnership — led by Americas for Conservation + the Arts — joined Denver and San Luis Río Colorado, Mexico as sister cities of one Colorado River, through ecological festivals, public art, and greenway and wetland restoration. That kinship — rivers and the communities along them, across borders, as relatives — is the ground this Congreso stands on. <a href="https://americasforconservation.com/case-study/river-sisters/" target="_blank" rel="noopener">Read the River Sisters case study →</a></p>
+    </div>
   </div>
 </section>
 
