@@ -225,6 +225,9 @@ html[lang="es"] .es-note{display:block}
 
 /* members */
 #members .member-grid{margin-top:2.4rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:1.1rem .8rem}
+#members .group-title{font-family:var(--display);font-size:1.28rem;font-weight:600;color:var(--teal-ink);margin-top:2.4rem}
+#members .group-sub{font-size:.92rem;color:rgba(36,28,20,.72);margin-top:.15rem}
+#members .member-grid{margin-top:1.1rem}
 .member{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.42rem;padding:1rem .55rem .9rem;border:1px solid transparent;border-radius:16px;background:transparent;font:inherit;color:inherit;cursor:pointer;transition:transform .18s ease,background .18s ease,box-shadow .18s ease,border-color .18s ease}
 .member:hover{transform:translateY(-3px);background:#FFFCF6;border-color:var(--line);box-shadow:0 8px 20px rgba(36,28,20,.09)}
 .member:focus-visible{outline:2px solid var(--river);outline-offset:3px}
@@ -398,45 +401,93 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 <section id="members">
   <div class="wrap">
     <p class="eyebrow" data-en="The people behind the work" data-es="Las personas detrás del trabajo">The people behind the work</p>
-    <h2 data-en="Congreso Members" data-es="Miembros del Congreso">Congreso Members</h2>
-    <p class="section-lede" data-en="River Sisters Congreso is carried by Indigenous and Chicano/Mexicano leaders, elders, and organizers who speak for the River." data-es="River Sisters Congreso es sostenido por líderes, ancianos y organizadores Indígenas y Chicano/Mexicanos que hablan por el Río.">River Sisters Congreso is carried by Indigenous and Chicano/Mexicano leaders, elders, and organizers who speak for the River.</p>
+    <h2 data-en="The Congreso &amp; its Council" data-es="El Congreso y su Concejo">The Congreso &amp; its Council</h2>
+    <p class="section-lede" data-en="River Sisters Congreso is the broader community body — Indigenous and Chicano/Mexicano leaders, elders, and organizers who speak for the River. Its Council serves as the Congreso’s leadership." data-es="River Sisters Congreso es el cuerpo comunitario más amplio — líderes, ancianos y organizadores Indígenas y Chicano/Mexicanos que hablan por el Río. Su Concejo sirve como el liderazgo del Congreso.">River Sisters Congreso is the broader community body — Indigenous and Chicano/Mexicano leaders, elders, and organizers who speak for the River. Its Council serves as the Congreso’s leadership.</p>
     <!-- Real portraits: add data-photo to a member's .bead, e.g.
          <span class="bead" data-photo="images/nita-gonzales.jpg" aria-hidden="true">NG</span>
          The photo fills the circle; if it's missing or fails to load, the initials show instead. -->
+    <p class="group-title" data-en="Council" data-es="Concejo">Council</p>
+    <p class="group-sub" data-en="The leadership body of the Congreso." data-es="El cuerpo de liderazgo del Congreso.">The leadership body of the Congreso.</p>
     <div class="member-grid">
       <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
         <span class="bead" aria-hidden="true">NG</span>
         <span class="m-name">Nita Gonzales</span>
-        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="role" data-en="Council" data-es="Concejo">Council</span>
         <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
       </button>
       <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
-        <span class="bead" aria-hidden="true">PA</span>
-        <span class="m-name">Pattie Archambault</span>
-        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bead" aria-hidden="true">TT</span>
+        <span class="m-name">Tink Tinker</span>
+        <span class="role" data-en="Council" data-es="Concejo">Council</span>
         <span class="bio" hidden>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
       </button>
       <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
-        <span class="bead" aria-hidden="true">GA</span>
-        <span class="m-name">Giselle Arroyo</span>
-        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bead" aria-hidden="true">TL</span>
+        <span class="m-name">Tomas Lopez</span>
+        <span class="role" data-en="Council" data-es="Concejo">Council</span>
         <span class="bio" hidden>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</span>
-      </button>
-      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
-        <span class="bead" aria-hidden="true">CB</span>
-        <span class="m-name">Cecelia Bull Bear</span>
-        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
-        <span class="bio" hidden>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
-      </button>
-      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
-        <span class="bead" aria-hidden="true">JB</span>
-        <span class="m-name">Jazmin Bojorquez</span>
-        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
-        <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
       </button>
       <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
         <span class="bead" aria-hidden="true">CC</span>
         <span class="m-name">Carlos Castaneda</span>
+        <span class="role" data-en="Council" data-es="Concejo">Council</span>
+        <span class="bio" hidden>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">SF</span>
+        <span class="m-name">Shannon Francis</span>
+        <span class="role" data-en="Council" data-es="Concejo">Council</span>
+        <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">RH</span>
+        <span class="m-name">Rosean Howard</span>
+        <span class="role" data-en="Council" data-es="Concejo">Council</span>
+        <span class="bio" hidden>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">CB</span>
+        <span class="m-name">Cecelia Bull Bear</span>
+        <span class="role" data-en="Council" data-es="Concejo">Council</span>
+        <span class="bio" hidden>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">PA</span>
+        <span class="m-name">Patti Archambault</span>
+        <span class="role" data-en="Council" data-es="Concejo">Council</span>
+        <span class="bio" hidden>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">KG</span>
+        <span class="m-name">Karen Gonzales</span>
+        <span class="role" data-en="Council" data-es="Concejo">Council</span>
+        <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">JB</span>
+        <span class="m-name">Jazmin Borjorquez</span>
+        <span class="role" data-en="Council" data-es="Concejo">Council</span>
+        <span class="bio" hidden>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">SL</span>
+        <span class="m-name">Solicia Lopez</span>
+        <span class="role" data-en="Council" data-es="Concejo">Council</span>
+        <span class="bio" hidden>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</span>
+      </button>
+    </div>
+    <p class="group-title" data-en="Congreso Members" data-es="Miembros del Congreso">Congreso Members</p>
+    <p class="group-sub" data-en="The broader community body of the Congreso." data-es="El cuerpo comunitario más amplio del Congreso.">The broader community body of the Congreso.</p>
+    <div class="member-grid">
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">VO</span>
+        <span class="m-name">Virginia Ortiz</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">RA</span>
+        <span class="m-name">Ryan Aids</span>
         <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
         <span class="bio" hidden>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
       </button>
@@ -447,46 +498,82 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
         <span class="bio" hidden>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</span>
       </button>
       <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
-        <span class="bead" aria-hidden="true">SF</span>
-        <span class="m-name">Shannon Francis</span>
+        <span class="bead" aria-hidden="true">SW</span>
+        <span class="m-name">Shane Wright</span>
         <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
         <span class="bio" hidden>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">AG</span>
+        <span class="m-name">Ashley Grace</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">VG</span>
+        <span class="m-name">Victor Galvan</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">GL</span>
+        <span class="m-name">George Lim</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">FH</span>
+        <span class="m-name">Fabby Hillyard</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">VG</span>
+        <span class="m-name">Valerie Gonzales</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
       </button>
       <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
         <span class="bead" aria-hidden="true">CG</span>
         <span class="m-name">Cynthia Gallegos</span>
         <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
-        <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
-      </button>
-      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
-        <span class="bead" aria-hidden="true">KG</span>
-        <span class="m-name">Karen Gonzales</span>
-        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
         <span class="bio" hidden>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
       </button>
       <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
-        <span class="bead" aria-hidden="true">RH</span>
-        <span class="m-name">Rosean Howard</span>
+        <span class="bead" aria-hidden="true">RW</span>
+        <span class="m-name">Rick Williams</span>
         <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
         <span class="bio" hidden>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</span>
       </button>
       <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
-        <span class="bead" aria-hidden="true">SL</span>
-        <span class="m-name">Solicia E. Lopez</span>
+        <span class="bead" aria-hidden="true">CM</span>
+        <span class="m-name">Caitt Maeve</span>
         <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
         <span class="bio" hidden>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
       </button>
       <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
-        <span class="bead" aria-hidden="true">TL</span>
-        <span class="m-name">Thomas Lopez</span>
-        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bead" aria-hidden="true">JS</span>
+        <span class="m-name">Jessica Stevens</span>
+        <span class="role" data-en="Congreso Member · City of Denver (DOTI)*" data-es="Miembro del Congreso · Ciudad de Denver (DOTI)*">Congreso Member · City of Denver (DOTI)*</span>
         <span class="bio" hidden>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</span>
       </button>
       <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
-        <span class="bead" aria-hidden="true">VO</span>
-        <span class="m-name">Virginia Ortiz</span>
+        <span class="bead" aria-hidden="true">CS</span>
+        <span class="m-name">Cheryl Spector</span>
         <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
         <span class="bio" hidden>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">KR</span>
+        <span class="m-name">Kia Ruiz</span>
+        <span class="role" data-en="Congreso Member" data-es="Miembro del Congreso">Congreso Member</span>
+        <span class="bio" hidden>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</span>
+      </button>
+      <button class="member" type="button" aria-expanded="false" aria-controls="member-detail">
+        <span class="bead" aria-hidden="true">MV</span>
+        <span class="m-name">Molly Veldkamp</span>
+        <span class="role" data-en="Congreso Member · City of Denver (DOTI)*" data-es="Miembro del Congreso · Ciudad de Denver (DOTI)*">Congreso Member · City of Denver (DOTI)*</span>
+        <span class="bio" hidden>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span>
       </button>
     </div>
     <div id="member-detail" class="member-detail" role="region" aria-live="polite" data-en-label="Selected member" data-es-label="Miembro seleccionado" aria-label="Selected member" hidden>
@@ -499,6 +586,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       </div>
     </div>
     <p class="member-note" data-en="Placeholder bios and portraits shown — real photos and biographies to be provided by each member." data-es="Se muestran biografías y retratos de marcador de posición — las fotos y biografías reales serán proporcionadas por cada miembro.">Placeholder bios and portraits shown — real photos and biographies to be provided by each member.</p>
+    <p class="member-note" data-en="* City of Denver staff partners (DOTI — Department of Transportation &amp; Infrastructure), participating in a city-staff capacity." data-es="* Personal de la Ciudad de Denver (DOTI — Departamento de Transporte e Infraestructura), participando en calidad de personal municipal.">* City of Denver staff partners (DOTI — Department of Transportation &amp; Infrastructure), participating in a city-staff capacity.</p>
   </div>
 </section>
 
@@ -509,6 +597,9 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
     <p class="section-lede" data-en="The Congreso prioritizes equitable engagement with historically marginalized communities along the South Platte corridor — a model of co-creation rooted in traditional ecological knowledge, cultural education, and intergenerational leadership." data-es="El Congreso prioriza la participación equitativa de comunidades históricamente marginadas a lo largo del corredor del South Platte — un modelo de co-creación arraigado en el conocimiento ecológico tradicional, la educación cultural y el liderazgo intergeneracional.">The Congreso prioritizes equitable engagement with historically marginalized communities along the South Platte corridor — a model of co-creation rooted in traditional ecological knowledge, cultural education, and intergenerational leadership.</p>
     <p class="ptitle-sub" data-en="Partner organizations" data-es="Organizaciones aliadas" style="margin-top:1.8rem;font-weight:700;color:var(--teal-ink)">Partner organizations</p>
     <div class="partner-logos">
+      <div class="plogo"><div class="mark" aria-hidden="true">DHA</div><div class="pname">Denver Housing Authority</div></div>
+      <div class="plogo"><div class="mark" aria-hidden="true">DW</div><div class="pname">Denver Water</div></div>
+      <div class="plogo"><div class="mark" aria-hidden="true">DPR</div><div class="pname">Denver Parks &amp; Recreation</div></div>
       <a class="plogo" href="https://thegreenwayfoundation.org/" target="_blank" rel="noopener" aria-label="The Greenway Foundation (opens in a new tab)">
         <img src="assets/logos/greenway-foundation.png" alt="The Greenway Foundation" loading="lazy">
       </a>
@@ -526,20 +617,6 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
         <div class="mark" aria-hidden="true">CA</div>
         <div class="pname">CASR</div>
       </div>
-    </div>
-    <div class="partner-people">
-      <h3 data-en="Partner Members" data-es="Miembros Aliados">Partner Members</h3>
-      <p class="pp-lede" data-en="Individuals lending their leadership and expertise to the coalition." data-es="Personas que aportan su liderazgo y experiencia a la coalición.">Individuals lending their leadership and expertise to the coalition.</p>
-      <ul class="pp-list">
-        <li>Ryan Aids <span>· The Greenway Foundation</span></li>
-        <li>Ashley Grace</li>
-        <li>Fabby Hillyard</li>
-        <li>Victor Galvan Ramirez <span>· CASR</span></li>
-        <li>Shane Wright <span>· Confluence Colorado</span></li>
-        <li>Vivian Cervantes <span>· Confluence Colorado</span></li>
-        <li>Scott Gilmore</li>
-        <li>George Lim</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -1177,9 +1254,10 @@ nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove
 
 // ---- Congreso member detail ----
 (function(){
-  const grid=document.querySelector('#members .member-grid');
+  const root=document.querySelector('#members');
   const panel=document.getElementById('member-detail');
-  if(!grid||!panel)return;
+  if(!root||!panel)return;
+  const allMembers=()=>root.querySelectorAll('.member-grid .member');
   const dBead=panel.querySelector('.bead'),dName=panel.querySelector('.md-name'),
         dRole=panel.querySelector('.md-role'),dBio=panel.querySelector('.md-bio'),
         dClose=panel.querySelector('.md-close');
@@ -1205,25 +1283,25 @@ nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove
     paintBead(dBead,bead);
     dName.textContent=name?name.textContent:'';
     copyLang(role,dRole);copyLang(bio,dBio);
-    grid.querySelectorAll('.member').forEach(m=>setActive(m,m===member));
+    allMembers().forEach(m=>setActive(m,m===member));
     panel.hidden=false;current=member;
     panel.scrollIntoView({behavior:'smooth',block:'nearest'});
     dClose.focus();
   };
   const close=focusBack=>{
     panel.hidden=true;
-    grid.querySelectorAll('.member').forEach(m=>setActive(m,false));
+    allMembers().forEach(m=>setActive(m,false));
     const prev=current;current=null;
     if(focusBack&&prev)prev.focus();
   };
-  grid.addEventListener('click',e=>{
+  root.addEventListener('click',e=>{
     const member=e.target.closest('.member');
-    if(!member||!grid.contains(member))return;
+    if(!member||!root.contains(member))return;
     member===current?close(true):open(member);
   });
   dClose.addEventListener('click',()=>close(true));
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)close(true)});
-  grid.querySelectorAll('.member .bead').forEach(b=>paintBead(b,b));
+  root.querySelectorAll('.member-grid .member .bead').forEach(b=>paintBead(b,b));
 })();
 </script>
 <script type="module" src="/assets/js/necklace-compact.js"></script>
