@@ -57,6 +57,15 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(246,241,232,.95);ba
 nav.primary{display:flex;gap:.95rem;align-items:center}
 nav.primary a{font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:var(--ink);padding:.25rem 0;border-bottom:2px solid transparent;white-space:nowrap}
 nav.primary a:hover{border-bottom-color:var(--clay)}
+.nav-more{position:relative;display:flex;align-items:center}
+.nav-more-btn{font-family:var(--body);font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);background:none;border:0;padding:.25rem 0;cursor:pointer;display:inline-flex;align-items:center;gap:.34rem;border-bottom:2px solid transparent;white-space:nowrap}
+.nav-more-btn:hover{border-bottom-color:var(--clay)}
+.nav-more-btn::after{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .18s ease}
+.nav-more-btn[aria-expanded="true"]::after{transform:rotate(-135deg) translateY(1px)}
+.more-menu{position:absolute;top:calc(100% + .55rem);right:0;min-width:172px;background:var(--bone);border:1px solid var(--line);border-radius:12px;padding:.45rem;display:flex;flex-direction:column;gap:.1rem;box-shadow:0 12px 30px rgba(36,28,20,.14);z-index:60}
+.more-menu[hidden]{display:none}
+.more-menu a{font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:var(--ink);padding:.52rem .6rem;border-radius:8px;white-space:nowrap}
+.more-menu a:hover{background:#FFF4E6}
 .lang{display:flex;border:1.5px solid var(--ink);border-radius:99px;overflow:hidden;flex:none}
 .lang button{font-family:var(--body);font-weight:700;font-size:.78rem;letter-spacing:.05em;padding:.34rem .8rem;background:transparent;border:0;cursor:pointer;color:var(--ink)}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--bone)}
@@ -216,6 +225,11 @@ footer .fine.credit{margin-top:.5rem;padding-top:0;border-top:none}
   nav.primary{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bone);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:1rem 24px;gap:.9rem}
   nav.primary.open{display:flex}
   .menu-btn{display:block}
+  .nav-more{position:static;flex-direction:column;align-items:flex-start;gap:.9rem}
+  .nav-more-btn{display:none}
+  .more-menu,.more-menu[hidden]{position:static;display:flex !important;flex-direction:column;gap:.9rem;background:transparent;border:0;border-radius:0;padding:0;box-shadow:none;min-width:0}
+  .more-menu a{padding:0;border-radius:0}
+  .more-menu a:hover{background:transparent;border-bottom-color:var(--clay)}
 }
 
 #events .events-list{margin-top:2.3rem;border-top:1px solid var(--line)}
@@ -317,11 +331,16 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
     <nav class="primary" id="nav" aria-label="Primary">
       <a href="#personhood" data-en="River Personhood" data-es="Personería del Río">River Personhood</a>
       <a href="#necklace" data-en="Turquoise Necklace" data-es="Collar Turquesa">Turquoise Necklace</a>
-      <a href="#principles" data-en="Principles" data-es="Principios">Principles</a>
-      <a href="#members" data-en="Members" data-es="Miembros">Members</a>
-      <a href="#partners" data-en="Partners" data-es="Aliados">Partners</a>
-      <a href="#events" data-en="Events" data-es="Eventos">Events</a>
-      <a href="#action" data-en="Take Action" data-es="Actúa">Take Action</a>
+      <a href="#principles" data-en="Guiding Principles" data-es="Principios Rectores">Guiding Principles</a>
+      <div class="nav-more">
+        <button class="nav-more-btn" type="button" aria-expanded="false" aria-controls="more-menu" data-en="More" data-es="Más">More</button>
+        <div class="more-menu" id="more-menu" hidden>
+          <a href="#members" data-en="Members" data-es="Miembros">Members</a>
+          <a href="#partners" data-en="Partners" data-es="Aliados">Partners</a>
+          <a href="#events" data-en="Events" data-es="Eventos">Events</a>
+          <a href="#action" data-en="Take Action" data-es="Actúa">Take Action</a>
+        </div>
+      </div>
     </nav>
     <div class="lang" role="group" aria-label="Language / Idioma">
       <button id="btn-en" aria-pressed="true" lang="en">EN</button>
@@ -1299,6 +1318,18 @@ mb.addEventListener('click',()=>{
   mb.setAttribute('aria-expanded',open);
 });
 nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+
+// ---- "More" nav dropdown (desktop) ----
+(function(){
+  const btn=document.querySelector('.nav-more-btn'),menu=document.getElementById('more-menu');
+  if(!btn||!menu)return;
+  const close=()=>{menu.setAttribute('hidden','');btn.setAttribute('aria-expanded','false')};
+  const open=()=>{menu.removeAttribute('hidden');btn.setAttribute('aria-expanded','true')};
+  btn.addEventListener('click',e=>{e.stopPropagation();menu.hasAttribute('hidden')?open():close()});
+  document.addEventListener('click',e=>{if(!btn.contains(e.target)&&!menu.contains(e.target))close()});
+  menu.addEventListener('click',e=>{if(e.target.tagName==='A')close()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+})();
 
 // ---- Congreso member detail ----
 (function(){
