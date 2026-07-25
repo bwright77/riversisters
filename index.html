@@ -10,7 +10,7 @@
 <meta property="og:description" content="Recognizing the South Platte River as a living relative. Advancing the Turquoise Necklace corridor of 23 parks.">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="es_US">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E8F8C'/%3E%3Cpath d='M5 13c3.5-3 6.5-3 10 0s6.5 3 10 0' stroke='%23F6F0E5' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Cpath d='M5 20c3.5-3 6.5-3 10 0s6.5 3 10 0' stroke='%23F6F0E5' stroke-width='2.6' fill='none' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="assets/river-sisters-glyph.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
@@ -44,8 +44,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
 /* Demo ribbon */
-.demo-ribbon{background:var(--ink);color:var(--bone);font-size:.78rem;letter-spacing:.04em;text-align:center;padding:.45rem 1rem}
-.demo-ribbon strong{color:#8FD6D4;font-weight:700}
 
 /* Header */
 header.site{position:sticky;top:0;z-index:50;background:rgba(246,241,232,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
@@ -73,6 +71,7 @@ nav.primary a:hover{border-bottom-color:var(--clay)}
 .hero h1 em{font-style:italic;color:#6FD1CB}
 .hero p.lede{max-width:52ch;margin-top:1.3rem;font-size:1.08rem;color:rgba(246,241,232,.9)}
 .hero .actions{margin-top:2rem;display:flex;gap:.9rem;flex-wrap:wrap}
+.hero .hero-note{margin-top:1.05rem;max-width:52ch;font-size:.9rem;line-height:1.5;color:rgba(246,241,232,.78)}
 .btn{display:inline-block;font-weight:700;font-size:.92rem;letter-spacing:.03em;text-decoration:none;border-radius:99px;padding:.78rem 1.5rem;border:2px solid transparent;cursor:pointer}
 .btn.solid{background:var(--clay);color:#fff}
 .btn.solid:hover{background:var(--clay-deep)}
@@ -198,10 +197,8 @@ footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
 footer h4{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--bone);margin-bottom:.6rem}
 footer a{color:#8FD6D4}
 footer .fine{margin-top:2.2rem;padding-top:1.2rem;border-top:1px solid rgba(246,240,229,.18);font-size:.78rem;color:rgba(246,240,229,.66)}
+footer .fine.credit{margin-top:.5rem;padding-top:0;border-top:none}
 
-/* Draft-Spanish note */
-.es-note{display:none;background:#FBE8D8;border:1px solid var(--clay);color:var(--clay-deep);font-size:.8rem;padding:.5rem .9rem;text-align:center}
-html[lang="es"] .es-note{display:block}
 
 @media (max-width:1024px){
   .split{grid-template-columns:1fr}
@@ -290,8 +287,6 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 </head>
 <body>
 <a class="skip" href="#main" data-en="Skip to content" data-es="Saltar al contenido">Skip to content</a>
-<div class="demo-ribbon"><strong>Demonstration concept</strong> — prepared by Wright Adventures for River Sisters Congreso. Not a live site. All visual directions pending review by the Congreso's cultural leadership.</div>
-<div class="es-note">Borrador en español — pendiente de revisión por el liderazgo cultural del Congreso. / Spanish draft — pending cultural leadership review.</div>
 
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -306,12 +301,12 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 </defs></svg>
 <header class="site">
   <div class="wrap bar">
-    <a class="mark" href="#top" aria-label="River Sisters Congreso — Hermanas del Río, home">
+    <a class="mark" href="#top" aria-label="River Sisters Colorado Congreso — Hermanas del Río, home">
       <span class="glyph" aria-hidden="true">
         <img src="assets/river-sisters-glyph.svg" alt="" width="48" height="48">
       </span>
       <span class="names">
-        <span class="en">River Sisters Congreso</span><br>
+        <span class="en">River Sisters Colorado Congreso</span><br>
         <span class="es">Hermanas del Río</span>
       </span>
     </a>
@@ -337,11 +332,13 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
   <div class="wrap">
     <p class="eyebrow" data-en="A coalition of Native / Chicano / Mexicano leaders · Denver, Colorado" data-es="Una coalición de líderes Nativos / Chicanos / Mexicanos · Denver, Colorado">A coalition of Native / Chicano / Mexicano leaders · Denver, Colorado</p>
     <h1 data-en='The South Platte is not a resource. <em>She is a relative.</em>' data-es='El Río South Platte no es un recurso. <em>Es una pariente.</em>' data-html="true">The South Platte is not a resource. <em>She is a relative.</em></h1>
-    <p class="lede" data-en="River Sisters Congreso works to restore balance, health, and respect for the South Platte River as a living relative — through cultural preservation, environmental justice, policy advocacy, and ceremonial practice." data-es="El Congreso River Sisters trabaja para restaurar el equilibrio, la salud y el respeto por el Río South Platte como una pariente viva — a través de la preservación cultural, la justicia ambiental, la incidencia política y la práctica ceremonial.">River Sisters Congreso works to restore balance, health, and respect for the South Platte River as a living relative — through cultural preservation, environmental justice, policy advocacy, and ceremonial practice.</p>
+    <p class="lede" data-en="River Sisters Colorado Congreso works to restore balance, health, and respect for the South Platte River as a living relative — through cultural preservation, environmental justice, policy advocacy, and ceremonial practice." data-es="El Congreso Colorado River Sisters trabaja para restaurar el equilibrio, la salud y el respeto por el Río South Platte como una pariente viva — a través de la preservación cultural, la justicia ambiental, la incidencia política y la práctica ceremonial.">River Sisters Colorado Congreso works to restore balance, health, and respect for the South Platte River as a living relative — through cultural preservation, environmental justice, policy advocacy, and ceremonial practice.</p>
     <div class="actions">
-      <a class="btn solid" href="#action" data-en="Stand with the River" data-es="Apoya al Río">Stand with the River</a>
+      <!-- TODO: replace href with the River Sisters Colorado Facebook page URL when provided -->
+      <a class="btn solid" href="https://www.facebook.com/" target="_blank" rel="noopener" data-en="Follow us on Facebook" data-es="Síguenos en Facebook">Follow us on Facebook</a>
       <a class="btn ghost" href="#personhood" data-en="The Personhood Framework" data-es="El Marco de Personería">The Personhood Framework</a>
     </div>
+    <p class="hero-note" data-en="Facebook is the best place to keep up — Council milestones, river gatherings, and ways to help." data-es="Facebook es el mejor lugar para estar al día — hitos del Concejo, encuentros junto al río y formas de ayudar.">Facebook is the best place to keep up — Council milestones, river gatherings, and ways to help.</p>
   </div>
 </section>
 
@@ -657,53 +654,72 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 
     <div class="events-list">
       <div class="ev">
-        <div class="ev-date"><span class="d">22</span><span class="m" data-en="Jun · Mon" data-es="Jun · Lun">Jun · Mon</span></div>
+        <div class="ev-date"><span class="d">3</span><span class="m" data-en="Aug · Mon" data-es="Ago · Lun">Aug · Mon</span></div>
         <div class="ev-body">
-          <h3 data-en="Denver City Council — regular session" data-es="Concejo Municipal de Denver — sesión ordinaria">Denver City Council — regular session</h3>
-          <p class="meta" data-en="5:30 PM · Council Chambers, City &amp; County Building, 1437 Bannock St" data-es="5:30 PM · Cámara del Concejo, City &amp; County Building, 1437 Bannock St">5:30 PM · Council Chambers, City &amp; County Building, 1437 Bannock St</p>
-          <p class="note" data-en="General public comment opens the evening — three minutes to speak for the River." data-es="El comentario público general abre la sesión — tres minutos para hablar por el Río.">General public comment opens the evening — three minutes to speak for the River.</p>
+          <h3 data-en="Turquoise Necklace — Morning River Walk" data-es="Collar Turquesa — Caminata matutina por el Río">Turquoise Necklace — Morning River Walk</h3>
+          <p class="meta" data-en="Morning · hold the date — time &amp; meeting point to come" data-es="Por la mañana · reserva la fecha — hora y punto de encuentro por confirmar">Morning · hold the date — time &amp; meeting point to come</p>
         </div>
-        <span class="ev-tag tag-council" data-en="Council" data-es="Concejo">Council</span>
+        <span class="ev-tag tag-community" data-en="Necklace" data-es="Collar">Necklace</span>
       </div>
       <div class="ev">
-        <div class="ev-date"><span class="d">27</span><span class="m" data-en="Jun · Sat" data-es="Jun · Sáb">Jun · Sat</span></div>
+        <div class="ev-date"><span class="d">7</span><span class="m" data-en="Aug · Fri" data-es="Ago · Vie">Aug · Fri</span></div>
         <div class="ev-body">
-          <h3 data-en="River cleanup — Bead 6, Johnson-Habitat Park" data-es="Limpieza del río — Cuenta 6, Parque Johnson-Habitat">River cleanup — Bead 6, Johnson-Habitat Park</h3>
-          <p class="meta" data-en="9:00 AM – 12:00 PM · meet at the south entrance" data-es="9:00 AM – 12:00 PM · encuentro en la entrada sur">9:00 AM – 12:00 PM · meet at the south entrance</p>
-          <p class="note" data-en="Gloves, bags, and coffee provided. Families welcome." data-es="Guantes, bolsas y café incluidos. Familias bienvenidas.">Gloves, bags, and coffee provided. Families welcome.</p>
+          <h3 data-en="Turquoise Necklace — Morning River Walk" data-es="Collar Turquesa — Caminata matutina por el Río">Turquoise Necklace — Morning River Walk</h3>
+          <p class="meta" data-en="Morning · hold the date — time &amp; meeting point to come" data-es="Por la mañana · reserva la fecha — hora y punto de encuentro por confirmar">Morning · hold the date — time &amp; meeting point to come</p>
         </div>
-        <span class="ev-tag tag-steward" data-en="Stewardship" data-es="Cuidado">Stewardship</span>
+        <span class="ev-tag tag-community" data-en="Necklace" data-es="Collar">Necklace</span>
       </div>
       <div class="ev">
-        <div class="ev-date"><span class="d">8</span><span class="m" data-en="Jul · Wed" data-es="Jul · Mié">Jul · Wed</span></div>
+        <div class="ev-date"><span class="d">28</span><span class="m" data-en="Aug · Fri" data-es="Ago · Vie">Aug · Fri</span></div>
         <div class="ev-body">
-          <h3 data-en="Council committee briefing — parks &amp; the river corridor" data-es="Sesión informativa del comité — parques y el corredor del río">Council committee briefing — parks &amp; the river corridor</h3>
-          <p class="meta" data-en="10:30 AM · watch online or attend in person" data-es="10:30 AM · en línea o en persona">10:30 AM · watch online or attend in person</p>
-          <p class="note" data-en="We publish a plain-language explainer the day before every river-related agenda." data-es="Publicamos una guía en lenguaje claro el día antes de cada agenda relacionada con el río.">We publish a plain-language explainer the day before every river-related agenda.</p>
+          <h3 data-en="Turquoise Necklace — Evening Moon River Walk" data-es="Collar Turquesa — Caminata nocturna de luna por el Río">Turquoise Necklace — Evening Moon River Walk</h3>
+          <p class="meta" data-en="Evening · a moonlit walk along the River — hold the date" data-es="Por la noche · una caminata a la luz de la luna junto al Río — reserva la fecha">Evening · a moonlit walk along the River — hold the date</p>
         </div>
-        <span class="ev-tag tag-council" data-en="Council" data-es="Concejo">Council</span>
+        <span class="ev-tag tag-community" data-en="Necklace" data-es="Collar">Necklace</span>
       </div>
       <div class="ev">
-        <div class="ev-date"><span class="d">18</span><span class="m" data-en="Jul · Sat" data-es="Jul · Sáb">Jul · Sat</span></div>
+        <div class="ev-date"><span class="d">25</span><span class="m" data-en="Sep · Fri" data-es="Sep · Vie">Sep · Fri</span></div>
         <div class="ev-body">
-          <h3 data-en="Turquoise Necklace walk — Sun Valley Riverfront Park" data-es="Caminata del Collar Turquesa — Sun Valley Riverfront Park">Turquoise Necklace walk — Sun Valley Riverfront Park</h3>
-          <p class="meta" data-en="8:30 AM · before the heat — about 90 minutes" data-es="8:30 AM · antes del calor — unos 90 minutos">8:30 AM · before the heat — about 90 minutes</p>
-          <p class="note" data-en="A bilingual walking introduction to the twenty-three beads and the vision that connects them." data-es="Una introducción a pie, bilingüe, a las veintitrés cuentas y la visión que las conecta.">A bilingual walking introduction to the twenty-three beads and the vision that connects them.</p>
+          <h3 data-en="Turquoise Necklace — Evening Moon River Walk" data-es="Collar Turquesa — Caminata nocturna de luna por el Río">Turquoise Necklace — Evening Moon River Walk</h3>
+          <p class="meta" data-en="Evening · a moonlit walk along the River — hold the date" data-es="Por la noche · una caminata a la luz de la luna junto al Río — reserva la fecha">Evening · a moonlit walk along the River — hold the date</p>
         </div>
-        <span class="ev-tag tag-community" data-en="Community" data-es="Comunidad">Community</span>
+        <span class="ev-tag tag-community" data-en="Necklace" data-es="Collar">Necklace</span>
       </div>
       <div class="ev">
-        <div class="ev-date"><span class="d">27</span><span class="m" data-en="Sep · Sun" data-es="Sep · Dom">Sep · Sun</span></div>
+        <div class="ev-date"><span class="d">3</span><span class="m" data-en="Oct · Sat" data-es="Oct · Sáb">Oct · Sat</span></div>
         <div class="ev-body">
-          <h3 data-en="World Rivers Day at the Confluence" data-es="Día Mundial de los Ríos en la Confluencia">World Rivers Day at the Confluence</h3>
-          <p class="meta" data-en="All day · Confluence Park — where Denver began" data-es="Todo el día · Confluence Park — donde nació Denver">All day · Confluence Park — where Denver began</p>
-          <p class="note" data-en="Celebrate her with music, food, and stories — and meet the people doing the work." data-es="Celébrala con música, comida e historias — y conoce a quienes hacen el trabajo.">Celebrate her with music, food, and stories — and meet the people doing the work.</p>
+          <h3 data-en="Turquoise Necklace — River Ride" data-es="Collar Turquesa — Paseo en bici por el Río">Turquoise Necklace — River Ride</h3>
+          <p class="meta" data-en="Hold the date — a ride the length of the Necklace corridor; details to come" data-es="Reserva la fecha — un paseo a lo largo del corredor del Collar; detalles por confirmar">Hold the date — a ride the length of the Necklace corridor; details to come</p>
         </div>
-        <span class="ev-tag tag-community" data-en="Community" data-es="Comunidad">Community</span>
+        <span class="ev-tag tag-community" data-en="Necklace" data-es="Collar">Necklace</span>
+      </div>
+      <div class="ev">
+        <div class="ev-date"><span class="d">17</span><span class="m" data-en="Oct · Sat" data-es="Oct · Sáb">Oct · Sat</span></div>
+        <div class="ev-body">
+          <h3 data-en="River Sisters Congreso Convening" data-es="Encuentro del River Sisters Congreso">River Sisters Congreso Convening</h3>
+          <p class="meta" data-en="A full convening of the Congreso — details to come" data-es="Un encuentro pleno del Congreso — detalles por confirmar">A full convening of the Congreso — details to come</p>
+        </div>
+        <span class="ev-tag tag-council" data-en="Congreso" data-es="Congreso">Congreso</span>
+      </div>
+      <div class="ev">
+        <div class="ev-date"><span class="d">26</span><span class="m" data-en="Oct · Mon" data-es="Oct · Lun">Oct · Mon</span></div>
+        <div class="ev-body">
+          <h3 data-en="Turquoise Necklace — Evening Moon River Walk" data-es="Collar Turquesa — Caminata nocturna de luna por el Río">Turquoise Necklace — Evening Moon River Walk</h3>
+          <p class="meta" data-en="Evening · a moonlit walk along the River — hold the date" data-es="Por la noche · una caminata a la luz de la luna junto al Río — reserva la fecha">Evening · a moonlit walk along the River — hold the date</p>
+        </div>
+        <span class="ev-tag tag-community" data-en="Necklace" data-es="Collar">Necklace</span>
+      </div>
+      <div class="ev">
+        <div class="ev-date"><span class="d">23</span><span class="m" data-en="Nov · Mon" data-es="Nov · Lun">Nov · Mon</span></div>
+        <div class="ev-body">
+          <h3 data-en="Turquoise Necklace — Evening Moon River Walk" data-es="Collar Turquesa — Caminata nocturna de luna por el Río">Turquoise Necklace — Evening Moon River Walk</h3>
+          <p class="meta" data-en="Evening · a moonlit walk along the River — hold the date" data-es="Por la noche · una caminata a la luz de la luna junto al Río — reserva la fecha">Evening · a moonlit walk along the River — hold the date</p>
+        </div>
+        <span class="ev-tag tag-community" data-en="Necklace" data-es="Collar">Necklace</span>
       </div>
     </div>
 
-    <p class="ev-fine" data-en="Example schedule for demonstration; confirm Council times at denvergov.org." data-es="Calendario de ejemplo para la demostración; confirme los horarios del Concejo en denvergov.org.">Example schedule for demonstration; confirm Council times at denvergov.org.</p>
+    <p class="ev-fine" data-en="Dates shown are on hold — times, meeting points, and details will be confirmed closer to each gathering. Follow us on Facebook for the latest." data-es="Las fechas mostradas están reservadas — horarios, puntos de encuentro y detalles se confirmarán antes de cada encuentro. Síguenos en Facebook para lo más reciente.">Dates shown are on hold — times, meeting points, and details will be confirmed closer to each gathering. Follow us on Facebook for the latest.</p>
   </div>
 </section>
 
@@ -737,10 +753,12 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       </div>
       <div>
         <h4 data-en="Contact" data-es="Contacto">Contact</h4>
-        <p><a href="mailto:nita@nuevoamanecer.biz">nita@nuevoamanecer.biz</a><br>South Platte River Trail<br>Denver, CO, USA</p>
+        <p><a href="mailto:congresso@riversisterscolorado.com">congresso@riversisterscolorado.com</a><br>South Platte River Trail<br>Denver, CO, USA</p>
       </div>
     </div>
-    <p class="fine" data-en="© 2026 River Sisters Congreso (Hermanas del Río). Demonstration concept by Wright Adventures — typographic mark shown is a placeholder; the Congreso's identity will be led by a community designer and approved by cultural leadership. Cookie consent on the live site will present accept/decline choices consistent with the Colorado Privacy Act." data-es="© 2026 River Sisters Congreso (Hermanas del Río). Concepto de demostración de Wright Adventures — la marca tipográfica mostrada es provisional; la identidad del Congreso será liderada por una persona diseñadora de la comunidad y aprobada por el liderazgo cultural. El consentimiento de cookies en el sitio real ofrecerá opciones de aceptar/rechazar conforme a la Ley de Privacidad de Colorado.">© 2026 River Sisters Congreso (Hermanas del Río). Demonstration concept by Wright Adventures — typographic mark shown is a placeholder; the Congreso's identity will be led by a community designer and approved by cultural leadership. Cookie consent on the live site will present accept/decline choices consistent with the Colorado Privacy Act.</p>
+    <p class="fine" data-en="© 2026 River Sisters Congreso (Hermanas del Río). Cookie consent presents accept and decline choices consistent with the Colorado Privacy Act." data-es="© 2026 River Sisters Congreso (Hermanas del Río). El consentimiento de cookies ofrece opciones de aceptar y rechazar conforme a la Ley de Privacidad de Colorado.">© 2026 River Sisters Congreso (Hermanas del Río). Cookie consent presents accept and decline choices consistent with the Colorado Privacy Act.</p>
+    <!-- TODO: add the Wright Adventures site URL in place of the # placeholder -->
+    <p class="fine credit" data-html="true" data-en='Site by <a href="#">Wright Adventures</a>.' data-es='Sitio por <a href="#">Wright Adventures</a>.'>Site by <a href="#">Wright Adventures</a>.</p>
   </div>
 </footer>
 
