@@ -730,12 +730,11 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
     <p class="eyebrow" data-en="Call to action" data-es="Llamado a la acción">Call to action</p>
     <h2 data-en="Denver can become the national model for a city that honors its river." data-es="Denver puede ser el modelo nacional de una ciudad que honra a su río.">Denver can become the national model for a city that honors its river.</h2>
     <p data-en="The Congreso calls on Denver City Council to recognize the South Platte as a living relative, integrate cultural guardianship into river planning, and embed environmental equity into municipal policy — endorsing the River Personhood Framework and the Turquoise Necklace as city-recognized initiatives." data-es="El Congreso llama al Concejo Municipal de Denver a reconocer al South Platte como una pariente viva, integrar la guardianía cultural en la planificación del río e incorporar la equidad ambiental en la política municipal — respaldando el Marco de Personería del Río y el Collar Turquesa como iniciativas reconocidas por la ciudad.">The Congreso calls on Denver City Council to recognize the South Platte as a living relative, integrate cultural guardianship into river planning, and embed environmental equity into municipal policy — endorsing the River Personhood Framework and the Turquoise Necklace as city-recognized initiatives.</p>
-    <form class="signup" onsubmit="event.preventDefault();this.querySelector('.micro').textContent=document.documentElement.lang==='es'?'¡Gracias! Te mantendremos al tanto. (Demostración — no se envió ningún dato.)':'Thank you! We will keep you posted. (Demo — no data was sent.)'">
-      <label class="skip" for="em">Email</label>
-      <input id="em" type="email" required placeholder="you@email.com" autocomplete="email">
-      <button class="btn solid" type="submit" data-en="Stand with the River" data-es="Apoya al Río">Stand with the River</button>
-      <p class="micro" data-en="Updates on Council milestones, river gatherings, and ways to help. No spam, ever." data-es="Novedades sobre el Concejo, encuentros del río y formas de ayudar. Sin spam, nunca.">Updates on Council milestones, river gatherings, and ways to help. No spam, ever.</p>
-    </form>
+    <div class="signup">
+      <!-- TODO: replace href with the River Sisters Colorado Facebook page URL when provided -->
+      <a class="btn solid" href="https://www.facebook.com/" target="_blank" rel="noopener" data-en="Follow us on Facebook" data-es="Síguenos en Facebook">Follow us on Facebook</a>
+      <p class="micro" data-en="Facebook is where we post Council milestones, river gatherings, and ways to help." data-es="En Facebook publicamos los hitos del Concejo, los encuentros del río y las formas de ayudar.">Facebook is where we post Council milestones, river gatherings, and ways to help.</p>
+    </div>
   </div>
 </section>
 </main>
