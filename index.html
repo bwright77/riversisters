@@ -51,8 +51,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 header.site{position:sticky;top:0;z-index:50;background:rgba(246,241,232,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;gap:1rem;justify-content:space-between;padding:1rem 0}
 .mark{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--ink)}
-.mark .glyph{width:48px;height:48px;border-radius:11px;background:var(--turquoise);flex:none;display:grid;place-items:center}
-.mark .glyph img,.mark .glyph svg{width:40px;height:40px}
+.mark .glyph{width:48px;height:48px;border-radius:11px;background:var(--turquoise);flex:none;display:grid;place-items:center;overflow:hidden}
+.mark .glyph img,.mark .glyph svg{width:100%;height:100%;object-fit:cover}
 .mark .names{line-height:1.12;white-space:nowrap}
 .mark .en{font-family:var(--display);font-weight:600;font-size:.98rem;letter-spacing:.01em}
 .mark .es{font-family:var(--display);font-weight:500;font-size:.98rem;color:var(--turquoise-deep);font-style:italic}
@@ -308,7 +308,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
   <div class="wrap bar">
     <a class="mark" href="#top" aria-label="River Sisters Congreso — Hermanas del Río, home">
       <span class="glyph" aria-hidden="true">
-        <img src="assets/river-sisters-glyph.svg" alt="" width="34" height="34">
+        <img src="assets/river-sisters-glyph.svg" alt="" width="48" height="48">
       </span>
       <span class="names">
         <span class="en">River Sisters Congreso</span><br>
