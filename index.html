@@ -71,7 +71,6 @@ nav.primary a:hover{border-bottom-color:var(--clay)}
 .hero h1 em{font-style:italic;color:#6FD1CB}
 .hero p.lede{max-width:52ch;margin-top:1.3rem;font-size:1.08rem;color:rgba(246,241,232,.9)}
 .hero .actions{margin-top:2rem;display:flex;gap:.9rem;flex-wrap:wrap}
-.hero .hero-note{margin-top:1.05rem;max-width:52ch;font-size:.9rem;line-height:1.5;color:rgba(246,241,232,.78)}
 .btn{display:inline-block;font-weight:700;font-size:.92rem;letter-spacing:.03em;text-decoration:none;border-radius:99px;padding:.78rem 1.5rem;border:2px solid transparent;cursor:pointer}
 .btn.solid{background:var(--clay);color:#fff}
 .btn.solid:hover{background:var(--clay-deep)}
@@ -187,6 +186,8 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
 #action p{max-width:60ch;color:rgba(255,255,255,.94)}
 #action .btn.solid{background:var(--ink)}
 #action .btn.solid:hover{background:#000}
+.btn.fb{display:inline-flex;align-items:center;gap:.55rem}
+.btn.fb svg{width:1.1em;height:1.1em;fill:currentColor;flex:none}
 .signup{margin-top:1.9rem;display:flex;gap:.7rem;max-width:600px;flex-wrap:wrap}
 .signup input{flex:1 1 240px;padding:.78rem 1.1rem;border-radius:99px;border:0;font-family:var(--body);font-size:.95rem}
 .signup .micro{flex-basis:100%;font-size:.78rem;color:rgba(255,255,255,.85)}
@@ -336,11 +337,9 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
     <h1 data-en='The South Platte is not a resource. <em>She is a relative.</em>' data-es='El Río South Platte no es un recurso. <em>Es una pariente.</em>' data-html="true">The South Platte is not a resource. <em>She is a relative.</em></h1>
     <p class="lede" data-en="River Sisters Colorado Congreso works to restore balance, health, and respect for the South Platte River as a living relative — through cultural preservation, environmental justice, policy advocacy, and ceremonial practice." data-es="El Congreso Colorado River Sisters trabaja para restaurar el equilibrio, la salud y el respeto por el Río South Platte como una pariente viva — a través de la preservación cultural, la justicia ambiental, la incidencia política y la práctica ceremonial.">River Sisters Colorado Congreso works to restore balance, health, and respect for the South Platte River as a living relative — through cultural preservation, environmental justice, policy advocacy, and ceremonial practice.</p>
     <div class="actions">
-      <!-- TODO: replace href with the River Sisters Colorado Facebook page URL when provided -->
-      <a class="btn solid" href="https://www.facebook.com/" target="_blank" rel="noopener" data-en="Follow us on Facebook" data-es="Síguenos en Facebook">Follow us on Facebook</a>
+      <a class="btn solid" href="#action" data-en="Stand with the River" data-es="Apoya al Río">Stand with the River</a>
       <a class="btn ghost" href="#personhood" data-en="The Personhood Framework" data-es="El Marco de Personería">The Personhood Framework</a>
     </div>
-    <p class="hero-note" data-en="Facebook is the best place to keep up — Council milestones, river gatherings, and ways to help." data-es="Facebook es el mejor lugar para estar al día — hitos del Concejo, encuentros junto al río y formas de ayudar.">Facebook is the best place to keep up — Council milestones, river gatherings, and ways to help.</p>
   </div>
 </section>
 
@@ -732,7 +731,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
     <p data-en="The Congreso calls on Denver City Council to recognize the South Platte as a living relative, integrate cultural guardianship into river planning, and embed environmental equity into municipal policy — endorsing the River Personhood Framework and the Turquoise Necklace as city-recognized initiatives." data-es="El Congreso llama al Concejo Municipal de Denver a reconocer al South Platte como una pariente viva, integrar la guardianía cultural en la planificación del río e incorporar la equidad ambiental en la política municipal — respaldando el Marco de Personería del Río y el Collar Turquesa como iniciativas reconocidas por la ciudad.">The Congreso calls on Denver City Council to recognize the South Platte as a living relative, integrate cultural guardianship into river planning, and embed environmental equity into municipal policy — endorsing the River Personhood Framework and the Turquoise Necklace as city-recognized initiatives.</p>
     <div class="signup">
       <!-- TODO: replace href with the River Sisters Colorado Facebook page URL when provided -->
-      <a class="btn solid" href="https://www.facebook.com/" target="_blank" rel="noopener" data-en="Follow us on Facebook" data-es="Síguenos en Facebook">Follow us on Facebook</a>
+      <a class="btn solid fb" href="https://www.facebook.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.03 4.39 11.03 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.32l-.53 3.49h-2.79v8.44C19.61 23.1 24 18.1 24 12.07z"/></svg><span data-en="Follow us on Facebook" data-es="Síguenos en Facebook">Follow us on Facebook</span></a>
       <p class="micro" data-en="Facebook is where we post Council milestones, river gatherings, and ways to help." data-es="En Facebook publicamos los hitos del Concejo, los encuentros del río y las formas de ayudar.">Facebook is where we post Council milestones, river gatherings, and ways to help.</p>
     </div>
   </div>
@@ -761,8 +760,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       </div>
     </div>
     <p class="fine" data-en="© 2026 River Sisters Congreso (Hermanas del Río)." data-es="© 2026 River Sisters Congreso (Hermanas del Río).">© 2026 River Sisters Congreso (Hermanas del Río).</p>
-    <!-- TODO: add the Wright Adventures site URL in place of the # placeholder -->
-    <p class="fine credit" data-html="true" data-en='Site by <a href="#">Wright Adventures</a>.' data-es='Sitio por <a href="#">Wright Adventures</a>.'>Site by <a href="#">Wright Adventures</a>.</p>
+    <p class="fine credit" data-html="true" data-en='Site by <a href="https://wrightadventures.org/" target="_blank" rel="noopener">Wright Adventures</a>.' data-es='Sitio por <a href="https://wrightadventures.org/" target="_blank" rel="noopener">Wright Adventures</a>.'>Site by <a href="https://wrightadventures.org/" target="_blank" rel="noopener">Wright Adventures</a>.</p>
   </div>
 </footer>
 
