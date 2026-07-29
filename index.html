@@ -69,7 +69,7 @@ nav.primary a:hover{border-bottom-color:var(--clay)}
 .lang{display:flex;border:1.5px solid var(--ink);border-radius:99px;overflow:hidden;flex:none}
 .lang button{font-family:var(--body);font-weight:700;font-size:.78rem;letter-spacing:.05em;padding:.34rem .8rem;background:transparent;border:0;cursor:pointer;color:var(--ink)}
 .lang button[aria-pressed="true"]{background:var(--ink);color:var(--bone)}
-.menu-btn{display:none;background:none;border:1.5px solid var(--ink);border-radius:8px;padding:.4rem .65rem;font-weight:700;cursor:pointer}
+.menu-btn{display:none;background:none;border:1.5px solid var(--ink);border-radius:8px;padding:.4rem .65rem;font-weight:700;color:var(--ink);cursor:pointer}
 
 /* Hero */
 .hero{position:relative;background:#23282B url(assets/img/hero-bg.jpg) center/cover;color:var(--bone);overflow:hidden}
@@ -299,6 +299,9 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 }
 @media (max-width:560px){
   .principles-grid{grid-template-columns:1fr}
+  .brand-congreso{display:none}
+  .bar{gap:.55rem}
+  .mark .glyph{width:42px;height:42px}
 }
 </style>
 </head>
@@ -323,7 +326,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
         <img src="assets/river-sisters-glyph.svg" alt="" width="48" height="48">
       </span>
       <span class="names">
-        <span class="en">River Sisters Colorado Congreso</span><br>
+        <span class="en">River Sisters Colorado<span class="brand-congreso"> Congreso</span></span><br>
         <span class="es">Hermanas del Río</span>
       </span>
     </a>
