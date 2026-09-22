@@ -153,15 +153,15 @@
       "body": "Jardines formales junto al South Platte en el centro."
     }
   },
-  "finback": {
+  "fishback-park": {
     "order": 15,
     "en": {
-      "heading": "Finback",
-      "body": "A Greenway access and public-art site along the river downtown."
+      "heading": "Fishback Park",
+      "body": "A small riverfront park on Water Street beside the Downtown Aquarium, with benches, picnic tables, and the river trail running through."
     },
     "es": {
-      "heading": "Finback",
-      "body": "Un acceso al Greenway y sitio de arte público junto al río, en el centro."
+      "heading": "Fishback Park",
+      "body": "Un pequeño parque ribereño en Water Street junto al Downtown Aquarium, con bancas, mesas de picnic y el sendero del río que lo atraviesa."
     }
   },
   "confluence-park": {

@@ -31,9 +31,11 @@ A two-tier feature on the demo site:
   Parks GIS — `ODC_PARK_PARKLAND_A` centroids, EPSG:4326, 2026), stored
   **south→north** (downstream). **Sun Valley Riverfront Park** carries
   `pendant:true` and renders as the corridor's hero (a distinct gem in the
-  compact map; clay + the “The Pendant” kicker in the expanded view). Three
+  compact map; clay + the “The Pendant” kicker in the expanded view). Two
   carry `approx:true` (estimated / under construction) and show “Approximate —
-  to be confirmed”: **Sun Valley, Finback, National Western.**
+  to be confirmed”: **Sun Valley, National Western.** (Fishback Park was
+  previously listed as “Finback” with an estimated position; it now uses its
+  Denver Parks GIS centroid.)
 - **River geometry** reuses the existing centerlines: South Platte **245 pts**,
   Cherry Creek **78 pts** (USGS NHD). Both are already `[lng, lat]`.
 

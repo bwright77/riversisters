@@ -1572,18 +1572,18 @@
   {
    "type": "Feature",
    "properties": {
-    "id": "finback",
+    "id": "fishback-park",
     "order": 15,
-    "name_en": "Finback",
-    "name_es": "Finback",
+    "name_en": "Fishback Park",
+    "name_es": "Fishback Park",
     "pendant": false,
-    "approx": true
+    "approx": false
    },
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -105.0092,
-     39.7534
+     -105.01187,
+     39.75291
     ]
    }
   },
