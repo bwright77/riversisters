@@ -96,6 +96,33 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
 .split{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:start}
 
 /* Personhood lineage */
+/* Featured event: hero pill + #congreso callout. Both carry data-date and are
+   removed by the "Hide past events" script the day after the event. */
+.hero-pill{display:inline-flex;align-items:center;gap:.65rem;margin-bottom:1.3rem;padding:.32rem 1rem .32rem .32rem;border-radius:99px;background:rgba(16,20,22,.55);border:1px solid rgba(143,214,212,.45);color:var(--bone);text-decoration:none;font-size:.88rem;font-weight:500;line-height:1.3;max-width:100%}
+.hero-pill:hover{border-color:var(--bone)}
+.hero-pill .hp-date{background:var(--turquoise-deep);color:#fff;border-radius:99px;padding:.3rem .72rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.hero-pill .hp-go{color:#8FD6D4;font-weight:700;white-space:nowrap}
+#congreso{background:#E2EEEA;border-top:1px solid var(--line)}
+#congreso .eyebrow{color:var(--turquoise-deep)}
+#congreso h2{margin-bottom:.2rem}
+.feature-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:3rem;align-items:start}
+.feature-tag{font-family:var(--display);font-style:italic;font-size:1.25rem;color:var(--turquoise-deep)}
+.feature-body{display:flex;flex-direction:column;gap:.85rem;max-width:56ch;margin-top:1.2rem}
+.feature-actions{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.8rem}
+#congreso .btn.solid{background:var(--clay-deep)}
+#congreso .btn.solid:hover{background:#8A4720}
+.feature-card{background:#FFFCF6;border:1px solid var(--line);border-radius:16px;padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:1.1rem;box-shadow:0 10px 28px rgba(36,28,20,.08)}
+.fc-block+.fc-block{border-top:1px solid var(--line);padding-top:1.1rem}
+.fc-label{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--turquoise-deep);margin-bottom:.4rem}
+.fc-big{font-family:var(--display);font-size:1.45rem;font-weight:600;line-height:1.2}
+.fc-free{color:var(--clay-deep);font-weight:700}
+.fc-venue{height:46px;width:auto;margin:.15rem 0 .55rem;mix-blend-mode:multiply}
+.fc-addr{color:var(--ink);text-underline-offset:3px}
+.fc-logos{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
+.fc-logos img{height:44px;width:auto}
+.fc-logos img.sq{height:58px;mix-blend-mode:multiply}
+.fc-logos+.fc-label{margin-top:1rem}
+@media (max-width:900px){.feature-grid{grid-template-columns:1fr;gap:2rem}}
 #personhood{background:#FFFCF6;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .lineage{margin-top:2.6rem;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
 .lin{position:relative;padding:0 .8rem 0 0}
@@ -358,6 +385,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 <main id="main">
 <section class="hero" id="top">
   <div class="wrap">
+    <a class="hero-pill" href="#congreso" data-date="2026-11-14"><span class="hp-date" data-en="Sat · Nov 14" data-es="Sáb · 14 nov">Sat · Nov 14</span><span data-en="River Sisters Colorado Congreso · Free" data-es="River Sisters Colorado Congreso · Gratis">River Sisters Colorado Congreso · Free</span><span class="hp-go" data-en="RSVP →" data-es="Confirma →">RSVP →</span></a>
     <p class="eyebrow" data-en="A coalition of Native / Chicano / Mexicano leaders · Denver, Colorado" data-es="Una coalición de líderes Nativos / Chicanos / Mexicanos · Denver, Colorado">A coalition of Native / Chicano / Mexicano leaders · Denver, Colorado</p>
     <h1 data-en='The South Platte is not a resource. <em>She is a relative.</em>' data-es='El Río South Platte no es un recurso. <em>Es una pariente.</em>' data-html="true">The South Platte is not a resource. <em>She is a relative.</em></h1>
     <p class="lede" data-en="River Sisters Colorado Congreso works to restore balance, health, and respect for the South Platte River as a living relative — through cultural preservation, environmental justice, policy advocacy, and ceremonial practice." data-es="El Congreso Colorado River Sisters trabaja para restaurar el equilibrio, la salud y el respeto por el Río South Platte como una pariente viva — a través de la preservación cultural, la justicia ambiental, la incidencia política y la práctica ceremonial.">River Sisters Colorado Congreso works to restore balance, health, and respect for the South Platte River as a living relative — through cultural preservation, environmental justice, policy advocacy, and ceremonial practice.</p>
@@ -365,6 +393,47 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       <a class="btn solid" href="#action" data-en="Stand with the River" data-es="Apoya al Río">Stand with the River</a>
       <a class="btn ghost" href="#personhood" data-en="The Personhood Framework" data-es="El Marco de Personería">The Personhood Framework</a>
     </div>
+  </div>
+</section>
+
+<section id="congreso" data-date="2026-11-14" aria-labelledby="congreso-title">
+  <div class="wrap feature-grid">
+    <div>
+      <p class="eyebrow" data-en="Featured gathering" data-es="Encuentro destacado">Featured gathering</p>
+      <h2 id="congreso-title">River Sisters Colorado Congreso</h2>
+      <p class="feature-tag" data-en="A gathering for the South Platte River" data-es="Un encuentro por el Río South Platte">A gathering for the South Platte River</p>
+      <div class="feature-body">
+        <p data-en="Join River Sisters Colorado at the Latino Cultural Arts Center’s new home for a day of learning, sharing, laughter, and cultural creativity, and hear about our Personhood and Turquoise Necklace initiatives." data-es="Acompaña a River Sisters Colorado en el nuevo hogar del Latino Cultural Arts Center para un día de aprendizaje, convivencia, risas y creatividad cultural, y conoce nuestras iniciativas de Personalidad Jurídica del Río y el Collar Turquesa.">Join River Sisters Colorado at the Latino Cultural Arts Center’s new home for a day of learning, sharing, laughter, and cultural creativity, and hear about our Personhood and Turquoise Necklace initiatives.</p>
+        <p data-en="Everyone is welcome. We especially call in our Chicano, Native, and Mexicano Gente to share family stories of our Relative, the South Platte River, through art." data-es="Todos son bienvenidos. Hacemos un llamado especial a nuestra Gente Chicana, Nativa y Mexicana para compartir, a través del arte, sus historias familiares de nuestra Pariente, el Río South Platte.">Everyone is welcome. We especially call in our Chicano, Native, and Mexicano Gente to share family stories of our Relative, the South Platte River, through art.</p>
+      </div>
+      <div class="feature-actions">
+        <a class="btn solid" href="https://www.eventbrite.com/e/river-sisters-colorado-congreso-tickets-2003679038943?aff=website" target="_blank" rel="noopener" data-en="RSVP free on Eventbrite" data-es="Confirma gratis en Eventbrite">RSVP free on Eventbrite</a>
+      </div>
+    </div>
+    <aside class="feature-card" aria-label="Event details">
+      <div class="fc-block">
+        <p class="fc-label" data-en="When" data-es="Cuándo">When</p>
+        <p class="fc-big" data-en="Saturday, Nov 14, 2026" data-es="Sábado 14 de noviembre de 2026">Saturday, Nov 14, 2026</p>
+        <p>9 am – 3 pm</p>
+        <p class="fc-free" data-en="Free" data-es="Gratis">Free</p>
+      </div>
+      <div class="fc-block">
+        <p class="fc-label" data-en="Where" data-es="Dónde">Where</p>
+        <img class="fc-venue" src="assets/logos/lcac_logo.png" alt="Latino Cultural Arts Center" width="433" height="187" loading="lazy">
+        <a class="fc-addr" href="https://www.google.com/maps/search/?api=1&amp;query=Latino%20Cultural%20Arts%20Center%2C%201935%20W%2012th%20Ave%2C%20Denver%2C%20CO%2080204" target="_blank" rel="noopener">1935 W 12th Ave<br>Denver, CO 80204</a>
+      </div>
+      <div class="fc-block">
+        <p class="fc-label" data-en="Presented by" data-es="Presentado por">Presented by</p>
+        <div class="fc-logos">
+          <img src="assets/logos/confluence-colorado.png" alt="Confluence Colorado" loading="lazy">
+          <img class="sq" src="assets/logos/spirit-of-the-sun.webp" alt="Spirit of the Sun" width="500" height="500" loading="lazy">
+        </div>
+        <p class="fc-label" data-en="Sponsored by" data-es="Patrocinado por">Sponsored by</p>
+        <div class="fc-logos">
+          <img src="assets/logos/cpw-logo.png" alt="Colorado Parks &amp; Wildlife" width="242" height="90" loading="lazy">
+        </div>
+      </div>
+    </aside>
   </div>
 </section>
 
@@ -729,8 +798,9 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       <div class="ev" data-date="2026-11-14">
         <div class="ev-date"><span class="d">14</span><span class="m" data-en="Nov · Sat" data-es="Nov · Sáb">Nov · Sat</span></div>
         <div class="ev-body">
-          <h3 data-en="River Sisters Congreso Convening" data-es="Encuentro del River Sisters Congreso">River Sisters Congreso Convening</h3>
-          <p class="meta" data-en="A full convening of the Congreso — details to come" data-es="Un encuentro pleno del Congreso — detalles por confirmar">A full convening of the Congreso — details to come</p>
+          <h3 data-en="River Sisters Colorado Congreso" data-es="Encuentro del River Sisters Colorado Congreso">River Sisters Colorado Congreso</h3>
+          <p class="meta" data-en="9 am – 3 pm · Latino Cultural Arts Center, 1935 W 12th Ave · Free" data-es="9 am – 3 pm · Latino Cultural Arts Center, 1935 W 12th Ave · Gratis">9 am – 3 pm · Latino Cultural Arts Center, 1935 W 12th Ave · Free</p>
+          <p class="note" data-html="true" data-en='A day of learning, sharing, laughter, and cultural creativity — everyone is welcome. <a href="https://www.eventbrite.com/e/river-sisters-colorado-congreso-tickets-2003679038943?aff=website" target="_blank" rel="noopener">RSVP free on Eventbrite</a>' data-es='Un día de aprendizaje, convivencia, risas y creatividad cultural — todos son bienvenidos. <a href="https://www.eventbrite.com/e/river-sisters-colorado-congreso-tickets-2003679038943?aff=website" target="_blank" rel="noopener">Confirma gratis en Eventbrite</a>'>A day of learning, sharing, laughter, and cultural creativity — everyone is welcome. <a href="https://www.eventbrite.com/e/river-sisters-colorado-congreso-tickets-2003679038943?aff=website" target="_blank" rel="noopener">RSVP free on Eventbrite</a></p>
         </div>
         <span class="ev-tag tag-council" data-en="Congreso" data-es="Congreso">Congreso</span>
       </div>
@@ -1319,15 +1389,16 @@ document.getElementById('btn-en').addEventListener('click',()=>swap('en'));
 document.getElementById('btn-es').addEventListener('click',()=>swap('es'));
 
 // ---- Hide past events ----
-// Each .ev carries data-date="YYYY-MM-DD". An event stays listed through its own
-// day and disappears the day after. "Today" is computed in Denver time so the
-// cutoff doesn't depend on the visitor's time zone. If nothing upcoming remains,
-// show the .ev-empty message instead. Events without a data-date are left alone.
+// Anything with data-date="YYYY-MM-DD" — each .ev in the list, plus the featured
+// event's hero pill and #congreso callout — stays up through its own day and is
+// removed the day after. "Today" is computed in Denver time so the cutoff doesn't
+// depend on the visitor's time zone. If no list events remain, show the
+// .ev-empty message instead. Elements without a data-date are left alone.
 (function(){
   let today;
   try{ today=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Denver',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()); }
   catch(e){ const d=new Date(); today=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
-  document.querySelectorAll('.events-list .ev[data-date]').forEach(ev=>{ if(ev.dataset.date<today) ev.remove(); });
+  document.querySelectorAll('[data-date]').forEach(el=>{ if(el.dataset.date<today) el.remove(); });
   const empty=document.querySelector('.ev-empty');
   if(empty && !document.querySelector('.events-list .ev')) empty.hidden=false;
 })();
