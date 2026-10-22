@@ -120,16 +120,17 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
 .cg-rsvp .btn:hover{background:#8A4720}
 .cg-rsvp p{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--turquoise-deep)}
 .cg-body{background:var(--bone);padding:3.6rem 0 3.4rem;border-bottom:1px solid var(--line)}
-.cg-copy{max-width:62ch;margin:0 auto}
+.cg-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,340px);gap:3.5rem;align-items:center}
+.cg-copy{max-width:62ch}
 .cg-head{font-family:var(--display);font-weight:500;font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.2;margin:0 0 1.1rem;max-width:none;text-wrap:balance}
 .cg-head em{font-style:italic;color:var(--turquoise-deep)}
 .cg-copy p+p{margin-top:.9rem}
-.cg-credits{margin-top:3rem;display:flex;flex-direction:column;align-items:center;text-align:center}
-.cg-logos{display:flex;align-items:center;justify-content:center;gap:2.6rem;flex-wrap:wrap}
+.cg-credits{display:flex;flex-direction:column;align-items:center;text-align:center;border-left:1px solid var(--line);padding:.6rem 0 .6rem 3rem}
+.cg-logos{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap}
 .cg-logos img{height:60px;width:auto;mix-blend-mode:multiply}
 .cg-logos img.sq{height:80px}
 .cg-logos+.cg-label{margin-top:1.6rem}
-@media (max-width:860px){.cg-details{grid-template-columns:1fr 1fr}.cg-rsvp{grid-column:1/-1;align-items:flex-start;text-align:left;padding-top:0}}
+@media (max-width:860px){.cg-grid{grid-template-columns:1fr;gap:2.8rem}.cg-copy{margin:0 auto}.cg-credits{border-left:0;padding:0}.cg-details{grid-template-columns:1fr 1fr}.cg-rsvp{grid-column:1/-1;align-items:flex-start;text-align:left;padding-top:0}}
 @media (max-width:600px){.cg-details{grid-template-columns:1fr;gap:1.8rem}.he-head{flex-direction:column;align-items:flex-start;gap:1.1rem}.he-chip{width:80px;height:80px;border-radius:18px}}
 #personhood{background:#FFFCF6;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .lineage{margin-top:2.6rem;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
@@ -438,7 +439,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
     </div>
   </div>
   <div class="cg-body">
-    <div class="wrap">
+    <div class="wrap cg-grid">
       <div class="cg-copy">
         <h2 class="cg-head" data-html="true" data-en='The South Platte is not a resource. <em>She is a relative.</em>' data-es='El South Platte no es un recurso. <em>Ella es nuestra pariente.</em>'>The South Platte is not a resource. <em>She is a relative.</em></h2>
         <p data-en="Join River Sisters Colorado at the Latino Cultural Arts Center’s new home for a day of learning, sharing, laughter, and cultural creativity, and hear about our Personhood and Turquoise Necklace initiatives." data-es="Acompaña a River Sisters Colorado en el nuevo hogar del Latino Cultural Arts Center para un día de aprendizaje, convivencia, risas y creatividad cultural, y conoce nuestras iniciativas de Personalidad Jurídica del Río y el Collar Turquesa.">Join River Sisters Colorado at the Latino Cultural Arts Center’s new home for a day of learning, sharing, laughter, and cultural creativity, and hear about our Personhood and Turquoise Necklace initiatives.</p>
