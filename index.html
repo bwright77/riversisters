@@ -96,36 +96,41 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
 .split{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:start}
 
 /* Personhood lineage */
-/* Featured event (temporary): .hero-event replaces the standard hero and #congreso
-   is its details strip. Both carry data-date and are removed by the "Hide past
-   events" script the day after, which also reveals .hero-default (data-after). */
-.he-head{display:flex;align-items:center;gap:1.5rem}
-.he-chip{width:104px;height:104px;border-radius:24px;flex:none}
-.hero-event h1{max-width:none}
+/* Featured event (temporary), laid out like the Nov 14 flyer: .hero-event is the
+   header on the hero image; #congreso holds the mint details band and the body.
+   Both carry data-date and are removed by the "Hide past events" script the day
+   after, which also reveals .hero-default (data-after). */
+.hero .wrap:has(> .hero-event){padding-top:3.6rem;padding-bottom:3.8rem}
+.hero-event .eyebrow{color:var(--bone);margin-bottom:1.8rem}
+.he-head{display:flex;align-items:center;gap:1.8rem}
+.he-chip{width:128px;height:128px;border-radius:28px;flex:none}
+.hero-event h1{max-width:none;font-size:clamp(2.2rem,5vw,3.7rem);line-height:1.06}
 .hero-event h1 em{display:block}
-.he-when{margin-top:1.6rem;font-size:1.2rem;font-weight:700;color:var(--bone)}
-.he-where{margin-top:.25rem;font-size:1.02rem}
-.he-where a{color:rgba(246,241,232,.9);text-underline-offset:3px}
-.he-where a:hover{color:var(--bone)}
-.hero .wrap:has(> .hero-event){padding-top:3.2rem;padding-bottom:4.2rem}
-.he-line{margin-top:1.7rem;font-family:var(--display);font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.25;color:var(--bone);max-width:46ch;text-wrap:balance}
-.he-line em{font-style:italic;color:#6FD1CB}
-.hero-event p.lede+p.lede{margin-top:.8rem}
-.hero-event .btn.solid{background:var(--clay-deep)}
-.hero-event .btn.solid:hover{background:#8A4720}
-#congreso{background:#E2EEEA;padding:2.6rem 0;border-bottom:1px solid var(--line)}
-.eb-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem;align-items:start}
-.fc-label{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--turquoise-deep);margin-bottom:.45rem}
-.fc-big{font-family:var(--display);font-size:1.5rem;font-weight:600;line-height:1.2}
-.fc-free{color:var(--clay-deep);font-weight:700;font-size:1.15rem}
-.fc-venue{height:46px;width:auto;margin:.1rem 0 .55rem;mix-blend-mode:multiply}
-.fc-addr{color:var(--ink);text-underline-offset:3px}
-.fc-logos{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
-.fc-logos img{height:44px;width:auto;mix-blend-mode:multiply}
-.fc-logos img.sq{height:58px}
-.fc-logos+.fc-label{margin-top:1rem}
-@media (max-width:760px){.eb-grid{grid-template-columns:1fr;gap:1.6rem}}
-@media (max-width:560px){.he-head{flex-direction:column;align-items:flex-start;gap:1rem}.he-chip{width:68px;height:68px;border-radius:16px}}
+#congreso{padding:0}
+.cg-band{background:#E2EEEA;padding:2.6rem 0}
+.cg-details{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) auto;gap:2.5rem;align-items:start}
+.cg-label{font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--turquoise-deep);margin-bottom:.55rem}
+.cg-big{font-family:var(--display);font-size:clamp(1.9rem,3.4vw,2.5rem);font-weight:600;line-height:1.1;margin-bottom:.45rem}
+.cg-line{font-size:1.08rem;line-height:1.5}
+.cg-free{margin-top:.3rem;color:var(--clay-deep);font-weight:700;font-size:1.2rem}
+.cg-venue{height:62px;width:auto;margin:.15rem 0 .7rem;mix-blend-mode:multiply}
+.cg-addr{color:var(--ink);font-size:1.08rem;line-height:1.55;text-underline-offset:3px}
+.cg-rsvp{display:flex;flex-direction:column;align-items:center;gap:.65rem;text-align:center;padding-top:1.2rem}
+.cg-rsvp .btn{background:var(--clay-deep);color:#fff;font-size:1rem;padding:.95rem 1.8rem}
+.cg-rsvp .btn:hover{background:#8A4720}
+.cg-rsvp p{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--turquoise-deep)}
+.cg-body{background:var(--bone);padding:3.6rem 0 3.4rem;border-bottom:1px solid var(--line)}
+.cg-copy{max-width:62ch;margin:0 auto}
+.cg-head{font-family:var(--display);font-weight:500;font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.2;margin:0 0 1.1rem;max-width:none;text-wrap:balance}
+.cg-head em{font-style:italic;color:var(--turquoise-deep)}
+.cg-copy p+p{margin-top:.9rem}
+.cg-credits{margin-top:3rem;display:flex;flex-direction:column;align-items:center;text-align:center}
+.cg-logos{display:flex;align-items:center;justify-content:center;gap:2.6rem;flex-wrap:wrap}
+.cg-logos img{height:60px;width:auto;mix-blend-mode:multiply}
+.cg-logos img.sq{height:80px}
+.cg-logos+.cg-label{margin-top:1.6rem}
+@media (max-width:860px){.cg-details{grid-template-columns:1fr 1fr}.cg-rsvp{grid-column:1/-1;align-items:flex-start;text-align:left;padding-top:0}}
+@media (max-width:600px){.cg-details{grid-template-columns:1fr;gap:1.8rem}.he-head{flex-direction:column;align-items:flex-start;gap:1.1rem}.he-chip{width:80px;height:80px;border-radius:18px}}
 #personhood{background:#FFFCF6;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .lineage{margin-top:2.6rem;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
 .lin{position:relative;padding:0 .8rem 0 0}
@@ -388,21 +393,13 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
 <main id="main">
 <section class="hero" id="top">
   <div class="wrap">
-    <!-- EVENT HERO (temporary): the Nov 14 Congreso flyer. The "Hide past events"
-         script removes it the day after (data-date) and reveals the standard hero. -->
+    <!-- EVENT HERO (temporary): the Nov 14 Congreso flyer's header. The "Hide past
+         events" script removes it the day after (data-date) and reveals the standard hero. -->
     <div class="hero-event" data-date="2026-11-14">
       <p class="eyebrow" data-en="A gathering for the South Platte River" data-es="Un encuentro por el Río South Platte">A gathering for the South Platte River</p>
       <div class="he-head">
-        <img class="he-chip" src="assets/river-sisters-glyph.svg" alt="" width="104" height="104">
+        <img class="he-chip" src="assets/river-sisters-glyph.svg" alt="" width="128" height="128">
         <h1>River Sisters Colorado Congreso <em>Hermanas del Río</em></h1>
-      </div>
-      <p class="he-when" data-en="Saturday, Nov 14, 2026 · 8 am – 3 pm · Free" data-es="Sábado 14 de noviembre de 2026 · 8 am – 3 pm · Gratis">Saturday, Nov 14, 2026 · 8 am – 3 pm · Free</p>
-      <p class="he-where"><a href="https://www.google.com/maps/search/?api=1&amp;query=Latino%20Cultural%20Arts%20Center%2C%201935%20W%2012th%20Ave%2C%20Denver%2C%20CO%2080204" target="_blank" rel="noopener">Latino Cultural Arts Center · 1935 W 12th Ave, Denver, CO 80204</a></p>
-      <p class="he-line" data-html="true" data-en='The South Platte is not a resource. <em>She is a relative.</em>' data-es='El South Platte no es un recurso. <em>Ella es nuestra pariente.</em>'>The South Platte is not a resource. <em>She is a relative.</em></p>
-      <p class="lede" data-en="Join River Sisters Colorado at the Latino Cultural Arts Center’s new home for a day of learning, sharing, laughter, and cultural creativity, and hear about our Personhood and Turquoise Necklace initiatives." data-es="Acompaña a River Sisters Colorado en el nuevo hogar del Latino Cultural Arts Center para un día de aprendizaje, convivencia, risas y creatividad cultural, y conoce nuestras iniciativas de Personalidad Jurídica del Río y el Collar Turquesa.">Join River Sisters Colorado at the Latino Cultural Arts Center’s new home for a day of learning, sharing, laughter, and cultural creativity, and hear about our Personhood and Turquoise Necklace initiatives.</p>
-      <p class="lede" data-en="Everyone is welcome. We especially call in our Chicano, Native, and Mexicano Gente to share family stories of our Relative, the South Platte River, through art." data-es="Todos son bienvenidos. Hacemos un llamado especial a nuestra Gente Chicana, Nativa y Mexicana para compartir, a través del arte, sus historias familiares de nuestra Pariente, el Río South Platte.">Everyone is welcome. We especially call in our Chicano, Native, and Mexicano Gente to share family stories of our Relative, the South Platte River, through art.</p>
-      <div class="actions">
-        <a class="btn solid" href="https://www.eventbrite.com/e/river-sisters-colorado-congreso-tickets-2003679038943?aff=website" target="_blank" rel="noopener" data-en="RSVP free on Eventbrite" data-es="Confirma gratis en Eventbrite">RSVP free on Eventbrite</a>
       </div>
     </div>
     <!-- STANDARD HERO: hidden until the day after the event (data-after). -->
@@ -418,29 +415,46 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
   </div>
 </section>
 
-<section id="congreso" data-date="2026-11-14" aria-label="River Sisters Colorado Congreso — details">
-  <div class="wrap eb-grid">
-    <div>
-      <p class="fc-label" data-en="When" data-es="Cuándo">When</p>
-      <p class="fc-big" data-en="Nov 14, 2026" data-es="14 de noviembre de 2026">Nov 14, 2026</p>
-      <p data-en="Saturday · 8 am – 3 pm" data-es="Sábado · 8 am – 3 pm">Saturday · 8 am – 3 pm</p>
-      <p class="fc-free" data-en="Free" data-es="Gratis">Free</p>
+<!-- The flyer's details band + body for the Nov 14 Congreso; removed the day after (data-date). -->
+<section id="congreso" data-date="2026-11-14" aria-label="River Sisters Colorado Congreso — event details">
+  <div class="cg-band">
+    <div class="wrap cg-details">
+      <div>
+        <p class="cg-label" data-en="When" data-es="Cuándo">When</p>
+        <p class="cg-big" data-en="Nov 14, 2026" data-es="14 de noviembre de 2026">Nov 14, 2026</p>
+        <p class="cg-line" data-en="Saturday" data-es="Sábado">Saturday</p>
+        <p class="cg-line">8 am – 3 pm</p>
+        <p class="cg-free" data-en="Free" data-es="Gratis">Free</p>
+      </div>
+      <div>
+        <p class="cg-label" data-en="Where" data-es="Dónde">Where</p>
+        <img class="cg-venue" src="assets/logos/lcac_logo.png" alt="Latino Cultural Arts Center" width="433" height="187" loading="lazy">
+        <a class="cg-addr" href="https://www.google.com/maps/search/?api=1&amp;query=Latino%20Cultural%20Arts%20Center%2C%201935%20W%2012th%20Ave%2C%20Denver%2C%20CO%2080204" target="_blank" rel="noopener">1935 W 12th Ave<br>Denver, CO 80204</a>
+      </div>
+      <div class="cg-rsvp">
+        <a class="btn" href="https://www.eventbrite.com/e/river-sisters-colorado-congreso-tickets-2003679038943?aff=website" target="_blank" rel="noopener" data-en="RSVP — it’s free" data-es="Confirma — es gratis">RSVP — it’s free</a>
+        <p data-en="Register on Eventbrite" data-es="Regístrate en Eventbrite">Register on Eventbrite</p>
+      </div>
     </div>
-    <div>
-      <p class="fc-label" data-en="Where" data-es="Dónde">Where</p>
-      <img class="fc-venue" src="assets/logos/lcac_logo.png" alt="Latino Cultural Arts Center" width="433" height="187" loading="lazy">
-      <a class="fc-addr" href="https://www.google.com/maps/search/?api=1&amp;query=Latino%20Cultural%20Arts%20Center%2C%201935%20W%2012th%20Ave%2C%20Denver%2C%20CO%2080204" target="_blank" rel="noopener">1935 W 12th Ave<br>Denver, CO 80204</a>
-    </div>
-    <div>
-      <p class="fc-label" data-en="Presented by" data-es="Presentado por">Presented by</p>
-        <div class="fc-logos">
+  </div>
+  <div class="cg-body">
+    <div class="wrap">
+      <div class="cg-copy">
+        <h2 class="cg-head" data-html="true" data-en='The South Platte is not a resource. <em>She is a relative.</em>' data-es='El South Platte no es un recurso. <em>Ella es nuestra pariente.</em>'>The South Platte is not a resource. <em>She is a relative.</em></h2>
+        <p data-en="Join River Sisters Colorado at the Latino Cultural Arts Center’s new home for a day of learning, sharing, laughter, and cultural creativity, and hear about our Personhood and Turquoise Necklace initiatives." data-es="Acompaña a River Sisters Colorado en el nuevo hogar del Latino Cultural Arts Center para un día de aprendizaje, convivencia, risas y creatividad cultural, y conoce nuestras iniciativas de Personalidad Jurídica del Río y el Collar Turquesa.">Join River Sisters Colorado at the Latino Cultural Arts Center’s new home for a day of learning, sharing, laughter, and cultural creativity, and hear about our Personhood and Turquoise Necklace initiatives.</p>
+        <p data-en="Everyone is welcome. We especially call in our Chicano, Native, and Mexicano Gente to share family stories of our Relative, the South Platte River, through art." data-es="Todos son bienvenidos. Hacemos un llamado especial a nuestra Gente Chicana, Nativa y Mexicana para compartir, a través del arte, sus historias familiares de nuestra Pariente, el Río South Platte.">Everyone is welcome. We especially call in our Chicano, Native, and Mexicano Gente to share family stories of our Relative, the South Platte River, through art.</p>
+      </div>
+      <div class="cg-credits">
+        <p class="cg-label" data-en="Presented by" data-es="Presentado por">Presented by</p>
+        <div class="cg-logos">
           <img src="assets/logos/confluence-colorado.png" alt="Confluence Colorado" loading="lazy">
           <img class="sq" src="assets/logos/spirit-of-the-sun.webp" alt="Spirit of the Sun" width="500" height="500" loading="lazy">
         </div>
-        <p class="fc-label" data-en="Sponsored by" data-es="Patrocinado por">Sponsored by</p>
-        <div class="fc-logos">
+        <p class="cg-label" data-en="Sponsored by" data-es="Patrocinado por">Sponsored by</p>
+        <div class="cg-logos">
           <img src="assets/logos/cpw-logo.png" alt="Colorado Parks &amp; Wildlife" width="242" height="90" loading="lazy">
         </div>
+      </div>
     </div>
   </div>
 </section>
