@@ -205,6 +205,8 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
 .legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
 .legend .t{background:var(--turquoise)}
 .legend .c{background:var(--clay);border-radius:2px;transform:rotate(45deg)}
+.nk-orient{margin-top:1.1rem;display:flex;gap:.6rem;align-items:flex-start;font-size:.88rem;line-height:1.5;color:rgba(246,240,229,.88);max-width:46ch}
+.nk-orient svg{width:22px;height:22px;flex:none;margin-top:.05rem;color:var(--bone)}
 @media (max-width:1024px){
   .necklace-stage{grid-template-columns:1fr}
   .necklace-info{position:static}
@@ -514,6 +516,10 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
           <span><i class="t"></i><span data-en="Park / open space" data-es="Parque / espacio abierto">Park / open space</span></span>
           <span><i class="c"></i><span data-en="The Pendant — Sun Valley Riverfront Park" data-es="El Pendiente — Sun Valley Riverfront Park">The Pendant — Sun Valley Riverfront Park</span></span>
         </div>
+        <p class="nk-orient">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.4"/><path d="M12 3.5 15 12H9z" fill="#8FD6D4"/><path d="M12 20.5 15 12H9z" fill="currentColor" fill-opacity=".45"/></svg>
+          <span data-en="South is up: the map follows her current. The South Platte runs north, so she flows from the top of the page to the bottom." data-es="El sur está arriba: el mapa sigue su corriente. El Río South Platte corre hacia el norte, por eso fluye de arriba hacia abajo en la página.">South is up: the map follows her current. The South Platte runs north, so she flows from the top of the page to the bottom.</span>
+        </p>
       </div>
     </div>
   </div>
@@ -1339,11 +1345,25 @@ el('path',{d:linePath(rv),stroke:'#8FD6D4',fill:'none','stroke-width':3.5,opacit
 const _ys=pts.map(p=>p.y);
 const vbTop=Math.max(0,Math.min(..._ys)-55),vbBot=Math.min(H,Math.max(..._ys)+82),vbH=vbBot-vbTop;
 svg.setAttribute('viewBox',`0 ${Math.round(vbTop)} ${W} ${Math.round(vbH)}`);
-// Flow label + south-up compass (N points down) + scale bar
+// Flow label + compass rose + scale bar
 txt(pts[0].x-178,pts[0].y+30,'South Platte River — flows north ↓',{fill:'rgba(143,214,212,.75)','font-size':'9.5','font-style':'italic'});
-el('path',{d:`M 22 ${vbTop+24} l 0 16 m -5 -6 l 5 6 l 5 -6`,stroke:'rgba(246,240,229,.75)',fill:'none','stroke-width':1.6,'stroke-linecap':'round','stroke-linejoin':'round'});
-txt(22,vbTop+56,'N',{'text-anchor':'middle',fill:'rgba(246,240,229,.75)','font-size':'10','font-weight':'700'});
-txt(22,vbTop+16,'S',{'text-anchor':'middle',fill:'rgba(246,240,229,.4)','font-size':'9','font-weight':'700'});
+// Compass rose, bottom-right: SOUTH AT THE TOP (east left, west right) because the map
+// follows her flow — the South Platte runs north, down the page. South is the bright point.
+{
+  const CX=362,CY=vbBot-62,R=30,rose=el('g',{'aria-hidden':'true'});
+  el('circle',{cx:CX,cy:CY,r:R,fill:'rgba(36,28,20,.3)',stroke:'rgba(246,240,229,.42)','stroke-width':1.2},rose);
+  el('circle',{cx:CX,cy:CY,r:R-6,fill:'none',stroke:'rgba(246,240,229,.16)','stroke-width':1},rose);
+  el('path',{d:`M ${CX-17} ${CY} L ${CX} ${CY-4.5} L ${CX} ${CY+4.5} Z M ${CX+17} ${CY} L ${CX} ${CY-4.5} L ${CX} ${CY+4.5} Z`,fill:'rgba(246,240,229,.32)'},rose); // E–W
+  el('path',{d:`M ${CX} ${CY+26} L ${CX+6.5} ${CY} L ${CX-6.5} ${CY} Z`,fill:'rgba(246,240,229,.5)'},rose);   // N (down)
+  el('path',{d:`M ${CX} ${CY-26} L ${CX+6.5} ${CY} L ${CX-6.5} ${CY} Z`,fill:'#8FD6D4'},rose);                // S (up)
+  el('circle',{cx:CX,cy:CY,r:2.2,fill:'#241C14'},rose);
+  const L={'text-anchor':'middle','font-weight':'700'};
+  txt(CX,CY-R-7,'S',Object.assign({fill:'#8FD6D4','font-size':'15'},L)).setAttribute('aria-hidden','true');
+  txt(CX,CY+R+15,'N',Object.assign({fill:'rgba(246,240,229,.72)','font-size':'11'},L)).setAttribute('aria-hidden','true');
+  txt(CX-R-9,CY+4,'E',Object.assign({fill:'rgba(246,240,229,.6)','font-size':'10'},L)).setAttribute('aria-hidden','true');
+  const w=txt(CX+R+9,CY+4,'W',Object.assign({fill:'rgba(246,240,229,.6)','font-size':'10','data-en':'W','data-es':'O'},L)); // oeste
+  w.setAttribute('aria-hidden','true');
+}
 const _sb=vbBot-12;
 el('line',{x1:16,y1:_sb,x2:16+57.7,y2:_sb,stroke:'rgba(246,240,229,.7)','stroke-width':1.6});
 el('line',{x1:16,y1:_sb-5,x2:16,y2:_sb+5,stroke:'rgba(246,240,229,.7)','stroke-width':1.6});

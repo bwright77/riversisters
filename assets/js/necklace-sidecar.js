@@ -74,6 +74,78 @@ const BASEMAP = {
 // the South Platte flowing DOWN the page as you scroll down (downstream/north).
 const CAMERA = { zoom: 14.3, bearing: 180, pitch: 0, flyDuration: 1200 };
 
+/* ---- orientation control ---------------------------------------------------
+   Replaces MapLibre's compass (which only ever resets to north-up, with no way
+   back). A needle always points to TRUE north with an upright "N"; the label says
+   which way is up; a click toggles south-up <-> north-up (from any free rotation,
+   it returns to south-up). The chosen bearing is kept for the scroll steps. */
+class OrientationControl {
+  constructor({ getLang, getPreferred, onToggle }) {
+    this._getLang = getLang;
+    this._getPreferred = getPreferred; // the bearing the user has chosen (180 or 0)
+    this._onToggle = onToggle;
+  }
+  onAdd(map) {
+    this._map = map;
+    const c = document.createElement('div');
+    c.className = 'maplibregl-ctrl maplibregl-ctrl-group nk-orient-ctrl';
+    c.innerHTML =
+      '<button type="button" class="nk-orient-btn">' +
+        '<span class="nk-orient-dial" aria-hidden="true">' +
+          '<svg class="nk-orient-needle" viewBox="0 0 40 40">' +
+            '<circle cx="20" cy="20" r="18.5" fill="none" stroke="#241C14" stroke-opacity=".18"/>' +
+            '<path d="M20 11 24 20H16z" fill="#A85A28"/>' +
+            '<path d="M20 29 24 20H16z" fill="#241C14" fill-opacity=".3"/>' +
+            '<circle cx="20" cy="20" r="2" fill="#241C14"/>' +
+          '</svg>' +
+          '<span class="nk-orient-n">N</span>' +
+        '</span>' +
+        '<span class="nk-orient-text"></span>' +
+      '</button>';
+    this._btn = c.querySelector('button');
+    this._needle = c.querySelector('.nk-orient-needle');
+    this._n = c.querySelector('.nk-orient-n');
+    this._text = c.querySelector('.nk-orient-text');
+    this._btn.addEventListener('click', () => this._onToggle(this.mode()));
+    this._sync = () => this.update();
+    map.on('rotate', this._sync);
+    this._container = c;
+    this.update();
+    return c;
+  }
+  onRemove() {
+    this._map.off('rotate', this._sync);
+    this._container.remove();
+  }
+  mode() {
+    const b = ((this._map.getBearing() % 360) + 360) % 360;
+    if (Math.abs(b - 180) < 30) return 'south';
+    if (b < 30 || b > 330) return 'north';
+    return 'free';
+  }
+  update() {
+    if (!this._map) return;
+    const bearing = this._map.getBearing();
+    const a = (-bearing * Math.PI) / 180; // where north sits on screen (0 = up)
+    this._needle.style.transform = `rotate(${-bearing}deg)`;
+    this._n.style.transform = `translate(${(Math.sin(a) * 15).toFixed(2)}px, ${(-Math.cos(a) * 15).toFixed(2)}px)`;
+    const es = this._getLang() === 'es';
+    const m = this.mode();
+    this._text.textContent =
+      m === 'south' ? (es ? 'Sur arriba' : 'South up')
+      : m === 'north' ? (es ? 'Norte arriba' : 'North up')
+      : (es ? 'Girado' : 'Rotated');
+    // What a click will do: flip the CHOSEN orientation (not the possibly mid-turn
+    // bearing, so a quick second click still flips back); free rotation -> south-up.
+    const toNorth = m !== 'free' && this._getPreferred() === 180;
+    const action = toNorth
+      ? (es ? 'Mostrar el norte arriba' : 'Show north at the top')
+      : (es ? 'Mostrar el sur arriba' : 'Show south at the top');
+    this._btn.setAttribute('aria-label', action);
+    this._btn.title = action;
+  }
+}
+
 /* ---- tiny loaders (idempotent) ------------------------------------------- */
 const _loaded = {};
 function loadScript(src) {
@@ -327,6 +399,10 @@ export default async function mountSidecar(bodyEl, opts = {}) {
   // we graft them on after the style loads.
   const styleIsUrl = typeof styleValue === 'string';
   let map;
+  let orientCtrl;
+  // South-up by default; the orientation control can switch it, and the scroll
+  // steps fly with whatever was chosen.
+  let preferredBearing = CAMERA.bearing;
   try {
     map = new maplibregl.Map({
       container: mapEl,
@@ -340,7 +416,16 @@ export default async function mountSidecar(bodyEl, opts = {}) {
       maxZoom: 17,
       minZoom: 8,
     });
-    map.addControl(new maplibregl.NavigationControl({ showCompass: true, visualizePitch: true }), 'top-left');
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
+    orientCtrl = new OrientationControl({
+      getLang: () => lang,
+      getPreferred: () => preferredBearing,
+      onToggle: (mode) => {
+        preferredBearing = mode !== 'free' && preferredBearing === 180 ? 0 : 180;
+        map.easeTo({ bearing: preferredBearing, duration: prefersReducedMotion() ? 0 : 700 });
+      },
+    });
+    map.addControl(orientCtrl, 'top-left');
   } catch (err) {
     // Most common cause: WebGL2 unavailable (headless / GPU-less browser).
     return failToList(err);
@@ -464,7 +549,7 @@ export default async function mountSidecar(bodyEl, opts = {}) {
     const b = beads[idx];
 
     map.stop(); // guard the queued-zoom bug under rapid stepping
-    const cam = { center: b.center, zoom: CAMERA.zoom, bearing: CAMERA.bearing, pitch: CAMERA.pitch };
+    const cam = { center: b.center, zoom: CAMERA.zoom, bearing: preferredBearing, pitch: CAMERA.pitch };
     if (fly && !prefersReducedMotion()) map.flyTo({ ...cam, duration: CAMERA.flyDuration, essential: true });
     else map.jumpTo(cam);
 
@@ -591,6 +676,8 @@ export default async function mountSidecar(bodyEl, opts = {}) {
         list.appendChild(li);
       });
     }
+    // orientation control label
+    if (orientCtrl) orientCtrl.update();
     // active label marker text
     if (activeIndex >= 0 && typeof labelEl !== 'undefined') {
       labelEl.textContent = beads[activeIndex]['name_' + lang];

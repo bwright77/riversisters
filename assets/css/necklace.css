@@ -176,3 +176,10 @@
 /* MapLibre attribution stays legible on the bone canvas. */
 .nk-overlay .maplibregl-ctrl-attrib{font-size:10px;background:rgba(244,241,234,.7)}
 .nk-overlay .maplibregl-ctrl-attrib a{color:var(--turquoise-deep)}
+
+/* Orientation control (replaces MapLibre's reset-only compass): needle always
+   points to true north with an upright "N"; label shows which way is up. */
+.nk-overlay .nk-orient-ctrl button.nk-orient-btn{width:auto;height:auto;display:flex;align-items:center;gap:.45rem;padding:3px 11px 3px 3px;font:700 12px/1 Karla,Arial,sans-serif;letter-spacing:.02em;color:#241C14;white-space:nowrap}
+.nk-orient-dial{position:relative;width:40px;height:40px;flex:none}
+.nk-orient-needle{position:absolute;inset:0;width:100%;height:100%}
+.nk-orient-n{position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;font:800 10px/12px Karla,Arial,sans-serif;text-align:center;color:#A85A28;pointer-events:none}
