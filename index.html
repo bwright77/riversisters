@@ -21,6 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@600;700&text=CONFLUENCOLORAD&display=swap" rel="stylesheet"><!-- Confluence Colorado lockup only -->
 <link rel="stylesheet" href="/assets/css/necklace.css">
 <style>
 :root{
@@ -137,6 +138,12 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
 .cg-logos img{height:60px;width:auto;mix-blend-mode:multiply}
 .cg-logos img.sq{height:80px}
 .cg-logos img.wm{height:44px}
+/* Confluence Colorado lockup, matching the confluenceco.org footer: mark + Jost wordmark */
+.cclock{display:inline-flex;align-items:center;gap:.75em;font-family:"Jost",var(--body,sans-serif);line-height:1;text-align:left}
+.cclock img,.cg-logos .cclock img,.plogo .cclock img{width:3.5em;height:3.5em;max-height:none;flex:none;mix-blend-mode:normal}
+.cclock b{display:block;font-weight:700;font-size:1.45em;letter-spacing:.06em;color:#004667}
+.cclock i{display:block;font-style:normal;font-weight:600;font-size:.9em;letter-spacing:.2em;color:#009dd6}
+.plogo .cclock{font-size:13px}
 .cg-tiers{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem .75rem;width:100%;margin-top:.35rem}
 .cg-tier{display:flex;flex-direction:column;align-items:center;gap:.55rem}
 .cg-tier.wide{grid-column:1/-1}
@@ -471,7 +478,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       <div class="cg-credits">
         <p class="cg-label" data-en="Presented by" data-es="Presentado por">Presented by</p>
         <div class="cg-logos">
-          <img src="assets/logos/confluence-colorado.png" alt="Confluence Colorado" loading="lazy">
+          <span class="cclock" role="img" aria-label="Confluence Colorado"><img src="assets/logos/confluence-mark.svg" alt="" width="56" height="56"><span><b>CONFLUENCE</b><i>COLORADO</i></span></span>
           <img class="sq" src="assets/logos/spirit-of-the-sun.webp" alt="Spirit of the Sun" width="500" height="500" loading="lazy">
         </div>
         <p class="cg-label" data-en="Sponsored by" data-es="Patrocinado por">Sponsored by</p>
@@ -803,7 +810,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
         <img src="assets/logos/greenway-foundation.png" alt="The Greenway Foundation" loading="lazy">
       </a>
       <a class="plogo" href="https://www.confluenceco.org/" target="_blank" rel="noopener" aria-label="Confluence Colorado (opens in a new tab)">
-        <img src="assets/logos/confluence-colorado.png" alt="Confluence Colorado" loading="lazy">
+        <span class="cclock" role="img" aria-label="Confluence Colorado"><img src="assets/logos/confluence-mark.svg" alt="" width="56" height="56"><span><b>CONFLUENCE</b><i>COLORADO</i></span></span>
       </a>
       <a class="plogo" href="https://serviciosdelaraza.org/" target="_blank" rel="noopener" aria-label="Servicios de La Raza (opens in a new tab)">
         <img src="assets/logos/servicios-de-la-raza.png" alt="Servicios de La Raza" loading="lazy">
