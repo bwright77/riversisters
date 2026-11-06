@@ -144,6 +144,9 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
 .cclock b{display:block;font-weight:700;font-size:1.45em;letter-spacing:.06em;color:#004667}
 .cclock i{display:block;font-style:normal;font-weight:600;font-size:.9em;letter-spacing:.2em;color:#009dd6}
 .plogo .cclock{font-size:13px}
+.cg-presenters{flex-wrap:nowrap;gap:1.1rem}
+.cg-presenters img.sq{height:72px}
+.cg-presenters .cclock{font-size:13.5px}
 .cg-tiers{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem .75rem;width:100%;margin-top:.35rem}
 .cg-tier{display:flex;flex-direction:column;align-items:center;gap:.55rem}
 .cg-tier.wide{grid-column:1/-1}
@@ -477,9 +480,9 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       </div>
       <div class="cg-credits">
         <p class="cg-label" data-en="Presented by" data-es="Presentado por">Presented by</p>
-        <div class="cg-logos">
-          <span class="cclock" role="img" aria-label="Confluence Colorado"><img src="assets/logos/confluence-mark.svg" alt="" width="56" height="56"><span><b>CONFLUENCE</b><i>COLORADO</i></span></span>
+        <div class="cg-logos cg-presenters">
           <img class="sq" src="assets/logos/spirit-of-the-sun.webp" alt="Spirit of the Sun" width="500" height="500" loading="lazy">
+          <span class="cclock" role="img" aria-label="Confluence Colorado"><img src="assets/logos/confluence-mark.svg" alt="" width="56" height="56"><span><b>CONFLUENCE</b><i>COLORADO</i></span></span>
         </div>
         <p class="cg-label" data-en="Sponsored by" data-es="Patrocinado por">Sponsored by</p>
         <div class="cg-tiers">
