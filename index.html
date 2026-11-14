@@ -266,9 +266,71 @@ h2{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.5re
 #action .btn.solid:hover{background:#000}
 .btn.has-icon{display:inline-flex;align-items:center;gap:.55rem}
 .btn.has-icon svg{width:1.15em;height:1.15em;flex:none}
-.signup{margin-top:1.9rem;display:flex;gap:.7rem;max-width:600px;flex-wrap:wrap}
+.signup{margin-top:1.9rem;display:flex;gap:.7rem;max-width:760px;flex-wrap:wrap}
 .signup input{flex:1 1 240px;padding:.78rem 1.1rem;border-radius:99px;border:0;font-family:var(--body);font-size:.95rem}
 .signup .micro{flex-basis:100%;font-size:.78rem;color:rgba(255,255,255,.85)}
+
+/* Petition + Share your story */
+.btn.petition{background:var(--bone);color:var(--clay-deep)}
+.btn.petition:hover{background:#fff}
+nav.primary a.nav-petition{color:var(--clay-deep)}
+#share{background:#FFFCF6;border-top:1px solid var(--line);scroll-margin-top:70px}
+#share h2 em{font-style:italic;color:var(--turquoise-deep)}
+.share-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:3rem;align-items:start}
+.share-notes{margin:1.3rem 0 0;padding-left:1.15rem;font-size:.95rem}
+.share-notes li{margin:.4rem 0}
+.share-card{background:var(--bone);border:1px solid var(--line);border-radius:18px;padding:1.8rem}
+.share-card h3{font-family:var(--display);font-weight:500;font-size:1.5rem;line-height:1.2}
+.share-addr{margin:.35rem 0 1.1rem;font-weight:700;font-size:1.05rem;overflow-wrap:anywhere}
+.share-addr a{color:var(--turquoise-deep);text-underline-offset:3px}
+.share-list{margin:.5rem 0 1.4rem;padding-left:1.15rem;font-size:.95rem}
+.share-list li{margin:.35rem 0}
+.share-card .btn.solid{background:var(--clay-deep)}
+.share-card .btn.solid:hover{background:#8A4720}
+.share-fine{margin:.9rem 0 0;font-size:.8rem;color:rgba(36,28,20,.72)}
+@media (max-width:860px){.share-grid{grid-template-columns:1fr;gap:2rem}}
+@media (max-width:560px){.share-card{padding:1.3rem}.share-addr{font-size:.9rem}}
+.share-photo{margin:1.8rem 0 0;border-radius:14px;overflow:hidden;aspect-ratio:3/2;background:#e8e2d8}
+.share-photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Congreso recap (post-event): photos + sponsor thank-you */
+#gracias{background:var(--bone);border-bottom:1px solid var(--line)}
+#gracias h2{max-width:none;text-wrap:balance}
+#gracias h2 em,.gr-sponsors h3 em{font-style:italic;color:var(--turquoise-deep)}
+.gr-head{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.9fr);gap:3rem;align-items:end}
+.gr-actions{display:flex;flex-wrap:wrap;gap:.7rem;padding-bottom:.3rem}
+.gr-actions p{flex-basis:100%;margin-bottom:.4rem}
+.gr-actions .btn.solid{background:var(--clay-deep)}
+.gr-actions .btn.solid:hover{background:#8A4720}
+.btn.line{border-color:var(--turquoise-deep);color:var(--turquoise-deep)}
+.btn.line:hover{background:var(--turquoise-deep);color:#fff}
+.gr-mosaic{display:grid;grid-template-columns:1fr 1.25fr 1.25fr 1fr;grid-template-rows:250px 250px;gap:.8rem;margin-top:2.6rem}
+.gr-mosaic figure{margin:0;border-radius:14px;overflow:hidden;background:#e8e2d8}
+.gr-mosaic img{width:100%;height:100%;object-fit:cover;display:block}
+.gr-a{grid-row:1/3;grid-column:1}
+.gr-b{grid-row:1;grid-column:2/4}
+.gr-c{grid-row:1/3;grid-column:4}
+.gr-d{grid-row:2;grid-column:2}
+.gr-e{grid-row:2;grid-column:3}
+.gr-b img{object-position:50% 35%}
+.gr-d img{object-position:40% 30%}
+.gr-sponsors{margin-top:3.2rem;padding-top:2.6rem;border-top:1px solid var(--line);text-align:center}
+.gr-sponsors h3{font-family:var(--display);font-weight:500;font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:1.8rem}
+.gr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.2rem 2rem;align-items:start}
+.gr-col{display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.gr-col .cg-logos{min-height:72px}
+.gr-col .cg-level{font-size:.72rem}
+.gr-col .cg-logos img.fo{height:80px}
+.gr-col .cg-logos img.d7{height:78px}
+.gr-col .cg-logos img.cpw{height:60px}
+.gr-col .cg-logos img.wm{height:52px}
+.gr-col .cg-logos img.gw{height:40px}
+.gr-col .cg-logos img.dw{height:26px}
+.gr-col .cg-presenters img.sq{height:86px}
+.gr-col .cg-presenters .cclock{font-size:15.5px}
+.gr-col .cg-names{font-size:.95rem}
+@media (max-width:860px){.gr-head{grid-template-columns:1fr;gap:1.4rem}.gr-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:190px;grid-auto-flow:dense}.gr-a,.gr-c{grid-row:span 2;grid-column:auto}.gr-b{grid-row:auto;grid-column:1/-1}.gr-d,.gr-e{grid-row:auto;grid-column:auto}.gr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.gr-grid{grid-template-columns:1fr}}
 
 /* Footer */
 footer.site{background:linear-gradient(rgba(26,22,18,.72),rgba(26,22,18,.72)), #3A332C url(assets/img/footer-bg.jpg) center/cover;color:rgba(246,240,229,.93);padding:3rem 0 2.2rem;font-size:.9rem}
@@ -407,12 +469,14 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       <a href="#personhood" data-en="River Personhood" data-es="Personería del Río">River Personhood</a>
       <a href="#necklace" data-en="Turquoise Necklace" data-es="Collar Turquesa">Turquoise Necklace</a>
       <a href="#principles" data-en="Guiding Principles" data-es="Principios Rectores">Guiding Principles</a>
+      <a class="nav-petition" href="https://secure.ngpvan.com/aab4JnSbwUm6yG2PghPJvw2" target="_blank" rel="noopener" data-en="Sign the Petition" data-es="Firma la Petición">Sign the Petition</a>
       <div class="nav-more">
         <button class="nav-more-btn" type="button" aria-expanded="false" aria-controls="more-menu" data-en="More" data-es="Más">More</button>
         <div class="more-menu" id="more-menu" hidden>
           <a href="#members" data-en="Members" data-es="Miembros">Members</a>
           <a href="#partners" data-en="Partners" data-es="Aliados">Partners</a>
           <a href="#events" data-en="Events" data-es="Eventos">Events</a>
+          <a href="#share" data-en="Share Your Story" data-es="Comparte tu Historia">Share Your Story</a>
           <a href="#action" data-en="Take Action" data-es="Actúa">Take Action</a>
         </div>
       </div>
@@ -429,7 +493,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
   <div class="wrap">
     <!-- EVENT HERO (temporary): the Nov 14 Congreso flyer's header. The "Hide past
          events" script removes it the day after (data-date) and reveals the standard hero. -->
-    <div class="hero-event" data-date="2026-11-14">
+    <div class="hero-event" data-date="2026-11-13">
       <p class="eyebrow" data-en="A gathering for the South Platte River" data-es="Un encuentro por el Río South Platte">A gathering for the South Platte River</p>
       <div class="he-head">
         <img class="he-chip" src="assets/river-sisters-glyph.svg" alt="" width="128" height="128">
@@ -437,20 +501,20 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       </div>
     </div>
     <!-- STANDARD HERO: hidden until the day after the event (data-after). -->
-    <div class="hero-default" data-after="2026-11-14" hidden>
+    <div class="hero-default" data-after="2026-11-13" hidden>
       <p class="eyebrow" data-en="A coalition of Native / Chicano / Mexicano leaders · Denver, Colorado" data-es="Una coalición de líderes Nativos / Chicanos / Mexicanos · Denver, Colorado">A coalition of Native / Chicano / Mexicano leaders · Denver, Colorado</p>
       <h1 data-en='The South Platte is not a resource. <em>She is a relative.</em>' data-es='El Río South Platte no es un recurso. <em>Es una pariente.</em>' data-html="true">The South Platte is not a resource. <em>She is a relative.</em></h1>
       <p class="lede" data-en="River Sisters Colorado Congreso works to restore balance, health, and respect for the South Platte River as a living relative — through cultural preservation, environmental justice, policy advocacy, and ceremonial practice." data-es="El Congreso Colorado River Sisters trabaja para restaurar el equilibrio, la salud y el respeto por el Río South Platte como una pariente viva — a través de la preservación cultural, la justicia ambiental, la incidencia política y la práctica ceremonial.">River Sisters Colorado Congreso works to restore balance, health, and respect for the South Platte River as a living relative — through cultural preservation, environmental justice, policy advocacy, and ceremonial practice.</p>
       <div class="actions">
-        <a class="btn solid" href="#action" data-en="Stand with the River" data-es="Apoya al Río">Stand with the River</a>
-        <a class="btn ghost" href="#personhood" data-en="The Personhood Framework" data-es="El Marco de Personería">The Personhood Framework</a>
+        <a class="btn solid" href="https://secure.ngpvan.com/aab4JnSbwUm6yG2PghPJvw2" target="_blank" rel="noopener" data-en="Sign the petition" data-es="Firma la petición">Sign the petition</a>
+        <a class="btn ghost" href="#share" data-en="Share your story" data-es="Comparte tu historia">Share your story</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- The flyer's details band + body for the Nov 14 Congreso; removed the day after (data-date). -->
-<section id="congreso" data-date="2026-11-14" aria-label="River Sisters Colorado Congreso — event details">
+<section id="congreso" data-date="2026-11-13" aria-label="River Sisters Colorado Congreso — event details">
   <div class="cg-band">
     <div class="wrap cg-details">
       <div>
@@ -516,6 +580,72 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
             <p class="cg-level">Community Waters</p>
             <p class="cg-names">Colorado Rising for Communities<br>Alan Salazar</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONGRESO RECAP (post-event): photos from Nov 14 and a thank-you to sponsors.
+     Hidden until the event has passed (data-after), like the standard hero. -->
+<section id="gracias" data-after="2026-11-13" hidden aria-label="Thank you from the Nov 14 Congreso">
+  <div class="wrap">
+    <div class="gr-head">
+      <div>
+        <p class="eyebrow" data-en="Nov 14, 2026 · Latino Cultural Arts Center" data-es="14 nov. 2026 · Latino Cultural Arts Center">Nov 14, 2026 · Latino Cultural Arts Center</p>
+        <h2 data-html="true" data-en='Thank you for gathering <em>with us</em>' data-es='Gracias por <em>acompañarnos</em>'>Thank you for gathering <em>with us</em></h2>
+        <p class="section-lede" data-en="On November 14, community members, Elders, youth, and Wisdom Keepers came together at the Latino Cultural Arts Center's new home. We gathered at the River, shared stories in our Visual Arts, Poetry, and Oral History circles, and carried forward the work of River Personhood and the Turquoise Necklace." data-es="El 14 de noviembre, miembros de la comunidad, Mayores, jóvenes y Guardianes de la Sabiduría se reunieron en el nuevo hogar del Latino Cultural Arts Center. Nos reunimos junto al Río, compartimos historias en nuestros círculos de Artes visuales, Poesía e Historia oral, y seguimos adelante con el trabajo de la Personalidad Jurídica del Río y el Collar Turquesa.">On November 14, community members, Elders, youth, and Wisdom Keepers came together at the Latino Cultural Arts Center's new home. We gathered at the River, shared stories in our Visual Arts, Poetry, and Oral History circles, and carried forward the work of River Personhood and the Turquoise Necklace.</p>
+      </div>
+      <div class="gr-actions">
+        <p data-en="The work continues. Add your name to the petition, and send us your stories, art, and poetry about the River." data-es="El trabajo continúa. Agrega tu nombre a la petición y envíanos tus historias, arte y poesía sobre el Río.">The work continues. Add your name to the petition, and send us your stories, art, and poetry about the River.</p>
+        <a class="btn solid" href="https://secure.ngpvan.com/aab4JnSbwUm6yG2PghPJvw2" target="_blank" rel="noopener" data-en="Sign the petition" data-es="Firma la petición">Sign the petition</a>
+        <a class="btn line" href="#share" data-en="Share your story" data-es="Comparte tu historia">Share your story</a>
+      </div>
+    </div>
+
+    <div class="gr-mosaic">
+      <figure class="gr-a"><img src="assets/img/congreso-2026/river-walk.jpg" alt="Congreso participants walking together along a tree-lined trail by the South Platte River" width="1000" height="1500" loading="lazy"></figure>
+      <figure class="gr-b"><img src="assets/img/congreso-2026/river-gathering.jpg" alt="Elders and community members gathered on the rocks at the River's edge" width="1600" height="1067" loading="lazy"></figure>
+      <figure class="gr-c"><img src="assets/img/congreso-2026/elder-river.jpg" alt="An Elder speaking among the grasses by the River, hat in hand" width="867" height="1300" loading="lazy"></figure>
+      <figure class="gr-d"><img src="assets/img/congreso-2026/speaker-mural.jpg" alt="A speaker smiling at the microphone in front of a colorful mural" width="1400" height="933" loading="lazy"></figure>
+      <figure class="gr-e"><img src="assets/img/congreso-2026/workshop.jpg" alt="Participants working together at tables in the Latino Cultural Arts Center" width="1400" height="933" loading="lazy"></figure>
+    </div>
+
+    <div class="gr-sponsors">
+      <h3 data-html="true" data-en='Thank you to our <em>sponsors</em>' data-es='Gracias a nuestros <em>patrocinadores</em>'>Thank you to our <em>sponsors</em></h3>
+      <div class="gr-grid">
+        <div class="gr-col">
+          <p class="cg-level" data-en="Presented by" data-es="Presentado por">Presented by</p>
+          <div class="cg-logos cg-presenters">
+            <img class="sq" src="assets/logos/spirit-of-the-sun.webp" alt="Spirit of the Sun" width="500" height="500" loading="lazy">
+            <span class="cclock" role="img" aria-label="Confluence Colorado"><img src="assets/logos/confluence-mark.svg" alt="" width="56" height="56"><span><b>CONFLUENCE</b><i>COLORADO</i></span></span>
+          </div>
+        </div>
+        <div class="gr-col">
+          <p class="cg-level">Turquoise Necklace</p>
+          <div class="cg-logos">
+            <img class="fo" src="assets/logos/forever-our-rivers.png" alt="Forever Our Rivers" width="197" height="200" loading="lazy">
+            <img class="cpw" src="assets/logos/cpw-logo.png" alt="Colorado Parks &amp; Wildlife" width="242" height="90" loading="lazy">
+          </div>
+        </div>
+        <div class="gr-col">
+          <p class="cg-level">River Guardian</p>
+          <div class="cg-logos">
+            <img class="d7" src="assets/logos/alvidrez-district7.png" alt="Denver City Council District 7 - Councilwoman Flor Alvidrez" width="520" height="562" loading="lazy">
+            <img class="wm" src="assets/logos/denver-casr.png" alt="Denver Climate Action, Sustainability &amp; Resiliency" width="600" height="233" loading="lazy">
+          </div>
+        </div>
+        <div class="gr-col">
+          <p class="cg-level">River Partner</p>
+          <div class="cg-logos"><img class="gw" src="assets/logos/greenway-foundation.png" alt="The Greenway Foundation" width="627" height="195" loading="lazy"></div>
+        </div>
+        <div class="gr-col">
+          <p class="cg-level">Wisdom Keeper</p>
+          <div class="cg-logos"><img class="dw" src="assets/logos/DW-Horizontal.png" alt="Denver Water" width="321" height="58" loading="lazy"></div>
+        </div>
+        <div class="gr-col">
+          <p class="cg-level">Community Waters</p>
+          <p class="cg-names">Colorado Rising for Communities<br>Alan Salazar</p>
         </div>
       </div>
     </div>
@@ -884,7 +1014,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
         </div>
         <span class="ev-tag tag-community" data-en="Necklace" data-es="Collar">Necklace</span>
       </div>
-      <div class="ev" data-date="2026-11-14">
+      <div class="ev" data-date="2026-11-13">
         <div class="ev-date"><span class="d">14</span><span class="m" data-en="Nov · Sat" data-es="Nov · Sáb">Nov · Sat</span></div>
         <div class="ev-body">
           <h3 data-en="River Sisters Colorado Congreso" data-es="Encuentro del River Sisters Colorado Congreso">River Sisters Colorado Congreso</h3>
@@ -909,15 +1039,49 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
   </div>
 </section>
 
+<!-- SHARE YOUR STORY: stories, visual art, and poetry, sent by email to the Congreso.
+     The button's pre-filled email swaps language with data-en-href / data-es-href. -->
+<section id="share">
+  <div class="wrap share-grid">
+    <div class="share-copy">
+      <p class="eyebrow" data-en="Share your story" data-es="Comparte tu historia">Share your story</p>
+      <h2 data-html="true" data-en='What does the River mean <em>to your family?</em>' data-es='¿Qué significa el Río <em>para tu familia?</em>'>What does the River mean <em>to your family?</em></h2>
+      <p class="section-lede" data-en="We are gathering family stories, visual art, and poetry about our Relative, the South Platte River. Memories, photos, paintings, poems, songs you wrote: if the River is part of your story, we want to hear it. Everyone is welcome, and we especially call in our Chicano, Native, and Mexicano Gente." data-es="Estamos reuniendo historias familiares, arte visual y poesía sobre nuestra Pariente, el Río South Platte. Recuerdos, fotos, pinturas, poemas, canciones que escribiste: si el Río es parte de tu historia, queremos escucharla. Todos son bienvenidos, y hacemos un llamado especial a nuestra Gente Chicana, Nativa y Mexicana.">We are gathering family stories, visual art, and poetry about our Relative, the South Platte River. Memories, photos, paintings, poems, songs you wrote: if the River is part of your story, we want to hear it. Everyone is welcome, and we especially call in our Chicano, Native, and Mexicano Gente.</p>
+      <ul class="share-notes">
+        <li data-en="Write in English, Spanish, or both." data-es="Escribe en inglés, español o ambos.">Write in English, Spanish, or both.</li>
+        <li data-en="For art or photos, attach the files to your email. For large files, a link (Google Drive, Dropbox, Instagram) works too." data-es="Para arte o fotos, adjunta los archivos a tu correo. Para archivos grandes, también sirve un enlace (Google Drive, Dropbox, Instagram).">For art or photos, attach the files to your email. For large files, a link (Google Drive, Dropbox, Instagram) works too.</li>
+        <li data-en="Your work stays yours. We will only share it publicly if you tell us we may." data-es="Tu obra sigue siendo tuya. Solo la compartiremos públicamente si nos das permiso.">Your work stays yours. We will only share it publicly if you tell us we may.</li>
+      </ul>
+      <figure class="share-photo"><img src="assets/img/congreso-2026/art-table.jpg" alt="Participants around a long table of art materials at the Congreso" width="1400" height="933" loading="lazy"></figure>
+    </div>
+
+    <div class="share-card">
+      <h3 data-en="Email us your story" data-es="Envíanos tu historia">Email us your story</h3>
+      <p class="share-addr"><a href="mailto:congreso@riversisterscolorado.com">congreso@riversisterscolorado.com</a></p>
+      <p data-en="In your email, please include:" data-es="En tu correo, por favor incluye:">In your email, please include:</p>
+      <ul class="share-list">
+        <li data-en="Your name, and how you'd like to be credited (full name, first name only, or anonymous)" data-es="Tu nombre, y cómo quieres que te demos crédito (nombre completo, solo nombre o anónimo)">Your name, and how you'd like to be credited (full name, first name only, or anonymous)</li>
+        <li data-en="What you're sharing: a story, visual art or photos, poetry or song" data-es="Qué compartes: una historia, arte visual o fotos, poesía o canción">What you're sharing: a story, visual art or photos, poetry or song</li>
+        <li data-en="Your story or poem in the email, or your art, photos, or recording as attachments" data-es="Tu historia o poema en el correo, o tu arte, fotos o grabación como archivos adjuntos">Your story or poem in the email, or your art, photos, or recording as attachments</li>
+        <li data-en="That it's your own work, or that you have permission to share it" data-es="Que es tu propia obra, o que tienes permiso para compartirla">That it's your own work, or that you have permission to share it</li>
+        <li data-en="Whether River Sisters may share it publicly (website, social media, events)" data-es="Si River Sisters puede compartirla públicamente (sitio web, redes sociales, eventos)">Whether River Sisters may share it publicly (website, social media, events)</li>
+      </ul>
+      <a class="btn solid has-icon" href="mailto:congreso@riversisterscolorado.com?subject=My%20story%20for%20River%20Sisters&amp;body=Name%3A%0AWhat%20I%27m%20sharing%20%28story%2C%20visual%20art%2C%20poetry%2C%20other%29%3A%0ATitle%20%28optional%29%3A%0AHow%20to%20credit%20me%20%28full%20name%2C%20first%20name%20only%2C%20or%20anonymous%29%3A%0AThis%20is%20my%20own%20work%2C%20or%20I%20have%20permission%20to%20share%20it%20%28yes%2Fno%29%3A%0ARiver%20Sisters%20may%20share%20it%20publicly%20with%20that%20credit%20%28yes%2Fno%29%3A%0A%0AMy%20story%20or%20poem%20%28or%20attach%20your%20art%2C%20photos%2C%20or%20recording%29%3A%0A%0A" data-en-href="mailto:congreso@riversisterscolorado.com?subject=My%20story%20for%20River%20Sisters&amp;body=Name%3A%0AWhat%20I%27m%20sharing%20%28story%2C%20visual%20art%2C%20poetry%2C%20other%29%3A%0ATitle%20%28optional%29%3A%0AHow%20to%20credit%20me%20%28full%20name%2C%20first%20name%20only%2C%20or%20anonymous%29%3A%0AThis%20is%20my%20own%20work%2C%20or%20I%20have%20permission%20to%20share%20it%20%28yes%2Fno%29%3A%0ARiver%20Sisters%20may%20share%20it%20publicly%20with%20that%20credit%20%28yes%2Fno%29%3A%0A%0AMy%20story%20or%20poem%20%28or%20attach%20your%20art%2C%20photos%2C%20or%20recording%29%3A%0A%0A" data-es-href="mailto:congreso@riversisterscolorado.com?subject=Mi%20historia%20para%20River%20Sisters&amp;body=Nombre%3A%0AQu%C3%A9%20comparto%20%28historia%2C%20arte%20visual%2C%20poes%C3%ADa%2C%20otra%20cosa%29%3A%0AT%C3%ADtulo%20%28opcional%29%3A%0AC%C3%B3mo%20darme%20cr%C3%A9dito%20%28nombre%20completo%2C%20solo%20nombre%20o%20an%C3%B3nimo%29%3A%0AEs%20mi%20propia%20obra%2C%20o%20tengo%20permiso%20para%20compartirla%20%28s%C3%AD%2Fno%29%3A%0ARiver%20Sisters%20puede%20compartirla%20p%C3%BAblicamente%20con%20ese%20cr%C3%A9dito%20%28s%C3%AD%2Fno%29%3A%0A%0AMi%20historia%20o%20poema%20%28o%20adjunta%20tu%20arte%2C%20fotos%20o%20grabaci%C3%B3n%29%3A%0A%0A"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M2.5 6.5 12 13l9.5-6.5"/></svg><span data-en="Email your story" data-es="Envía tu historia">Email your story</span></a>
+      <p class="share-fine" data-en="The button opens your email app with these questions ready to fill in. You can also write to the address above from any email account." data-es="El botón abre tu app de correo con estas preguntas listas para responder. También puedes escribir a la dirección de arriba desde cualquier cuenta de correo.">The button opens your email app with these questions ready to fill in. You can also write to the address above from any email account.</p>
+    </div>
+  </div>
+</section>
+
 <section id="action">
   <div class="wrap">
     <p class="eyebrow" data-en="Call to action" data-es="Llamado a la acción">Call to action</p>
     <h2 data-en="Denver can become the national model for a city that honors its river." data-es="Denver puede ser el modelo nacional de una ciudad que honra a su río.">Denver can become the national model for a city that honors its river.</h2>
     <p data-en="The Congreso calls on Denver City Council to recognize the South Platte as a living relative, integrate cultural guardianship into river planning, and embed environmental equity into municipal policy — endorsing the River Personhood Framework and the Turquoise Necklace as city-recognized initiatives." data-es="El Congreso llama al Concejo Municipal de Denver a reconocer al Río South Platte como una pariente viva, integrar la guardianía cultural en la planificación del río e incorporar la equidad ambiental en la política municipal, respaldando el Marco de Personería del Río y el Collar Turquesa como iniciativas reconocidas por la ciudad.">The Congreso calls on Denver City Council to recognize the South Platte as a living relative, integrate cultural guardianship into river planning, and embed environmental equity into municipal policy — endorsing the River Personhood Framework and the Turquoise Necklace as city-recognized initiatives.</p>
     <div class="signup">
+      <a class="btn petition has-icon" href="https://secure.ngpvan.com/aab4JnSbwUm6yG2PghPJvw2" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span data-en="Sign the petition" data-es="Firma la petición">Sign the petition</span></a>
       <a class="btn solid has-icon" href="https://www.facebook.com/profile.php?id=61593018248203" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.03 4.39 11.03 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.32l-.53 3.49h-2.79v8.44C19.61 23.1 24 18.1 24 12.07z"/></svg><span data-en="Follow us on Facebook" data-es="Síguenos en Facebook">Follow us on Facebook</span></a>
       <a class="btn ghost has-icon" href="mailto:congreso@riversisterscolorado.com"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M2.5 6.5 12 13l9.5-6.5"/></svg><span data-en="Email the Congreso" data-es="Escribe al Congreso">Email the Congreso</span></a>
-      <p class="micro" data-en="Follow us on Facebook for the latest news and events." data-es="Síguenos en Facebook para las últimas noticias y eventos.">Follow us on Facebook for the latest news and events.</p>
+      <p class="micro" data-en="Add your name to the petition to protect the South Platte River as a living relative, and follow us on Facebook for news and events." data-es="Agrega tu nombre a la petición para proteger al Río South Platte como una pariente viva, y síguenos en Facebook para noticias y eventos.">Add your name to the petition to protect the South Platte River as a living relative, and follow us on Facebook for news and events.</p>
     </div>
   </div>
 </section>
@@ -937,7 +1101,9 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
         <h4 data-en="Explore" data-es="Explora">Explore</h4>
         <p><a href="#personhood" data-en="River Personhood" data-es="Personería del Río">River Personhood</a><br>
         <a href="#necklace" data-en="Turquoise Necklace" data-es="Collar Turquesa">Turquoise Necklace</a><br>
-        <a href="#principles" data-en="Guiding Principles" data-es="Principios Rectores">Guiding Principles</a></p>
+        <a href="#principles" data-en="Guiding Principles" data-es="Principios Rectores">Guiding Principles</a><br>
+        <a href="https://secure.ngpvan.com/aab4JnSbwUm6yG2PghPJvw2" target="_blank" rel="noopener" data-en="Sign the Petition" data-es="Firma la Petición">Sign the Petition</a><br>
+        <a href="#share" data-en="Share Your Story" data-es="Comparte tu Historia">Share Your Story</a></p>
       </div>
       <div>
         <h4 data-en="Contact" data-es="Contacto">Contact</h4>
@@ -1484,6 +1650,7 @@ const swap=l=>{
   });
   document.querySelectorAll('[data-'+l+'-label]').forEach(el=>el.setAttribute('aria-label',el.getAttribute('data-'+l+'-label')));
   document.querySelectorAll('[data-'+l+'-title]').forEach(el=>el.setAttribute('title',el.getAttribute('data-'+l+'-title')));
+  document.querySelectorAll('[data-'+l+'-href]').forEach(el=>el.setAttribute('href',el.getAttribute('data-'+l+'-href')));
   document.getElementById('btn-en').setAttribute('aria-pressed',l==='en');
   document.getElementById('btn-es').setAttribute('aria-pressed',l==='es');
   refreshBeadLabels();
