@@ -94,3 +94,10 @@ Headless Chrome via Playwright at 1280x800 and 390x844:
 - No sacred or ceremonial symbols that haven't been vetted
 - Don't describe River Sisters as a lobbying organization
 - Single-file site: keep markup, styles and script inline in `index.html`
+
+## Update: Congreso recap + sponsor thank-you (added Nov 14)
+
+- New `#gracias` section right after the hero (`data-after="2026-11-13" hidden`, so it appears with the standard hero once merged): "Thank you for gathering with us", petition + Share your story buttons, a 5-photo mosaic, and a "Thank you to our sponsors" grid (Presented by + the five sponsor levels, reusing the `.cg-*` logo classes).
+- Photos are Benjamin's own from the day (vetted for use). Compressed, metadata-stripped copies live in `assets/img/congreso-2026/`; the 15-23 MB originals in `assets/img/congreso/` are git-ignored.
+- `#share` now shows the art-table photo under the notes.
+- Recap copy (EN + ES) is Claude-drafted and needs the same Congreso review as the `#share` copy.

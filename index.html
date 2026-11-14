@@ -300,6 +300,47 @@ nav.primary a.nav-petition{color:var(--clay-deep)}
 .f-status.err{color:#B3261E}
 @media (max-width:860px){.share-grid{grid-template-columns:1fr;gap:2rem}}
 @media (max-width:560px){.f-row.two{grid-template-columns:1fr}.share-form{padding:1.2rem}}
+.share-photo{margin:1.8rem 0 0;border-radius:14px;overflow:hidden;aspect-ratio:3/2;background:#e8e2d8}
+.share-photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Congreso recap (post-event): photos + sponsor thank-you */
+#gracias{background:var(--bone);border-bottom:1px solid var(--line)}
+#gracias h2{max-width:none;text-wrap:balance}
+#gracias h2 em,.gr-sponsors h3 em{font-style:italic;color:var(--turquoise-deep)}
+.gr-head{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.9fr);gap:3rem;align-items:end}
+.gr-actions{display:flex;flex-wrap:wrap;gap:.7rem;padding-bottom:.3rem}
+.gr-actions p{flex-basis:100%;margin-bottom:.4rem}
+.gr-actions .btn.solid{background:var(--clay-deep)}
+.gr-actions .btn.solid:hover{background:#8A4720}
+.btn.line{border-color:var(--turquoise-deep);color:var(--turquoise-deep)}
+.btn.line:hover{background:var(--turquoise-deep);color:#fff}
+.gr-mosaic{display:grid;grid-template-columns:1fr 1.25fr 1.25fr 1fr;grid-template-rows:250px 250px;gap:.8rem;margin-top:2.6rem}
+.gr-mosaic figure{margin:0;border-radius:14px;overflow:hidden;background:#e8e2d8}
+.gr-mosaic img{width:100%;height:100%;object-fit:cover;display:block}
+.gr-a{grid-row:1/3;grid-column:1}
+.gr-b{grid-row:1;grid-column:2/4}
+.gr-c{grid-row:1/3;grid-column:4}
+.gr-d{grid-row:2;grid-column:2}
+.gr-e{grid-row:2;grid-column:3}
+.gr-b img{object-position:50% 35%}
+.gr-d img{object-position:40% 30%}
+.gr-sponsors{margin-top:3.2rem;padding-top:2.6rem;border-top:1px solid var(--line);text-align:center}
+.gr-sponsors h3{font-family:var(--display);font-weight:500;font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:1.8rem}
+.gr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.2rem 2rem;align-items:start}
+.gr-col{display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.gr-col .cg-logos{min-height:72px}
+.gr-col .cg-level{font-size:.72rem}
+.gr-col .cg-logos img.fo{height:80px}
+.gr-col .cg-logos img.d7{height:78px}
+.gr-col .cg-logos img.cpw{height:60px}
+.gr-col .cg-logos img.wm{height:52px}
+.gr-col .cg-logos img.gw{height:40px}
+.gr-col .cg-logos img.dw{height:26px}
+.gr-col .cg-presenters img.sq{height:86px}
+.gr-col .cg-presenters .cclock{font-size:15.5px}
+.gr-col .cg-names{font-size:.95rem}
+@media (max-width:860px){.gr-head{grid-template-columns:1fr;gap:1.4rem}.gr-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:190px;grid-auto-flow:dense}.gr-a,.gr-c{grid-row:span 2;grid-column:auto}.gr-b{grid-row:auto;grid-column:1/-1}.gr-d,.gr-e{grid-row:auto;grid-column:auto}.gr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.gr-grid{grid-template-columns:1fr}}
 
 /* Footer */
 footer.site{background:linear-gradient(rgba(26,22,18,.72),rgba(26,22,18,.72)), #3A332C url(assets/img/footer-bg.jpg) center/cover;color:rgba(246,240,229,.93);padding:3rem 0 2.2rem;font-size:.9rem}
@@ -549,6 +590,72 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
             <p class="cg-level">Community Waters</p>
             <p class="cg-names">Colorado Rising for Communities<br>Alan Salazar</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONGRESO RECAP (post-event): photos from Nov 14 and a thank-you to sponsors.
+     Hidden until the event has passed (data-after), like the standard hero. -->
+<section id="gracias" data-after="2026-11-13" hidden aria-label="Thank you from the Nov 14 Congreso">
+  <div class="wrap">
+    <div class="gr-head">
+      <div>
+        <p class="eyebrow" data-en="Nov 14, 2026 · Latino Cultural Arts Center" data-es="14 nov. 2026 · Latino Cultural Arts Center">Nov 14, 2026 · Latino Cultural Arts Center</p>
+        <h2 data-html="true" data-en='Thank you for gathering <em>with us</em>' data-es='Gracias por <em>acompañarnos</em>'>Thank you for gathering <em>with us</em></h2>
+        <p class="section-lede" data-en="On November 14, community members, Elders, youth, and Wisdom Keepers came together at the Latino Cultural Arts Center's new home. We gathered at the River, shared stories in our Visual Arts, Poetry, and Oral History circles, and carried forward the work of River Personhood and the Turquoise Necklace." data-es="El 14 de noviembre, miembros de la comunidad, Mayores, jóvenes y Guardianes de la Sabiduría se reunieron en el nuevo hogar del Latino Cultural Arts Center. Nos reunimos junto al Río, compartimos historias en nuestros círculos de Artes visuales, Poesía e Historia oral, y seguimos adelante con el trabajo de la Personalidad Jurídica del Río y el Collar Turquesa.">On November 14, community members, Elders, youth, and Wisdom Keepers came together at the Latino Cultural Arts Center's new home. We gathered at the River, shared stories in our Visual Arts, Poetry, and Oral History circles, and carried forward the work of River Personhood and the Turquoise Necklace.</p>
+      </div>
+      <div class="gr-actions">
+        <p data-en="The work continues. Add your name to the petition, and send us your stories, art, and poetry about the River." data-es="El trabajo continúa. Agrega tu nombre a la petición y envíanos tus historias, arte y poesía sobre el Río.">The work continues. Add your name to the petition, and send us your stories, art, and poetry about the River.</p>
+        <a class="btn solid" href="https://secure.ngpvan.com/aab4JnSbwUm6yG2PghPJvw2" target="_blank" rel="noopener" data-en="Sign the petition" data-es="Firma la petición">Sign the petition</a>
+        <a class="btn line" href="#share" data-en="Share your story" data-es="Comparte tu historia">Share your story</a>
+      </div>
+    </div>
+
+    <div class="gr-mosaic">
+      <figure class="gr-a"><img src="assets/img/congreso-2026/river-walk.jpg" alt="Congreso participants walking together along a tree-lined trail by the South Platte River" width="1000" height="1500" loading="lazy"></figure>
+      <figure class="gr-b"><img src="assets/img/congreso-2026/river-gathering.jpg" alt="Elders and community members gathered on the rocks at the River's edge" width="1600" height="1067" loading="lazy"></figure>
+      <figure class="gr-c"><img src="assets/img/congreso-2026/elder-river.jpg" alt="An Elder speaking among the grasses by the River, hat in hand" width="867" height="1300" loading="lazy"></figure>
+      <figure class="gr-d"><img src="assets/img/congreso-2026/speaker-mural.jpg" alt="A speaker smiling at the microphone in front of a colorful mural" width="1400" height="933" loading="lazy"></figure>
+      <figure class="gr-e"><img src="assets/img/congreso-2026/workshop.jpg" alt="Participants working together at tables in the Latino Cultural Arts Center" width="1400" height="933" loading="lazy"></figure>
+    </div>
+
+    <div class="gr-sponsors">
+      <h3 data-html="true" data-en='Thank you to our <em>sponsors</em>' data-es='Gracias a nuestros <em>patrocinadores</em>'>Thank you to our <em>sponsors</em></h3>
+      <div class="gr-grid">
+        <div class="gr-col">
+          <p class="cg-level" data-en="Presented by" data-es="Presentado por">Presented by</p>
+          <div class="cg-logos cg-presenters">
+            <img class="sq" src="assets/logos/spirit-of-the-sun.webp" alt="Spirit of the Sun" width="500" height="500" loading="lazy">
+            <span class="cclock" role="img" aria-label="Confluence Colorado"><img src="assets/logos/confluence-mark.svg" alt="" width="56" height="56"><span><b>CONFLUENCE</b><i>COLORADO</i></span></span>
+          </div>
+        </div>
+        <div class="gr-col">
+          <p class="cg-level">Turquoise Necklace</p>
+          <div class="cg-logos">
+            <img class="fo" src="assets/logos/forever-our-rivers.png" alt="Forever Our Rivers" width="197" height="200" loading="lazy">
+            <img class="cpw" src="assets/logos/cpw-logo.png" alt="Colorado Parks &amp; Wildlife" width="242" height="90" loading="lazy">
+          </div>
+        </div>
+        <div class="gr-col">
+          <p class="cg-level">River Guardian</p>
+          <div class="cg-logos">
+            <img class="d7" src="assets/logos/alvidrez-district7.png" alt="Denver City Council District 7 - Councilwoman Flor Alvidrez" width="520" height="562" loading="lazy">
+            <img class="wm" src="assets/logos/denver-casr.png" alt="Denver Climate Action, Sustainability &amp; Resiliency" width="600" height="233" loading="lazy">
+          </div>
+        </div>
+        <div class="gr-col">
+          <p class="cg-level">River Partner</p>
+          <div class="cg-logos"><img class="gw" src="assets/logos/greenway-foundation.png" alt="The Greenway Foundation" width="627" height="195" loading="lazy"></div>
+        </div>
+        <div class="gr-col">
+          <p class="cg-level">Wisdom Keeper</p>
+          <div class="cg-logos"><img class="dw" src="assets/logos/DW-Horizontal.png" alt="Denver Water" width="321" height="58" loading="lazy"></div>
+        </div>
+        <div class="gr-col">
+          <p class="cg-level">Community Waters</p>
+          <p class="cg-names">Colorado Rising for Communities<br>Alan Salazar</p>
         </div>
       </div>
     </div>
@@ -956,6 +1063,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
         <li data-en="For art or photos, paste a link (Google Drive, Dropbox, Instagram, etc.). If that's hard, send it and we'll follow up by email." data-es="Para arte o fotos, pega un enlace (Google Drive, Dropbox, Instagram, etc.). Si se te complica, envía el formulario y te escribimos.">For art or photos, paste a link (Google Drive, Dropbox, Instagram, etc.). If that's hard, send it and we'll follow up by email.</li>
         <li data-en="Your work stays yours. We will only share it publicly if you give permission below." data-es="Tu obra sigue siendo tuya. Solo la compartiremos públicamente si nos das permiso abajo.">Your work stays yours. We will only share it publicly if you give permission below.</li>
       </ul>
+      <figure class="share-photo"><img src="assets/img/congreso-2026/art-table.jpg" alt="Participants around a long table of art materials at the Congreso" width="1400" height="933" loading="lazy"></figure>
     </div>
 
     <form class="share-form" id="share-form" novalidate data-key="YOUR_WEB3FORMS_ACCESS_KEY" data-fallback="congreso@riversisterscolorado.com">
