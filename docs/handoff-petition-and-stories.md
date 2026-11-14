@@ -101,3 +101,12 @@ Headless Chrome via Playwright at 1280x800 and 390x844:
 - Photos are Benjamin's own from the day (vetted for use). Compressed, metadata-stripped copies live in `assets/img/congreso-2026/`; the 15-23 MB originals in `assets/img/congreso/` are git-ignored.
 - `#share` now shows the art-table photo under the notes.
 - Recap copy (EN + ES) is Claude-drafted and needs the same Congreso review as the `#share` copy.
+
+## Update: Share Your Story is email-only (Nov 14)
+
+The on-site form and Web3Forms are gone; sections 3-4 above and the Web3Forms TODOs/risks no longer apply. Getting a form-to-email service working means DNS records on riversisterscolorado.com (registrar: GoDaddy), so it's deferred.
+
+- `#share` now shows an "Email us your story" card: the address, what to include (name and credit, type, story or attachments, own-work confirmation, permission to share), and an "Email your story" button with a pre-filled subject and question template.
+- The button's mailto swaps language through `data-en-href` / `data-es-href` (handled in `swap()`, replacing the old placeholder swap).
+- Art and photos can be attached directly to the email.
+- Later option: a Vercel serverless function + an email API (e.g. Resend) with file uploads, once DNS access is sorted.

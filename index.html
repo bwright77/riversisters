@@ -279,27 +279,17 @@ nav.primary a.nav-petition{color:var(--clay-deep)}
 .share-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:3rem;align-items:start}
 .share-notes{margin:1.3rem 0 0;padding-left:1.15rem;font-size:.95rem}
 .share-notes li{margin:.4rem 0}
-.share-form{background:var(--bone);border:1px solid var(--line);border-radius:18px;padding:1.6rem;display:flex;flex-direction:column;gap:1rem}
-.share-form label{display:flex;flex-direction:column;gap:.35rem;font-size:.86rem;font-weight:700}
-.share-form label b{color:var(--clay-deep);font-weight:700}
-.share-form label > span{display:inline}
-.f-row.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.share-form input[type=text],.share-form input[type=email],.share-form input[type=url],.share-form select,.share-form textarea{font:inherit;font-weight:400;font-size:1rem;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:.7rem .85rem;width:100%}
-.share-form textarea{resize:vertical;min-height:9rem;line-height:1.5}
-.share-form input:focus,.share-form select:focus,.share-form textarea:focus{outline:3px solid var(--clay);outline-offset:1px;border-color:transparent}
-.share-form [aria-invalid=true]{border-color:#B3261E}
-.share-form label.f-check{flex-direction:row;align-items:flex-start;gap:.6rem;font-weight:400;font-size:.92rem;line-height:1.45}
-.f-check input{width:1.15rem;height:1.15rem;margin-top:.15rem;flex:none;accent-color:var(--turquoise-deep)}
-.share-form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-.f-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;margin-top:.3rem}
-.f-actions .btn{border:0;font-family:var(--body)}
-.f-actions .btn[disabled]{opacity:.6;cursor:wait}
-.f-fine{font-size:.78rem;color:rgba(36,28,20,.72);margin:0}
-.f-status{margin:0;font-weight:700;font-size:.95rem}
-.f-status.ok{color:var(--turquoise-deep)}
-.f-status.err{color:#B3261E}
+.share-card{background:var(--bone);border:1px solid var(--line);border-radius:18px;padding:1.8rem}
+.share-card h3{font-family:var(--display);font-weight:500;font-size:1.5rem;line-height:1.2}
+.share-addr{margin:.35rem 0 1.1rem;font-weight:700;font-size:1.05rem;overflow-wrap:anywhere}
+.share-addr a{color:var(--turquoise-deep);text-underline-offset:3px}
+.share-list{margin:.5rem 0 1.4rem;padding-left:1.15rem;font-size:.95rem}
+.share-list li{margin:.35rem 0}
+.share-card .btn.solid{background:var(--clay-deep)}
+.share-card .btn.solid:hover{background:#8A4720}
+.share-fine{margin:.9rem 0 0;font-size:.8rem;color:rgba(36,28,20,.72)}
 @media (max-width:860px){.share-grid{grid-template-columns:1fr;gap:2rem}}
-@media (max-width:560px){.f-row.two{grid-template-columns:1fr}.share-form{padding:1.2rem}}
+@media (max-width:560px){.share-card{padding:1.3rem}.share-addr{font-size:.9rem}}
 .share-photo{margin:1.8rem 0 0;border-radius:14px;overflow:hidden;aspect-ratio:3/2;background:#e8e2d8}
 .share-photo img{width:100%;height:100%;object-fit:cover;display:block}
 
@@ -1049,9 +1039,8 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
   </div>
 </section>
 
-<!-- SHARE YOUR STORY: stories, visual art, and poetry intake.
-     Submissions post to Web3Forms (form-to-email). Until a real access key is set in
-     data-key below, the form falls back to opening a pre-filled email to the Congreso. -->
+<!-- SHARE YOUR STORY: stories, visual art, and poetry, sent by email to the Congreso.
+     The button's pre-filled email swaps language with data-en-href / data-es-href. -->
 <section id="share">
   <div class="wrap share-grid">
     <div class="share-copy">
@@ -1060,54 +1049,26 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
       <p class="section-lede" data-en="We are gathering family stories, visual art, and poetry about our Relative, the South Platte River. Memories, photos, paintings, poems, songs you wrote: if the River is part of your story, we want to hear it. Everyone is welcome, and we especially call in our Chicano, Native, and Mexicano Gente." data-es="Estamos reuniendo historias familiares, arte visual y poesía sobre nuestra Pariente, el Río South Platte. Recuerdos, fotos, pinturas, poemas, canciones que escribiste: si el Río es parte de tu historia, queremos escucharla. Todos son bienvenidos, y hacemos un llamado especial a nuestra Gente Chicana, Nativa y Mexicana.">We are gathering family stories, visual art, and poetry about our Relative, the South Platte River. Memories, photos, paintings, poems, songs you wrote: if the River is part of your story, we want to hear it. Everyone is welcome, and we especially call in our Chicano, Native, and Mexicano Gente.</p>
       <ul class="share-notes">
         <li data-en="Write in English, Spanish, or both." data-es="Escribe en inglés, español o ambos.">Write in English, Spanish, or both.</li>
-        <li data-en="For art or photos, paste a link (Google Drive, Dropbox, Instagram, etc.). If that's hard, send it and we'll follow up by email." data-es="Para arte o fotos, pega un enlace (Google Drive, Dropbox, Instagram, etc.). Si se te complica, envía el formulario y te escribimos.">For art or photos, paste a link (Google Drive, Dropbox, Instagram, etc.). If that's hard, send it and we'll follow up by email.</li>
-        <li data-en="Your work stays yours. We will only share it publicly if you give permission below." data-es="Tu obra sigue siendo tuya. Solo la compartiremos públicamente si nos das permiso abajo.">Your work stays yours. We will only share it publicly if you give permission below.</li>
+        <li data-en="For art or photos, attach the files to your email. For large files, a link (Google Drive, Dropbox, Instagram) works too." data-es="Para arte o fotos, adjunta los archivos a tu correo. Para archivos grandes, también sirve un enlace (Google Drive, Dropbox, Instagram).">For art or photos, attach the files to your email. For large files, a link (Google Drive, Dropbox, Instagram) works too.</li>
+        <li data-en="Your work stays yours. We will only share it publicly if you tell us we may." data-es="Tu obra sigue siendo tuya. Solo la compartiremos públicamente si nos das permiso.">Your work stays yours. We will only share it publicly if you tell us we may.</li>
       </ul>
       <figure class="share-photo"><img src="assets/img/congreso-2026/art-table.jpg" alt="Participants around a long table of art materials at the Congreso" width="1400" height="933" loading="lazy"></figure>
     </div>
 
-    <form class="share-form" id="share-form" novalidate data-key="YOUR_WEB3FORMS_ACCESS_KEY" data-fallback="congreso@riversisterscolorado.com">
-      <div class="f-row two">
-        <label><span class="lbl"><span data-en="Your name" data-es="Tu nombre">Your name</span> <b aria-hidden="true">*</b></span>
-          <input type="text" name="name" autocomplete="name" required maxlength="120">
-        </label>
-        <label><span class="lbl"><span data-en="Email" data-es="Correo electrónico">Email</span> <b aria-hidden="true">*</b></span>
-          <input type="email" name="email" autocomplete="email" required maxlength="160">
-        </label>
-      </div>
-      <div class="f-row two">
-        <label><span class="lbl"><span data-en="What are you sharing?" data-es="¿Qué compartes?">What are you sharing?</span> <b aria-hidden="true">*</b></span>
-          <select name="type" required>
-            <option value="" data-en="Choose one" data-es="Elige una opción">Choose one</option>
-            <option value="Story" data-en="A story" data-es="Una historia">A story</option>
-            <option value="Visual art" data-en="Visual art or photos" data-es="Arte visual o fotos">Visual art or photos</option>
-            <option value="Poetry" data-en="Poetry or song" data-es="Poesía o canción">Poetry or song</option>
-            <option value="Other" data-en="Something else" data-es="Otra cosa">Something else</option>
-          </select>
-        </label>
-        <label><span data-en="Title (optional)" data-es="Título (opcional)">Title (optional)</span>
-          <input type="text" name="title" maxlength="160">
-        </label>
-      </div>
-      <label class="f-row"><span data-en="Your story or poem" data-es="Tu historia o poema">Your story or poem</span>
-        <textarea name="message" rows="7" maxlength="10000" data-en-ph="Tell us about you, your family, and the River." data-es-ph="Cuéntanos de ti, tu familia y el Río." placeholder="Tell us about you, your family, and the River."></textarea>
-      </label>
-      <label class="f-row"><span data-en="Link to your art, photos, or recording (optional)" data-es="Enlace a tu arte, fotos o grabación (opcional)">Link to your art, photos, or recording (optional)</span>
-        <input type="url" name="link" inputmode="url" maxlength="500" placeholder="https://">
-      </label>
-      <label class="f-row"><span data-en="How should we credit you? (optional)" data-es="¿Cómo te damos crédito? (opcional)">How should we credit you? (optional)</span>
-        <input type="text" name="credit" maxlength="160" data-en-ph="e.g. full name, first name only, or anonymous" data-es-ph="p. ej. nombre completo, solo nombre o anónimo" placeholder="e.g. full name, first name only, or anonymous">
-      </label>
-      <label class="f-check"><input type="checkbox" name="own_work" value="Yes" required> <span data-en="This is my own work, or I have permission to share it. *" data-es="Esta es mi propia obra, o tengo permiso para compartirla. *">This is my own work, or I have permission to share it. *</span></label>
-      <label class="f-check"><input type="checkbox" name="share_ok" value="Yes"> <span data-en="River Sisters may share my submission publicly (website, social media, events) with the credit above." data-es="River Sisters puede compartir mi envío públicamente (sitio web, redes sociales, eventos) con el crédito indicado.">River Sisters may share my submission publicly (website, social media, events) with the credit above.</span></label>
-      <!-- honeypot: humans never see or fill this -->
-      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="f-actions">
-        <button class="btn solid" type="submit" data-en="Send to the Congreso" data-es="Enviar al Congreso">Send to the Congreso</button>
-        <p class="f-fine" data-en="We use your email only to follow up about your submission." data-es="Usamos tu correo solo para darle seguimiento a tu envío.">We use your email only to follow up about your submission.</p>
-      </div>
-      <p class="f-status" role="status" aria-live="polite"></p>
-    </form>
+    <div class="share-card">
+      <h3 data-en="Email us your story" data-es="Envíanos tu historia">Email us your story</h3>
+      <p class="share-addr"><a href="mailto:congreso@riversisterscolorado.com">congreso@riversisterscolorado.com</a></p>
+      <p data-en="In your email, please include:" data-es="En tu correo, por favor incluye:">In your email, please include:</p>
+      <ul class="share-list">
+        <li data-en="Your name, and how you'd like to be credited (full name, first name only, or anonymous)" data-es="Tu nombre, y cómo quieres que te demos crédito (nombre completo, solo nombre o anónimo)">Your name, and how you'd like to be credited (full name, first name only, or anonymous)</li>
+        <li data-en="What you're sharing: a story, visual art or photos, poetry or song" data-es="Qué compartes: una historia, arte visual o fotos, poesía o canción">What you're sharing: a story, visual art or photos, poetry or song</li>
+        <li data-en="Your story or poem in the email, or your art, photos, or recording as attachments" data-es="Tu historia o poema en el correo, o tu arte, fotos o grabación como archivos adjuntos">Your story or poem in the email, or your art, photos, or recording as attachments</li>
+        <li data-en="That it's your own work, or that you have permission to share it" data-es="Que es tu propia obra, o que tienes permiso para compartirla">That it's your own work, or that you have permission to share it</li>
+        <li data-en="Whether River Sisters may share it publicly (website, social media, events)" data-es="Si River Sisters puede compartirla públicamente (sitio web, redes sociales, eventos)">Whether River Sisters may share it publicly (website, social media, events)</li>
+      </ul>
+      <a class="btn solid has-icon" href="mailto:congreso@riversisterscolorado.com?subject=My%20story%20for%20River%20Sisters&amp;body=Name%3A%0AWhat%20I%27m%20sharing%20%28story%2C%20visual%20art%2C%20poetry%2C%20other%29%3A%0ATitle%20%28optional%29%3A%0AHow%20to%20credit%20me%20%28full%20name%2C%20first%20name%20only%2C%20or%20anonymous%29%3A%0AThis%20is%20my%20own%20work%2C%20or%20I%20have%20permission%20to%20share%20it%20%28yes%2Fno%29%3A%0ARiver%20Sisters%20may%20share%20it%20publicly%20with%20that%20credit%20%28yes%2Fno%29%3A%0A%0AMy%20story%20or%20poem%20%28or%20attach%20your%20art%2C%20photos%2C%20or%20recording%29%3A%0A%0A" data-en-href="mailto:congreso@riversisterscolorado.com?subject=My%20story%20for%20River%20Sisters&amp;body=Name%3A%0AWhat%20I%27m%20sharing%20%28story%2C%20visual%20art%2C%20poetry%2C%20other%29%3A%0ATitle%20%28optional%29%3A%0AHow%20to%20credit%20me%20%28full%20name%2C%20first%20name%20only%2C%20or%20anonymous%29%3A%0AThis%20is%20my%20own%20work%2C%20or%20I%20have%20permission%20to%20share%20it%20%28yes%2Fno%29%3A%0ARiver%20Sisters%20may%20share%20it%20publicly%20with%20that%20credit%20%28yes%2Fno%29%3A%0A%0AMy%20story%20or%20poem%20%28or%20attach%20your%20art%2C%20photos%2C%20or%20recording%29%3A%0A%0A" data-es-href="mailto:congreso@riversisterscolorado.com?subject=Mi%20historia%20para%20River%20Sisters&amp;body=Nombre%3A%0AQu%C3%A9%20comparto%20%28historia%2C%20arte%20visual%2C%20poes%C3%ADa%2C%20otra%20cosa%29%3A%0AT%C3%ADtulo%20%28opcional%29%3A%0AC%C3%B3mo%20darme%20cr%C3%A9dito%20%28nombre%20completo%2C%20solo%20nombre%20o%20an%C3%B3nimo%29%3A%0AEs%20mi%20propia%20obra%2C%20o%20tengo%20permiso%20para%20compartirla%20%28s%C3%AD%2Fno%29%3A%0ARiver%20Sisters%20puede%20compartirla%20p%C3%BAblicamente%20con%20ese%20cr%C3%A9dito%20%28s%C3%AD%2Fno%29%3A%0A%0AMi%20historia%20o%20poema%20%28o%20adjunta%20tu%20arte%2C%20fotos%20o%20grabaci%C3%B3n%29%3A%0A%0A"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M2.5 6.5 12 13l9.5-6.5"/></svg><span data-en="Email your story" data-es="Envía tu historia">Email your story</span></a>
+      <p class="share-fine" data-en="The button opens your email app with these questions ready to fill in. You can also write to the address above from any email account." data-es="El botón abre tu app de correo con estas preguntas listas para responder. También puedes escribir a la dirección de arriba desde cualquier cuenta de correo.">The button opens your email app with these questions ready to fill in. You can also write to the address above from any email account.</p>
+    </div>
   </div>
 </section>
 
@@ -1689,7 +1650,7 @@ const swap=l=>{
   });
   document.querySelectorAll('[data-'+l+'-label]').forEach(el=>el.setAttribute('aria-label',el.getAttribute('data-'+l+'-label')));
   document.querySelectorAll('[data-'+l+'-title]').forEach(el=>el.setAttribute('title',el.getAttribute('data-'+l+'-title')));
-  document.querySelectorAll('[data-'+l+'-ph]').forEach(el=>el.setAttribute('placeholder',el.getAttribute('data-'+l+'-ph')));
+  document.querySelectorAll('[data-'+l+'-href]').forEach(el=>el.setAttribute('href',el.getAttribute('data-'+l+'-href')));
   document.getElementById('btn-en').setAttribute('aria-pressed',l==='en');
   document.getElementById('btn-es').setAttribute('aria-pressed',l==='es');
   refreshBeadLabels();
@@ -1713,57 +1674,6 @@ document.getElementById('btn-es').addEventListener('click',()=>swap('es'));
   document.querySelectorAll('[data-after]').forEach(el=>{ if(el.dataset.after<today) el.hidden=false; });
   const empty=document.querySelector('.ev-empty');
   if(empty && !document.querySelector('.events-list .ev')) empty.hidden=false;
-})();
-
-// ---- Share your story form ----
-// Posts to Web3Forms when data-key holds a real access key; otherwise (or if the
-// request fails) opens a pre-filled email to data-fallback so nothing is lost.
-(function(){
-  const f=document.getElementById('share-form');
-  if(!f)return;
-  const status=f.querySelector('.f-status'),btn=f.querySelector('button[type=submit]');
-  const es=()=>document.documentElement.lang==='es';
-  const t=(en,sp)=>es()?sp:en;
-  const say=(msg,cls)=>{status.textContent=msg;status.className='f-status '+(cls||'')};
-  const val=n=>(f.elements[n].value||'').trim();
-  const mailtoFallback=()=>{
-    const body=['Name: '+val('name'),'Email: '+val('email'),'Type: '+val('type'),'Title: '+val('title'),
-      'Link: '+val('link'),'Credit: '+val('credit'),'Own work / permission: '+(f.elements.own_work.checked?'Yes':'No'),
-      'OK to share publicly: '+(f.elements.share_ok.checked?'Yes':'No'),'','Story / poem:',val('message')].join('\n');
-    location.href='mailto:'+f.dataset.fallback+'?subject='+encodeURIComponent('Story submission: '+(val('title')||val('type')))+'&body='+encodeURIComponent(body);
-    say(t('Your email app should open with your submission filled in. Press send there to finish.','Tu app de correo debería abrirse con tu envío listo. Presiona enviar ahí para terminar.'),'ok');
-  };
-  f.addEventListener('submit',async e=>{
-    e.preventDefault();
-    f.querySelectorAll('[aria-invalid]').forEach(el=>el.removeAttribute('aria-invalid'));
-    if(f.elements.botcheck.checked)return;
-    let bad=null;
-    ['name','email','type'].forEach(n=>{const el=f.elements[n];if(!el.checkValidity()){el.setAttribute('aria-invalid','true');bad=bad||el}});
-    const link=f.elements.link;
-    if(val('link')&&!link.checkValidity()){link.setAttribute('aria-invalid','true');bad=bad||link}
-    if(bad){say(t('Please check the highlighted fields.','Revisa los campos marcados.'),'err');bad.focus();return}
-    if(!val('message')&&!val('link')){f.elements.message.setAttribute('aria-invalid','true');f.elements.message.focus();
-      say(t('Please write your story or poem, or add a link to your work.','Escribe tu historia o poema, o agrega un enlace a tu obra.'),'err');return}
-    if(!f.elements.own_work.checked){f.elements.own_work.focus();
-      say(t('Please confirm this is your own work or that you have permission to share it.','Confirma que es tu propia obra o que tienes permiso para compartirla.'),'err');return}
-    const key=f.dataset.key||'';
-    if(!key||key.indexOf('YOUR_')===0){mailtoFallback();return}
-    const data={access_key:key,subject:'River Sisters: new '+val('type').toLowerCase()+' submission'+(val('title')?' - '+val('title'):''),
-      from_name:'River Sisters website',name:val('name'),email:val('email'),type:val('type'),title:val('title'),
-      message:val('message'),link:val('link'),credit:val('credit'),own_work:'Yes',
-      share_publicly:f.elements.share_ok.checked?'Yes':'No',language:es()?'es':'en'};
-    btn.disabled=true;say(t('Sending...','Enviando...'));
-    try{
-      const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
-      const j=await r.json().catch(()=>({}));
-      if(!r.ok||j.success===false)throw new Error(j.message||r.status);
-      f.reset();
-      say(t('Thank you. Your submission reached the Congreso, and we will be in touch by email.','Gracias. Tu envío llegó al Congreso y te escribiremos por correo.'),'ok');
-    }catch(err){
-      say(t('Something went wrong sending the form. Opening your email app instead...','Hubo un problema al enviar. Abriendo tu app de correo...'),'err');
-      setTimeout(mailtoFallback,900);
-    }finally{btn.disabled=false}
-  });
 })();
 
 // ---- Mobile menu ----
