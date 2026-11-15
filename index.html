@@ -62,7 +62,8 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(246,241,232,.95);ba
 .mark .names{line-height:1.12;white-space:nowrap}
 .mark .en{font-family:var(--display);font-weight:600;font-size:.98rem;letter-spacing:.01em}
 .mark .es{font-family:var(--display);font-weight:500;font-size:.98rem;color:var(--turquoise-deep);font-style:italic}
-nav.primary{display:flex;gap:.95rem;align-items:center}
+nav.primary{display:flex;gap:clamp(1rem,1.9vw,1.7rem);align-items:center}
+@media (min-width:1025px){nav.primary .lang{margin-left:.3rem}}
 nav.primary a{font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:var(--ink);padding:.25rem 0;border-bottom:2px solid transparent;white-space:nowrap}
 nav.primary a:hover{border-bottom-color:var(--clay)}
 .nav-more{position:relative;display:flex;align-items:center}
@@ -468,11 +469,11 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
     <nav class="primary" id="nav" aria-label="Primary">
       <a href="#personhood" data-en="River Personhood" data-es="Personería del Río">River Personhood</a>
       <a href="#necklace" data-en="Turquoise Necklace" data-es="Collar Turquesa">Turquoise Necklace</a>
-      <a href="#principles" data-en="Guiding Principles" data-es="Principios Rectores">Guiding Principles</a>
       <a class="nav-petition" href="https://secure.ngpvan.com/aab4JnSbwUm6yG2PghPJvw2" target="_blank" rel="noopener" data-en="Sign the Petition" data-es="Firma la Petición">Sign the Petition</a>
       <div class="nav-more">
         <button class="nav-more-btn" type="button" aria-expanded="false" aria-controls="more-menu" data-en="More" data-es="Más">More</button>
         <div class="more-menu" id="more-menu" hidden>
+          <a href="#principles" data-en="Guiding Principles" data-es="Principios Rectores">Guiding Principles</a>
           <a href="#members" data-en="Members" data-es="Miembros">Members</a>
           <a href="#partners" data-en="Partners" data-es="Aliados">Partners</a>
           <a href="#events" data-en="Events" data-es="Eventos">Events</a>
@@ -1101,7 +1102,7 @@ a.plogo:focus-visible{outline:2px solid var(--river);outline-offset:2px}
         <h4 data-en="Explore" data-es="Explora">Explore</h4>
         <p><a href="#personhood" data-en="River Personhood" data-es="Personería del Río">River Personhood</a><br>
         <a href="#necklace" data-en="Turquoise Necklace" data-es="Collar Turquesa">Turquoise Necklace</a><br>
-        <a href="#principles" data-en="Guiding Principles" data-es="Principios Rectores">Guiding Principles</a><br>
+          <a href="#principles" data-en="Guiding Principles" data-es="Principios Rectores">Guiding Principles</a><br>
         <a href="https://secure.ngpvan.com/aab4JnSbwUm6yG2PghPJvw2" target="_blank" rel="noopener" data-en="Sign the Petition" data-es="Firma la Petición">Sign the Petition</a><br>
         <a href="#share" data-en="Share Your Story" data-es="Comparte tu Historia">Share Your Story</a></p>
       </div>
